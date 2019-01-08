@@ -1,0 +1,16 @@
+PODS:
+  - MVVMKit (0.1.0)
+
+DEPENDENCIES:
+  - MVVMKit (from `../`)
+
+EXTERNAL SOURCES:
+  MVVMKit:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  MVVMKit: 8aa4cfd8577bfa1ab6d93eef9a1f17fadc069d7c
+
+PODFILE CHECKSUM: b86e1f7e2ffe0f6aa4f05ef464d4733d6c2e2d1b
+
+COCOAPODS: 1.6.0.beta.2

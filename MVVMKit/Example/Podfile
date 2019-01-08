@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'MVVMKit_Example' do
+  pod 'MVVMKit', :path => '../'
+
+  target 'MVVMKit_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
