@@ -1,0 +1,16 @@
+included: # paths to include during linting. `--path` is ignored if present.
+- ../MVVMKit
+
+disabled_rules:
+- trailing_whitespace
+- type_body_length
+- variable_name
+- large_tuple
+- force_cast
+- statement_position
+
+line_length:
+    warning: 190
+    ignores_comments: true
+    ignores_urls: true
+file_length: 400

@@ -2,21 +2,22 @@
   "name": "MVVMKit",
   "version": "0.1.0",
   "summary": "A short description of MVVMKit.",
-  "description": "TODO: Add long description of the pod here.",
+  "description": "A framework to adopt MVVM easly in iOS applications.",
   "homepage": "https://github.com/drakon-ag/MVVMKit",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
   },
   "authors": {
-    "drakon-ag": "alf.grillo@reply.it"
+    "drakon-ag": "alfogrillo@gmail.com"
   },
   "source": {
     "git": "https://github.com/drakon-ag/MVVMKit.git",
     "tag": "0.1.0"
   },
   "platforms": {
-    "ios": "8.0"
+    "ios": "9.0"
   },
-  "source_files": "MVVMKit/Classes/**/*"
+  "swift_version": "4.2",
+  "source_files": "MVVMKit/**/*"
 }

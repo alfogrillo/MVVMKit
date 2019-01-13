@@ -1,11 +1,11 @@
+platform :ios, '10.0'
 use_frameworks!
 
-target 'MVVMKit_Example' do
+def sharedPods
   pod 'MVVMKit', :path => '../'
+end
 
-  target 'MVVMKit_Tests' do
-    inherit! :search_paths
-
-    
-  end
+target 'MVVMKit_Example' do
+  sharedPods
+  pod 'SwiftLint'
 end
