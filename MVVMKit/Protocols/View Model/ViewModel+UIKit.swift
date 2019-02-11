@@ -99,15 +99,15 @@ public extension TableViewBinder where Self: TableViewViewModelOwner {
         
         switch change {
         case .all:
-            tableView.reloadData()
+            tableView?.reloadData()
         case .delete(let indicies):
-            tableView.deleteRows(at: indicies, with: .automatic)
+            tableView?.deleteRows(at: indicies, with: .automatic)
         case .insert(let indicies):
-            tableView.insertRows(at: indicies, with: .automatic)
+            tableView?.insertRows(at: indicies, with: .automatic)
         case .updateItems(let indicies):
-            tableView.reloadRows(at: indicies, with: .automatic)
+            tableView?.reloadRows(at: indicies, with: .automatic)
         case .updateSections(let sections):
-            tableView.reloadSections(sections, with: .automatic)
+            tableView?.reloadSections(sections, with: .automatic)
         }
     }
 }
@@ -122,15 +122,15 @@ public extension CollectionViewBinder where Self: CollectionViewViewModelOwner {
         
         switch change {
         case .all:
-            collectionView.reloadData()
+            collectionView?.reloadData()
         case .delete(let indicies):
-            collectionView.deleteItems(at: indicies)
+            collectionView?.deleteItems(at: indicies)
         case .insert(let indicies):
-            collectionView.insertItems(at: indicies)
+            collectionView?.insertItems(at: indicies)
         case .updateItems(let indicies):
-            collectionView.reloadItems(at: indicies)
+            collectionView?.reloadItems(at: indicies)
         case .updateSections(let sections):
-            collectionView.reloadSections(sections)
+            collectionView?.reloadSections(sections)
         }
     }
 }
