@@ -53,6 +53,8 @@ open class MVVMTableViewController<Model: TableViewViewModel>: UIViewController,
         return viewModel?.sections ?? []
     }
     
+    // MARK: - UITableViewDataSource
+    
     public final func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
     }
@@ -60,8 +62,6 @@ open class MVVMTableViewController<Model: TableViewViewModel>: UIViewController,
     public final func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return sections[section].count
     }
-    
-    // MARK: - Cells
     
     open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let viewModel = sections[indexPath.section][indexPath.row]
@@ -71,15 +71,19 @@ open class MVVMTableViewController<Model: TableViewViewModel>: UIViewController,
         return cell
     }
     
-    open func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
-    }
+    // MARK: - UITableViewDelegate
     
-    open func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
-    }
+    // Display customization
     
     open func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+    }
+    
+    open func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        
+    }
+    
+    open func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
         
     }
     
@@ -87,7 +91,43 @@ open class MVVMTableViewController<Model: TableViewViewModel>: UIViewController,
         
     }
     
-    // MARK: - Section Headers
+    open func tableView(_ tableView: UITableView, didEndDisplayingHeaderView view: UIView, forSection section: Int) {
+        
+    }
+    
+    open func tableView(_ tableView: UITableView, didEndDisplayingFooterView view: UIView, forSection section: Int) {
+        
+    }
+    
+    // Variable height support
+    
+    open func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+    open func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        guard sections[section].headerViewModel != nil else { return 0 }
+        return UITableView.automaticDimension
+    }
+    
+    open func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        guard sections[section].footerViewModel != nil else { return 0 }
+        return UITableView.automaticDimension
+    }
+    
+    open func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+    open func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+    open func tableView(_ tableView: UITableView, estimatedHeightForFooterInSection section: Int) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+    // Section header & footer information
     
     open func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard
@@ -100,25 +140,6 @@ open class MVVMTableViewController<Model: TableViewViewModel>: UIViewController,
         return view
     }
     
-    open func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        guard sections[section].headerViewModel != nil else { return 0 }
-        return UITableView.automaticDimension
-    }
-    
-    open func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
-        return UITableView.automaticDimension
-    }
-    
-    open func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        
-    }
-    
-    open func tableView(_ tableView: UITableView, didEndDisplayingHeaderView view: UIView, forSection section: Int) {
-        
-    }
-    
-    // MARK: - Section Footers
-    
     open func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         guard
             let footerViewModel = sections[section].footerViewModel,
@@ -130,50 +151,97 @@ open class MVVMTableViewController<Model: TableViewViewModel>: UIViewController,
         return view
     }
     
-    open func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        guard sections[section].footerViewModel != nil else { return 0 }
-        return UITableView.automaticDimension
-    }
+    // Accessories
     
-    open func tableView(_ tableView: UITableView, estimatedHeightForFooterInSection section: Int) -> CGFloat {
-        return UITableView.automaticDimension
-    }
-    
-    open func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
+    open func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         
     }
     
-    open func tableView(_ tableView: UITableView, didEndDisplayingFooterView view: UIView, forSection section: Int) {
-    
-    }
-    
-    // MARK: - User interaction
-    
-    open func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        return indexPath
-    }
-    
-    open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-    }
-    
-    open func tableView(_ tableView: UITableView, willDeselectRowAt indexPath: IndexPath) -> IndexPath? {
-        return indexPath
-    }
-    
-    open func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-
-    }
+    // Selection
     
     open func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
     open func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
-
+        
     }
     
     open func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
+        
+    }
+    
+    open func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        return indexPath
+    }
+    
+    open func tableView(_ tableView: UITableView, willDeselectRowAt indexPath: IndexPath) -> IndexPath? {
+        return indexPath
+    }
+    
+    open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+    
+    open func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        
+    }
+    
+    // MARK: - UIScrollViewDelegate
+    
+    open func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+    }
+    
+    open func scrollViewDidZoom(_ scrollView: UIScrollView) {
+        
+    }
 
+    open func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+
+    }
+    
+    open func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        
+    }
+    
+    open func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        
+    }
+    
+    open func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
+        
+    }
+    
+    open func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        
+    }
+    
+    open func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        
+    }
+    
+    open func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return nil
+    }
+    
+    open func scrollViewWillBeginZooming(_ scrollView: UIScrollView, with view: UIView?) {
+        
+    }
+    
+    open func scrollViewDidEndZooming(_ scrollView: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
+        
+    }
+    
+    open func scrollViewShouldScrollToTop(_ scrollView: UIScrollView) -> Bool {
+        return true
+    }
+    
+    open func scrollViewDidScrollToTop(_ scrollView: UIScrollView) {
+        
+    }
+    
+    open func scrollViewDidChangeAdjustedContentInset(_ scrollView: UIScrollView) {
+        
     }
 }
