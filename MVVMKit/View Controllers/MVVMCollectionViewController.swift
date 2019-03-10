@@ -86,4 +86,20 @@ open class MVVMCollectionViewController<Model: CollectionViewViewModel>: UIViewC
         configureDelegate(of: view)
         return view
     }
+    
+    open func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    open func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        
+    }
+    
+    open func indexTitles(for collectionView: UICollectionView) -> [String]? {
+        return nil
+    }
+    
+    open func collectionView(_ collectionView: UICollectionView, indexPathForIndexTitle title: String, at index: Int) -> IndexPath {
+        return IndexPath(item: 0, section: 0)
+    }
 }
