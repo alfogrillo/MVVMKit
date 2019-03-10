@@ -63,7 +63,7 @@ class ColorsViewModel: TableViewViewModel {
     
     func invertColor(at index: Int) {
         model.colors[index] = model.colors[index].inverted
-        binder?.viewModel(self, didChange: SectionsChange.updateItems(indicies: [IndexPath(row: index, section: 0)]))
+        binder?.viewModel(self, didChange: .reloadItems([IndexPath(row: index, section: 0)]))
     }
     
     func setEditMode(enabled: Bool) {

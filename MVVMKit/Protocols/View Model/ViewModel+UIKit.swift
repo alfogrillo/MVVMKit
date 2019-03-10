@@ -83,30 +83,41 @@ public extension TableViewViewModel {
 }
 
 /// An enum describing what should be updated inside a table view or a collection view
-public enum SectionsChange {
+public enum ViewChange {
     case all
-    case insert(indicies: [IndexPath])
-    case delete(indicies: [IndexPath])
-    case updateItems(indicies: [IndexPath])
-    case updateSections(sections: IndexSet)
+    case insertItems([IndexPath])
+    case insertSections(IndexSet)
+    case deleteItems([IndexPath])
+    case moveItem(at: IndexPath, to: IndexPath)
+    case moveSection(at: Int, to: Int)
+    case reloadItems([IndexPath])
+    case reloadSections(IndexSet)
 }
 
 public extension TableViewBinder where Self: TableViewViewModelOwner {
-    func viewModel(_ viewModel: ViewModel, didChange sectionsChange: SectionsChange?) {
+    func viewModel(_ viewModel: ViewModel, didChange viewChange: ViewChange?) {
         defer { bind(viewModel: viewModel) }
         
-        guard let change = sectionsChange else { return }
+        guard let change = viewChange else {
+            return
+        }
         
         switch change {
         case .all:
             tableView?.reloadData()
-        case .delete(let indicies):
-            tableView?.deleteRows(at: indicies, with: .automatic)
-        case .insert(let indicies):
+        case .insertItems(let indicies):
             tableView?.insertRows(at: indicies, with: .automatic)
-        case .updateItems(let indicies):
+        case .insertSections(let sections):
+            tableView?.insertSections(sections, with: .automatic)
+        case .deleteItems(let indicies):
+            tableView?.deleteRows(at: indicies, with: .automatic)
+        case .moveItem(let at, let to):
+            tableView?.moveRow(at: at, to: to)
+        case .moveSection(let at, let to):
+            tableView?.moveSection(at, toSection: to)
+        case .reloadItems(let indicies):
             tableView?.reloadRows(at: indicies, with: .automatic)
-        case .updateSections(let sections):
+        case .reloadSections(let sections):
             tableView?.reloadSections(sections, with: .automatic)
         }
     }
@@ -115,22 +126,30 @@ public extension TableViewBinder where Self: TableViewViewModelOwner {
 public typealias CollectionViewViewModel = TableViewViewModel
 
 public extension CollectionViewBinder where Self: CollectionViewViewModelOwner {
-    func viewModel(_ viewModel: ViewModel, didChange sectionsChange: SectionsChange?) {
+    func viewModel(_ viewModel: ViewModel, didChange viewChange: ViewChange?) {
         defer { bind(viewModel: viewModel) }
         
-        guard let change = sectionsChange else { return }
+        guard let change = viewChange else {
+            return
+        }
         
         switch change {
         case .all:
             collectionView?.reloadData()
-        case .delete(let indicies):
-            collectionView?.deleteItems(at: indicies)
-        case .insert(let indicies):
-            collectionView?.insertItems(at: indicies)
-        case .updateItems(let indicies):
-            collectionView?.reloadItems(at: indicies)
-        case .updateSections(let sections):
-            collectionView?.reloadSections(sections)
+        case .insertItems(let indicies):
+            collectionView.insertItems(at: indicies)
+        case .insertSections(let sections):
+            collectionView.insertSections(sections)
+        case .deleteItems(let indicies):
+            collectionView.deleteItems(at: indicies)
+        case .moveItem(let at, let to):
+            collectionView.moveItem(at: at, to: to)
+        case .moveSection(let at, let to):
+            collectionView.moveSection(at, toSection: to)
+        case .reloadItems(let indicies):
+            collectionView.reloadItems(at: indicies)
+        case .reloadSections(let sections):
+            collectionView.reloadSections(sections)
         }
     }
 }
