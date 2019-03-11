@@ -80,11 +80,11 @@ open class MVVMTableViewController<Model: TableViewViewModel>: UIViewController,
     }
     
     open func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
+        return false
     }
     
     open func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        return true
+        return false
     }
     
     open func sectionIndexTitles(for tableView: UITableView) -> [String]? {
