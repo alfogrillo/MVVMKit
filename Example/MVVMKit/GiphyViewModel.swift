@@ -81,12 +81,12 @@ class GiphyViewModel: CollectionViewViewModel {
     private func startFetch() {
         model.isFetching = true
         model.gifs = []
-        binder?.viewModel(self, didChange: .all)
+        binder?.viewModel(self, didChange: .reloadData)
     }
     
     private func endFetch() {
         model.isFetching = false
-        self.binder?.viewModel(self, didChange: .all)
+        self.binder?.viewModel(self, didChange: .reloadData)
     }
     
     private func updateSections() {

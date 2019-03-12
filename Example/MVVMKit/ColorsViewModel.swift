@@ -63,14 +63,14 @@ class ColorsViewModel: TableViewViewModel {
     
     func invertColor(at index: Int) {
         model.colors[index] = model.colors[index].inverted
-        binder?.viewModel(self, didChange: .reloadItems([IndexPath(row: index, section: 0)]))
+        binder?.viewModel(self, didChange: .reloadRows([IndexPath(row: index, section: 0)], with: .automatic))
     }
     
     func setEditMode(enabled: Bool) {
         state = enabled ? .edit : .normal
         model.selectedColor = nil
         updateSections()
-        binder?.viewModel(self, didChange: .all)
+        binder?.viewModel(self, didChange: .reloadData)
     }
     
     // MARK - Read only prorperties

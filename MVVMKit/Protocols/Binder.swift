@@ -51,7 +51,9 @@ public extension CustomBinder {
  A `TableViewBinder` is responsible to bind the view models of reusable view (cells, headers, footers).
  */
 public protocol TableViewBinder: Binder {
-    func viewModel(_ viewModel: ViewModel, didChange viewChange: ViewChange?)
+    func viewModel(_ viewModel: ViewModel, didChange viewChange: TableViewUpdate?)
 }
 
-public typealias CollectionViewBinder = TableViewBinder
+public protocol CollectionViewBinder: Binder {
+    func viewModel(_ viewModel: ViewModel, didChange viewChange: CollectionViewUpdate?)
+}

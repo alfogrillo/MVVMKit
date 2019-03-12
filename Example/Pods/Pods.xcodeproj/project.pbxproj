@@ -36,9 +36,11 @@
 		9BE039E4377CA1A1A0DAE2B2F3B8C2BE /* WeakReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4ECE09F5F560A2A2D74841BF0D2D65 /* WeakReference.swift */; };
 		9D9FFBFFA0ED17C7DEAC61A5667EA7B7 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3337E1DA66211C58BCC10C98EC4F22 /* ViewModel.swift */; };
 		C011C3B821EA900A00DF531F /* Delegator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C011C3B721EA900A00DF531F /* Delegator.swift */; };
+		C078EFAE2236A5660095BD6C /* TableViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C078EFAD2236A5660095BD6C /* TableViewViewModel.swift */; };
+		C078EFB02236A5AC0095BD6C /* CollectionViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C078EFAF2236A5AC0095BD6C /* CollectionViewViewModel.swift */; };
 		C1B8CD645EBC4C24D23A76E02304F8A0 /* Pods-MVVMKit_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8793F1EF4607A2C70DC589B5BADEAA35 /* Pods-MVVMKit_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C7DB211F6F0989AB74AB9C3D21993E71 /* ReusableViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821DEEAE67168348BE4E58C249D16F30 /* ReusableViewViewModel.swift */; };
-		EF9C630D363CF3AFBED23CFB34816AE0 /* ViewModel+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9197949730A953EECC444334E67A91E /* ViewModel+UIKit.swift */; };
+		EF9C630D363CF3AFBED23CFB34816AE0 /* SectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9197949730A953EECC444334E67A91E /* SectionViewModel.swift */; };
 		F1BFDA661173B35F609814F7834CB714 /* ViewModelOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214E74EA932A23F4125F3356C377D2FA /* ViewModelOwner.swift */; };
 		F68D658698D82CBA3FCC203F888FFA0B /* UICollectionViewCell+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B27F1A9EECA449E79950BA08792C4D /* UICollectionViewCell+Utils.swift */; };
 /* End PBXBuildFile section */
@@ -93,10 +95,12 @@
 		B94DC61A7CF3089771244653F6614521 /* TableViewViewModelOwner.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TableViewViewModelOwner.swift; sourceTree = "<group>"; };
 		BC3337E1DA66211C58BCC10C98EC4F22 /* ViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		C011C3B721EA900A00DF531F /* Delegator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Delegator.swift; sourceTree = "<group>"; };
+		C078EFAD2236A5660095BD6C /* TableViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewViewModel.swift; sourceTree = "<group>"; };
+		C078EFAF2236A5AC0095BD6C /* CollectionViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewViewModel.swift; sourceTree = "<group>"; };
 		C8F0ADF5D16B300FC812DF0E5414E099 /* MVVMKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = MVVMKit.modulemap; sourceTree = "<group>"; };
 		D3B27F1A9EECA449E79950BA08792C4D /* UICollectionViewCell+Utils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Utils.swift"; sourceTree = "<group>"; };
 		D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		D9197949730A953EECC444334E67A91E /* ViewModel+UIKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "ViewModel+UIKit.swift"; sourceTree = "<group>"; };
+		D9197949730A953EECC444334E67A91E /* SectionViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SectionViewModel.swift; sourceTree = "<group>"; };
 		DE927745E457259CF58978049BAEE144 /* UITableViewCell+Utils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Utils.swift"; sourceTree = "<group>"; };
 		E051927E9A0E02DDB945A71F7FBC6909 /* SwiftLint.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftLint.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -133,8 +137,10 @@
 			isa = PBXGroup;
 			children = (
 				65D66B2165EFCD8BDC03779F8881571B /* BaseViewModel.swift */,
+				C078EFAF2236A5AC0095BD6C /* CollectionViewViewModel.swift */,
+				C078EFAD2236A5660095BD6C /* TableViewViewModel.swift */,
 				BC3337E1DA66211C58BCC10C98EC4F22 /* ViewModel.swift */,
-				D9197949730A953EECC444334E67A91E /* ViewModel+UIKit.swift */,
+				D9197949730A953EECC444334E67A91E /* SectionViewModel.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -430,8 +436,10 @@
 				F68D658698D82CBA3FCC203F888FFA0B /* UICollectionViewCell+Utils.swift in Sources */,
 				44AAC17C828175BEB88D8A1EAEC0CC99 /* UITableViewCell+Utils.swift in Sources */,
 				24D2C6F352A8320F95C5667B516F81F9 /* UIViewController+MVVM.swift in Sources */,
-				EF9C630D363CF3AFBED23CFB34816AE0 /* ViewModel+UIKit.swift in Sources */,
+				EF9C630D363CF3AFBED23CFB34816AE0 /* SectionViewModel.swift in Sources */,
+				C078EFB02236A5AC0095BD6C /* CollectionViewViewModel.swift in Sources */,
 				9D9FFBFFA0ED17C7DEAC61A5667EA7B7 /* ViewModel.swift in Sources */,
+				C078EFAE2236A5660095BD6C /* TableViewViewModel.swift in Sources */,
 				F1BFDA661173B35F609814F7834CB714 /* ViewModelOwner.swift in Sources */,
 				9BE039E4377CA1A1A0DAE2B2F3B8C2BE /* WeakReference.swift in Sources */,
 			);
