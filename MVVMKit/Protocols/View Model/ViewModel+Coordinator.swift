@@ -1,5 +1,5 @@
 /*
- RootViewController.swift
+ ViewModel+Coordinator.swift
  
  Copyright (c) 2019 Alfonso Grillo
  
@@ -22,30 +22,11 @@
  THE SOFTWARE.
  */
 
-import UIKit
-import MVVMKit
+// A view model that delegates the navigation responsibility to a coordinator
+public protocol CoordinatedBaseViewModel: BaseViewModel, CoordinatorOwner { }
 
-class RootViewController: UIViewController, ViewModelOwner {
-    typealias CustomViewModel = RootViewModel
-    var viewModel: RootViewModel?
-    
-    func bind(viewModel: RootViewModel) {
-        
-    }
-    
-    @IBAction func didTapBasicViewController(_ sender: UIButton) {
-        viewModel?.didSelectBasicViewController()
-    }
-    
-    @IBAction func didTapTableViewController(_ sender: UIButton) {
-        viewModel?.didSelectTableViewController()
-    }
-    
-    @IBAction func didTapCollectionViewController(_ sender: UIButton) {
-        viewModel?.didSelectCollectionViewController()
-    }
-    
-    @IBAction func didTapEmbeddedViewController(_ sender: UIButton) {
-        viewModel?.didSelectEmbeddedViewController()
-    }
-}
+// A table view view model that delegates the navigation responsibility to a coordinator
+public protocol CoordinatedTableViewViewModel: TableViewViewModel, CoordinatorOwner { }
+
+// A collection view view model that delegates the navigation responsibility to a coordinator
+public protocol CoordinatedCollectionViewViewModel: CollectionViewViewModel, CoordinatorOwner { }

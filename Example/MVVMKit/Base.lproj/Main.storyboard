@@ -13,7 +13,7 @@
         <!--Root View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="RootViewController" customModule="MVVMKit_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RootViewController" id="vXZ-lx-hvc" customClass="RootViewController" customModule="MVVMKit_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -30,7 +30,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <state key="normal" title="Basic View Controller"/>
                                         <connections>
-                                            <segue destination="6iJ-9p-xco" kind="show" id="TMo-Iu-HOY"/>
+                                            <action selector="didTapBasicViewController:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="NF3-LI-nEm"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CV5-ba-r4l">
@@ -38,7 +38,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <state key="normal" title="Table View Controller"/>
                                         <connections>
-                                            <segue destination="o9a-vj-Ehw" kind="show" id="mNz-1K-Esj"/>
+                                            <action selector="didTapTableViewController:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Wsh-gc-wSc"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SVv-6d-cda" userLabel="Collection View">
@@ -46,7 +46,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <state key="normal" title="Collection View Controller"/>
                                         <connections>
-                                            <segue destination="xJF-Ja-Hmh" kind="show" id="HOO-XW-utn"/>
+                                            <action selector="didTapCollectionViewController:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="8SG-td-4oZ"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dfu-sS-CjH" userLabel="Collection View">
@@ -54,7 +54,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <state key="normal" title="Embedded View Controller"/>
                                         <connections>
-                                            <segue destination="guq-Ni-R1q" kind="show" id="tSH-1K-wse"/>
+                                            <action selector="didTapEmbeddedViewController:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="2If-PG-SmG"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -77,7 +77,7 @@
         <!--Basic View Controller-->
         <scene sceneID="rmr-hp-tjw">
             <objects>
-                <viewController id="6iJ-9p-xco" customClass="BasicViewController" customModule="MVVMKit_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BasicViewController" id="6iJ-9p-xco" customClass="BasicViewController" customModule="MVVMKit_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gql-F4-5al"/>
                         <viewControllerLayoutGuide type="bottom" id="lIj-2X-H6a"/>
@@ -127,12 +127,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EDY-z1-tMd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1658" y="-604"/>
+            <point key="canvasLocation" x="1772" y="-618"/>
         </scene>
         <!--Colors View Controller-->
         <scene sceneID="ykf-wK-WQJ">
             <objects>
-                <viewController id="o9a-vj-Ehw" customClass="ColorsViewController" customModule="MVVMKit_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ColorsViewController" id="o9a-vj-Ehw" customClass="ColorsViewController" customModule="MVVMKit_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4wl-IB-DZc"/>
                         <viewControllerLayoutGuide type="bottom" id="0Ns-WQ-RjA"/>
@@ -142,7 +142,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="q8V-WB-01f">
-                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a color!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cOm-4G-Dzv">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
@@ -161,7 +161,7 @@
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3xQ-hM-dyp">
-                                        <rect key="frame" x="0.0" y="61" width="375" height="629"/>
+                                        <rect key="frame" x="0.0" y="61" width="375" height="673"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ColorCell" rowHeight="122" id="8G3-hr-jJx" customClass="ColorCell" customModule="MVVMKit_Example" customModuleProvider="target">
@@ -260,7 +260,7 @@
         <!--Giphy Master Detail View Controller-->
         <scene sceneID="4Km-kQ-MDw">
             <objects>
-                <viewController id="guq-Ni-R1q" customClass="GiphyMasterDetailViewController" customModule="MVVMKit_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GiphyMasterDetailViewController" id="guq-Ni-R1q" customClass="GiphyMasterDetailViewController" customModule="MVVMKit_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="BHz-uR-sxd"/>
                         <viewControllerLayoutGuide type="bottom" id="6B2-C1-MLs"/>
@@ -270,23 +270,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="eiB-Rh-6Jh">
-                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DY7-Au-xbB">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="389"/>
-                                        <connections>
-                                            <segue destination="xJF-Ja-Hmh" kind="embed" id="Pjl-vC-ggu"/>
-                                        </connections>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="433"/>
                                     </containerView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lfD-uT-vgw">
-                                        <rect key="frame" x="0.0" y="389" width="375" height="1"/>
+                                        <rect key="frame" x="0.0" y="433" width="375" height="1"/>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="8bl-rL-ar9"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pRf-K9-x3z" userLabel="Detail View">
-                                        <rect key="frame" x="0.0" y="390" width="375" height="300"/>
+                                        <rect key="frame" x="0.0" y="434" width="375" height="300"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NlF-0M-l4k">
                                                 <rect key="frame" x="10" y="10" width="355" height="280"/>
@@ -319,6 +316,7 @@
                     </view>
                     <connections>
                         <outlet property="activityIndicatorView" destination="8v8-F7-TdO" id="zCE-W4-ogQ"/>
+                        <outlet property="containerView" destination="DY7-Au-xbB" id="Y5k-Qo-bNV"/>
                         <outlet property="imageView" destination="NlF-0M-l4k" id="GBb-U4-9am"/>
                     </connections>
                 </viewController>
@@ -329,7 +327,7 @@
         <!--Giphy View Controller-->
         <scene sceneID="kJu-vM-omC">
             <objects>
-                <viewController id="xJF-Ja-Hmh" customClass="GiphyViewController" customModule="MVVMKit_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GiphyViewController" id="xJF-Ja-Hmh" customClass="GiphyViewController" customModule="MVVMKit_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UhJ-Iw-KBk"/>
                         <viewControllerLayoutGuide type="bottom" id="98X-nQ-frI"/>
@@ -339,7 +337,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="LyQ-Fo-JbP">
-                                <rect key="frame" x="0.0" y="88" width="375" height="724"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="768"/>
                                 <subviews>
                                     <searchBar contentMode="redraw" placeholder="Type something" translatesAutoresizingMaskIntoConstraints="NO" id="Zzh-uI-WCf">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
@@ -353,7 +351,7 @@
                                         </connections>
                                     </searchBar>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="m7Z-rf-Wbe">
-                                        <rect key="frame" x="0.0" y="56" width="375" height="668"/>
+                                        <rect key="frame" x="0.0" y="56" width="375" height="712"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="a69-Af-6Np">
                                             <size key="itemSize" width="217" height="161"/>
@@ -399,13 +397,13 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No results" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hOR-l2-vWr">
-                                <rect key="frame" x="141.66666666666666" y="467.33333333333331" width="91.666666666666657" height="21.666666666666686"/>
+                                <rect key="frame" x="141.66666666666666" y="445.33333333333331" width="91.666666666666657" height="21.666666666666686"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="uaF-1n-gve">
-                                <rect key="frame" x="177.66666666666666" y="468" width="20" height="20"/>
+                                <rect key="frame" x="177.66666666666666" y="446" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -428,10 +426,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1h9-hw-a8c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1865" y="938"/>
+            <point key="canvasLocation" x="1772" y="938"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="HOO-XW-utn"/>
-    </inferredMetricsTieBreakers>
 </document>

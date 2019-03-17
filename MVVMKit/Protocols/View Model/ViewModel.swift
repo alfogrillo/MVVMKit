@@ -37,7 +37,7 @@ public protocol RootViewModel: class, ViewModel {
 }
 
 public extension RootViewModel {
-    // A property to get and set the binder
+    // A convenience property to get and set the binder
     var binder: BinderType? {
         get { return weakBinder?.object }
         set { weakBinder = WeakReference(newValue) }

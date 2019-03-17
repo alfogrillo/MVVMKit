@@ -1,5 +1,5 @@
 /*
- Binder.swift
+ Coordinator.swift
  
  Copyright (c) 2019 Alfonso Grillo
  
@@ -23,40 +23,24 @@
  */
 
 /**
- A `Binder` is responsible to bind a view model on a view.
+ A convenience base protocol for coordinators
  */
-public protocol Binder: class {
-    func bind(viewModel: ViewModel)
+public protocol Coordinator: class {
+    var weakSourceViewController: WeakReference<UIViewController>? { get set }
 }
 
-/**
- A `CustomBinder` is responsible to bind a specific view model type on a view.
- */
-public protocol CustomBinder: Binder {
-    associatedtype CustomViewModel
-    func bind(viewModel: CustomViewModel)
-}
-
-public extension CustomBinder {
-    /**
-     Default implementation of `Binder` protocol
-     */
-    func bind(viewModel: ViewModel) {
-        precondition(viewModel is CustomViewModel)
-        bind(viewModel: viewModel as! CustomViewModel)
+public extension Coordinator {
+    // A convenince property to get and set the source view controller
+    var sourceViewController: UIViewController? {
+        get { return weakSourceViewController?.object }
+        set { weakSourceViewController = WeakReference(newValue) }
     }
 }
 
 /**
- A `TableViewBinder` is responsible to bind the view models of reusable view (cells, headers, footers).
+ A protocols identifying a coordinator owner
  */
-public protocol TableViewBinder: Binder {
-    func viewModel(_ viewModel: ViewModel, didChange viewChange: TableViewUpdate?)
-}
-
-/**
- A `CollectionViewBinder` is responsible to bind the view models of reusable view (cells, headers, footers).
- */
-public protocol CollectionViewBinder: Binder {
-    func viewModel(_ viewModel: ViewModel, didChange viewChange: CollectionViewUpdate?)
+public protocol CoordinatorOwner: class {
+    associatedtype CoordinatorType: Coordinator
+    var coordinator: CoordinatorType { get set }
 }

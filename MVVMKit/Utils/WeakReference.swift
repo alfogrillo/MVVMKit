@@ -31,7 +31,7 @@ public struct WeakReference<T> {
         set { privateRef = newValue as AnyObject }
     }
     
-    init(_ ref: T? = nil) {
+    public init(_ ref: T? = nil) {
         object = ref
     }
 }

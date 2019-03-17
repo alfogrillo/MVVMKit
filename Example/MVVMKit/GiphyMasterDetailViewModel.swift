@@ -25,13 +25,20 @@
 import UIKit
 import MVVMKit
 
-class GiphyMasterDetailViewModel: BaseViewModel {
+class GiphyMasterDetailViewModel: CoordinatedBaseViewModel {
+    typealias CoordinatorType = GiphyMasterDetailCoordinator
+    var coordinator: GiphyMasterDetailCoordinator
     var weakBinder: WeakReference<Binder>?
+    
     struct Model {
         var selectedGif: GiphyResult? = nil
         init(selectedGif: GiphyResult? = nil) {
             self.selectedGif = selectedGif
         }
+    }
+    
+    init(coordinator: GiphyMasterDetailCoordinator) {
+        self.coordinator = coordinator
     }
     
     var model: Model = Model() {
@@ -40,6 +47,12 @@ class GiphyMasterDetailViewModel: BaseViewModel {
     
     var imageViewUrl: String? {
         return model.selectedGif?.images.original.url
+    }
+    
+    var embeddedViewController: UIViewController {
+        let embeddedViewController = coordinator.embeddedViewController
+        embeddedViewController.viewModel?.delegate = self
+        return embeddedViewController
     }
 }
 

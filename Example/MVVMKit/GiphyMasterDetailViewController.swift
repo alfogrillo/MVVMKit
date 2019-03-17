@@ -28,9 +28,15 @@ class GiphyMasterDetailViewController: UIViewController, ViewModelOwner {
     typealias CustomViewModel = GiphyMasterDetailViewModel
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var activityIndicatorView: UIActivityIndicatorView!
+    @IBOutlet private weak var containerView: UIView!
     
     var viewModel: GiphyMasterDetailViewModel? {
         didSet { viewModel?.binder = self }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupEmbeddedViewController()
     }
     
     func bind(viewModel: GiphyMasterDetailViewModel) {
@@ -40,6 +46,14 @@ class GiphyMasterDetailViewController: UIViewController, ViewModelOwner {
         imageView.setGifImage(withUrl: url) { [weak self] _ in
             self?.activityIndicatorView.stopAnimating()
         }
+    }
+    
+    private func setupEmbeddedViewController() {
+        guard let viewController = viewModel?.embeddedViewController else { return }
+        addChild(viewController)
+        viewController.view.frame = containerView.bounds
+        containerView.addSubview(viewController.view)
+        viewController.didMove(toParent: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

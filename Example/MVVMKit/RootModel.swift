@@ -1,5 +1,5 @@
 /*
- RootViewController.swift
+ RootModel.swift
  
  Copyright (c) 2019 Alfonso Grillo
  
@@ -22,30 +22,18 @@
  THE SOFTWARE.
  */
 
-import UIKit
-import MVVMKit
-
-class RootViewController: UIViewController, ViewModelOwner {
-    typealias CustomViewModel = RootViewModel
-    var viewModel: RootViewModel?
-    
-    func bind(viewModel: RootViewModel) {
-        
-    }
-    
-    @IBAction func didTapBasicViewController(_ sender: UIButton) {
-        viewModel?.didSelectBasicViewController()
-    }
-    
-    @IBAction func didTapTableViewController(_ sender: UIButton) {
-        viewModel?.didSelectTableViewController()
-    }
-    
-    @IBAction func didTapCollectionViewController(_ sender: UIButton) {
-        viewModel?.didSelectCollectionViewController()
-    }
-    
-    @IBAction func didTapEmbeddedViewController(_ sender: UIButton) {
-        viewModel?.didSelectEmbeddedViewController()
-    }
+/// A stub for the application state
+class RootModel {
+    var basicModel = BasicViewModel.Model(value: 5, state: .on)
+    var colorsModel = ColorsViewModel.Model(colors: Color.colors, selectedColor: nil)
 }
+
+private extension Color {
+    static let colors: [Color] = [
+        Color(name: "Red", values: (r: 1, g: 0, b: 0)),
+        Color(name: "Green", values: (r: 0, g: 1, b: 0)),
+        Color(name: "Blue", values: (r: 0, g: 0, b: 1)),
+        Color(name: "Purple", values: (r: 1, g: 0, b: 1))
+    ]
+}
+

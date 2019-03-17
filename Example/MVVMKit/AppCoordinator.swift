@@ -1,5 +1,5 @@
 /*
- Binder.swift
+ AppCoordinator.swift
  
  Copyright (c) 2019 Alfonso Grillo
  
@@ -22,41 +22,23 @@
  THE SOFTWARE.
  */
 
-/**
- A `Binder` is responsible to bind a view model on a view.
- */
-public protocol Binder: class {
-    func bind(viewModel: ViewModel)
-}
+import MVVMKit
 
-/**
- A `CustomBinder` is responsible to bind a specific view model type on a view.
- */
-public protocol CustomBinder: Binder {
-    associatedtype CustomViewModel
-    func bind(viewModel: CustomViewModel)
-}
-
-public extension CustomBinder {
-    /**
-     Default implementation of `Binder` protocol
-     */
-    func bind(viewModel: ViewModel) {
-        precondition(viewModel is CustomViewModel)
-        bind(viewModel: viewModel as! CustomViewModel)
+class AppCoordinator: Coordinator {
+    var weakSourceViewController: WeakReference<UIViewController>?
+    weak var window: UIWindow?
+    
+    init(window: UIWindow) {
+        self.window = window
+    }
+    
+    func start() {
+        let rootViewController = RootViewController.instantiate(storyboardName: "Main")
+        let model = RootModel()
+        let coordinator = RootCoordinator(model: model, sourceViewController: rootViewController)
+        rootViewController.viewModel = RootViewModel(model: model, coordinator: coordinator)
+        sourceViewController = UINavigationController(rootViewController: rootViewController)
+        window?.rootViewController = sourceViewController
     }
 }
 
-/**
- A `TableViewBinder` is responsible to bind the view models of reusable view (cells, headers, footers).
- */
-public protocol TableViewBinder: Binder {
-    func viewModel(_ viewModel: ViewModel, didChange viewChange: TableViewUpdate?)
-}
-
-/**
- A `CollectionViewBinder` is responsible to bind the view models of reusable view (cells, headers, footers).
- */
-public protocol CollectionViewBinder: Binder {
-    func viewModel(_ viewModel: ViewModel, didChange viewChange: CollectionViewUpdate?)
-}
