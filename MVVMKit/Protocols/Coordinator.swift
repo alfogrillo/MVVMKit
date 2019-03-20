@@ -30,7 +30,7 @@ public protocol Coordinator: class {
 }
 
 public extension Coordinator {
-    // A convenince property to get and set the source view controller
+    // A convenience property to get and set the source view controller
     var sourceViewController: UIViewController? {
         get { return weakSourceViewController?.object }
         set { weakSourceViewController = WeakReference(newValue) }
