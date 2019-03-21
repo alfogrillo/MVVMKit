@@ -48,7 +48,9 @@ Is the entity responsible for the application navigation.
 - Decide which is (and how to show) the next view controller 
 - Instantiate view controllers and associated view models doing appropriate dependency injection
 
-Here a grapical representation:
+##
+
+**Grapical representation**
 
 ![MVVM](images/MVVM.png)
 
@@ -56,7 +58,6 @@ Here a grapical representation:
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
-## Requirements
 
 ## Installation
 
