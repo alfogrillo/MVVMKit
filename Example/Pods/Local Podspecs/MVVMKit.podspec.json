@@ -1,8 +1,7 @@
 {
   "name": "MVVMKit",
-  "version": "0.1.0",
-  "summary": "A short description of MVVMKit.",
-  "description": "A framework to adopt MVVM easly in iOS applications.",
+  "version": "0.2.2",
+  "summary": "The MVVM pattern protocol oriented",
   "homepage": "https://github.com/drakon-ag/MVVMKit",
   "license": {
     "type": "MIT",
@@ -13,11 +12,11 @@
   },
   "source": {
     "git": "https://github.com/drakon-ag/MVVMKit.git",
-    "tag": "0.1.0"
+    "tag": "0.2.2"
   },
   "platforms": {
     "ios": "9.0"
   },
-  "swift_version": "4.2",
+  "swift_version": "5.0",
   "source_files": "MVVMKit/**/*"
 }
