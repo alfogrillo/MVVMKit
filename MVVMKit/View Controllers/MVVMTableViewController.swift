@@ -219,6 +219,18 @@ open class MVVMTableViewController<Model: TableViewViewModel>: UIViewController,
         
     }
     
+    // MARK: - Swipe Actions
+    
+    @available(iOS 11.0, *)
+    open func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        return nil
+    }
+    
+    @available(iOS 11.0, *)
+    open func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        return nil
+    }
+    
     // MARK: - UIScrollViewDelegate
     
     open func scrollViewDidScroll(_ scrollView: UIScrollView) {
