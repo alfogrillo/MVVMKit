@@ -43,5 +43,5 @@ public extension Coordinator {
  */
 public protocol CoordinatorOwner: class {
     associatedtype CoordinatorType: Coordinator
-    var coordinator: CoordinatorType { get set }
+    var coordinator: CoordinatorType { get }
 }
