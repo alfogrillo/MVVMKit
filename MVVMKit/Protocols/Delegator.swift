@@ -27,7 +27,7 @@ import Foundation
 /// A protocol describing a generic delegator object.
 public protocol Delegator: class { }
 
-internal extension Delegator {
+public extension Delegator {
     var rawDelegate: Any? {
         get { return objc_getAssociatedObject(self, &AssociatedObjectKey.rawDelegate) }
         set { objc_setAssociatedObject(self, &AssociatedObjectKey.rawDelegate, newValue, .OBJC_ASSOCIATION_ASSIGN) }
