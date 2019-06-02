@@ -54,11 +54,9 @@ public enum TableViewUpdate {
     case moveSection(at: Int, to: Int)
     case reloadRows([IndexPath], with: UITableView.RowAnimation)
     case reloadSections(IndexSet, with: UITableView.RowAnimation)
-    case custom((UITableView?) -> Void)
 }
 
 public extension TableViewBinder where Self: TableViewViewModelOwner {
-    //swiftlint:disable:next cyclomatic_complexity
     func viewModel(_ viewModel: ViewModel, didChange viewChange: TableViewUpdate?) {
         defer { bind(viewModel: viewModel) }
         
@@ -85,8 +83,6 @@ public extension TableViewBinder where Self: TableViewViewModelOwner {
             tableView?.reloadRows(at: indicies, with: animation)
         case .reloadSections(let sections, let animation):
             tableView?.reloadSections(sections, with: animation)
-        case .custom(let updateClosure):
-            updateClosure(tableView)
         }
     }
 }

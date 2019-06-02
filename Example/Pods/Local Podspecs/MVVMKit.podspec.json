@@ -1,6 +1,6 @@
 {
   "name": "MVVMKit",
-  "version": "0.2.2",
+  "version": "0.2.7",
   "summary": "The MVVM pattern protocol oriented",
   "homepage": "https://github.com/drakon-ag/MVVMKit",
   "license": {
@@ -12,7 +12,7 @@
   },
   "source": {
     "git": "https://github.com/drakon-ag/MVVMKit.git",
-    "tag": "0.2.2"
+    "tag": "0.2.7"
   },
   "platforms": {
     "ios": "9.0"

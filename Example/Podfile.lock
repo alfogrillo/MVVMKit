@@ -1,5 +1,5 @@
 PODS:
-  - MVVMKit (0.2.2)
+  - MVVMKit (0.2.7)
   - SwiftLint (0.31.0)
 
 DEPENDENCIES:
@@ -15,7 +15,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  MVVMKit: 0cb648adba07deb8e4bc4496720be5da766b15b1
+  MVVMKit: fd29a51707fbcfa2839e766b570dd722fd265a8b
   SwiftLint: 7a0227733d786395817373b2d0ca799fd0093ff3
 
 PODFILE CHECKSUM: c08b68da4bb1b5dfcfdba0a2e18b619740bd43ee
