@@ -134,29 +134,31 @@ open class MVVMTableViewController<Model: TableViewViewModel>: UIViewController,
     // Variable height support
     
     open func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+        return tableView.rowHeight
     }
     
     open func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         guard sections[section].headerViewModel != nil else { return 0 }
-        return UITableView.automaticDimension
+        return tableView.sectionHeaderHeight
     }
     
     open func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         guard sections[section].footerViewModel != nil else { return 0 }
-        return UITableView.automaticDimension
+        return tableView.sectionFooterHeight
     }
     
     open func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+        return tableView.estimatedRowHeight
     }
     
     open func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
-        return UITableView.automaticDimension
+        guard sections[section].headerViewModel != nil else { return 0 }
+        return tableView.estimatedSectionHeaderHeight
     }
     
     open func tableView(_ tableView: UITableView, estimatedHeightForFooterInSection section: Int) -> CGFloat {
-        return UITableView.automaticDimension
+        guard sections[section].footerViewModel != nil else { return 0 }
+        return tableView.estimatedSectionFooterHeight
     }
     
     // Section header & footer information
