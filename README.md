@@ -8,7 +8,7 @@
 MVVMKit is a protocol oriented library that defines a possible way to adopt the MVVM in your iOS application.
 Optionally MVVMKit give you the possibility to take out the navigation responsibility from the view model and put it inside a `Coordinator` type.
 
-In general using MVVMKit most of yout software types should belong to one of the following categories:
+In general using MVVMKit most of your software types should belong to one of the following categories:
 
 ## Model
 The actual data manipulated of your applications. 
