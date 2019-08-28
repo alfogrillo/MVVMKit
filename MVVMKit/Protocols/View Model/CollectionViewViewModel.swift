@@ -26,7 +26,7 @@
  The view model for a UICollectionView
  */
 public protocol CollectionViewViewModel: RootViewModel where BinderType == CollectionViewBinder {
-    var sections: [SectionViewModel] { get set }
+    var sections: [SectionViewModel] { get }
 }
 
 /// An enum describing what should be updated inside a collection view
