@@ -26,7 +26,7 @@
  The view model for a UITableView
  */
 public protocol TableViewViewModel: RootViewModel where BinderType == TableViewBinder {
-    var sections: [SectionViewModel] { get set }
+    var sections: [SectionViewModel] { get }
 }
 
 public extension TableViewViewModel {
