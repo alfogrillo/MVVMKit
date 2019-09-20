@@ -40,9 +40,11 @@ public enum CollectionViewUpdate {
     case moveSection(at: Int, to: Int)
     case reloadItems([IndexPath])
     case reloadSections(IndexSet)
+    case custom((UICollectionView?) -> Void)
 }
 
 public extension CollectionViewBinder where Self: CollectionViewViewModelOwner {
+    // swiftlint:disable:next cyclomatic_complexity
     func viewModel(_ viewModel: ViewModel, didChange viewChange: CollectionViewUpdate?) {
         defer { bind(viewModel: viewModel) }
         
@@ -69,6 +71,8 @@ public extension CollectionViewBinder where Self: CollectionViewViewModelOwner {
             collectionView?.reloadItems(at: indicies)
         case .reloadSections(let sections):
             collectionView?.reloadSections(sections)
+        case .custom(let updateClosure):
+            updateClosure(collectionView)
         }
     }
 }
