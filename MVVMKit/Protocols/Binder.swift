@@ -33,7 +33,7 @@ public protocol Binder: class {
  A `CustomBinder` is responsible to bind a specific view model type on a view.
  */
 public protocol CustomBinder: Binder {
-    associatedtype CustomViewModel
+    associatedtype CustomViewModel: ViewModel
     func bind(viewModel: CustomViewModel)
 }
 
