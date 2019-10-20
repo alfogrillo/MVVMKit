@@ -34,3 +34,4 @@ xcuserdata/
 # Packages/
 # Package.pins
 .build/
+.DS_Store
