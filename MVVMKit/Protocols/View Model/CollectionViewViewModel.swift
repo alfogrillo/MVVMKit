@@ -47,7 +47,6 @@ public enum CollectionViewUpdate {
 }
 
 public extension CollectionViewBinder where Self: CollectionViewViewModelOwner {
-    // swiftlint:disable:next cyclomatic_complexity
     func viewModel(_ viewModel: ViewModel, didChange viewChange: CollectionViewUpdate?) {
         defer { bind(viewModel: viewModel) }
         
@@ -55,27 +54,31 @@ public extension CollectionViewBinder where Self: CollectionViewViewModelOwner {
             return
         }
         
-        switch change {
-        case .reloadData:
-            collectionView?.reloadData()
-        case .insertItems(let indicies):
-            collectionView?.insertItems(at: indicies)
-        case .insertSections(let sections):
-            collectionView?.insertSections(sections)
-        case .deleteItems(let indicies):
-            collectionView?.deleteItems(at: indicies)
-        case .deleteSections(let sections):
-            collectionView?.deleteSections(sections)
-        case .moveItem(let at, let to):
-            collectionView?.moveItem(at: at, to: to)
-        case .moveSection(let at, let to):
-            collectionView?.moveSection(at, toSection: to)
-        case .reloadItems(let indicies):
-            collectionView?.reloadItems(at: indicies)
-        case .reloadSections(let sections):
-            collectionView?.reloadSections(sections)
-        case .custom(let updateClosure):
-            updateClosure(collectionView)
-        }
+        handle(update: change, with: collectionView)
+    }
+}
+
+internal func handle(update: CollectionViewUpdate, with collectionView: UICollectionView?) {
+    switch update {
+    case .reloadData:
+        collectionView?.reloadData()
+    case .insertItems(let indicies):
+        collectionView?.insertItems(at: indicies)
+    case .insertSections(let sections):
+        collectionView?.insertSections(sections)
+    case .deleteItems(let indicies):
+        collectionView?.deleteItems(at: indicies)
+    case .deleteSections(let sections):
+        collectionView?.deleteSections(sections)
+    case .moveItem(let at, let to):
+        collectionView?.moveItem(at: at, to: to)
+    case .moveSection(let at, let to):
+        collectionView?.moveSection(at, toSection: to)
+    case .reloadItems(let indicies):
+        collectionView?.reloadItems(at: indicies)
+    case .reloadSections(let sections):
+        collectionView?.reloadSections(sections)
+    case .custom(let updateClosure):
+        updateClosure(collectionView)
     }
 }

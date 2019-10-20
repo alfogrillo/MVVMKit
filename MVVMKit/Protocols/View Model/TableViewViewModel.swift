@@ -32,20 +32,6 @@ public protocol TableViewViewModel: RootViewModel where BinderType == TableViewB
     var sections: [SectionViewModel] { get }
 }
 
-public extension TableViewViewModel {
-    subscript(cellViewModelAt indexPath: IndexPath) -> ReusableViewViewModel {
-        return sections[indexPath.section][indexPath.row]
-    }
-    
-    subscript(headerViewModelAt index: Int) -> ReusableViewViewModel? {
-        return sections[index].headerViewModel
-    }
-    
-    subscript(footerViewModelAt index: Int) -> ReusableViewViewModel? {
-        return sections[index].footerViewModel
-    }
-}
-
 /// An enum describing what should be updated inside a table view
 public enum TableViewUpdate {
     case reloadData
@@ -61,7 +47,6 @@ public enum TableViewUpdate {
 }
 
 public extension TableViewBinder where Self: TableViewViewModelOwner {
-    //swiftlint:disable:next cyclomatic_complexity
     func viewModel(_ viewModel: ViewModel, didChange viewChange: TableViewUpdate?) {
         defer { bind(viewModel: viewModel) }
         
@@ -69,27 +54,31 @@ public extension TableViewBinder where Self: TableViewViewModelOwner {
             return
         }
         
-        switch change {
-        case .reloadData:
-            tableView?.reloadData()
-        case .insertRows(let indicies, let animation):
-            tableView?.insertRows(at: indicies, with: animation)
-        case .insertSections(let sections, let animation):
-            tableView?.insertSections(sections, with: animation)
-        case .deleteRows(let indicies, let animation):
-            tableView?.deleteRows(at: indicies, with: animation)
-        case .deleteSections(let sections, let animation):
-            tableView?.deleteSections(sections, with: animation)
-        case .moveRow(let at, let to):
-            tableView?.moveRow(at: at, to: to)
-        case .moveSection(let at, let to):
-            tableView?.moveSection(at, toSection: to)
-        case .reloadRows(let indicies, let animation):
-            tableView?.reloadRows(at: indicies, with: animation)
-        case .reloadSections(let sections, let animation):
-            tableView?.reloadSections(sections, with: animation)
-        case .custom(let updateClosure):
-            updateClosure(tableView)
-        }
+        handle(update: change, with: tableView)
+    }
+}
+
+internal func handle(update: TableViewUpdate, with tableView: UITableView?) {
+    switch update {
+    case .reloadData:
+        tableView?.reloadData()
+    case .insertRows(let indicies, let animation):
+        tableView?.insertRows(at: indicies, with: animation)
+    case .insertSections(let sections, let animation):
+        tableView?.insertSections(sections, with: animation)
+    case .deleteRows(let indicies, let animation):
+        tableView?.deleteRows(at: indicies, with: animation)
+    case .deleteSections(let sections, let animation):
+        tableView?.deleteSections(sections, with: animation)
+    case .moveRow(let at, let to):
+        tableView?.moveRow(at: at, to: to)
+    case .moveSection(let at, let to):
+        tableView?.moveSection(at, toSection: to)
+    case .reloadRows(let indicies, let animation):
+        tableView?.reloadRows(at: indicies, with: animation)
+    case .reloadSections(let sections, let animation):
+        tableView?.reloadSections(sections, with: animation)
+    case .custom(let updateClosure):
+        updateClosure(tableView)
     }
 }

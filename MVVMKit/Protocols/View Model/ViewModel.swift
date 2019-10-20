@@ -26,20 +26,3 @@
  A convenience base protocol for view models
  */
 public protocol ViewModel { }
-
-/**
- A special kind of view model that can own subviews view models
- */
-public protocol RootViewModel: class, ViewModel {
-    associatedtype BinderType
-    /// The weak reference to the binder of the view model
-    var weakBinder: WeakReference<BinderType>? { get set }
-}
-
-public extension RootViewModel {
-    // A convenience property to get and set the binder
-    var binder: BinderType? {
-        get { return weakBinder?.object }
-        set { weakBinder = WeakReference(newValue) }
-    }
-}
