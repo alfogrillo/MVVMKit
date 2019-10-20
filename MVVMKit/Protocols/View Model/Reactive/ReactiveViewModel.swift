@@ -11,7 +11,7 @@
  A convenience base protocol for reactive view models
  */
 @available(iOS 13.0, *)
-public protocol ReactiveViewModel { }
+public protocol ReactiveViewModel: ViewModel { }
 
 /**
  RootViewModel instances that are reactive don't need the binder reference.

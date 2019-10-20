@@ -35,6 +35,7 @@
 		A653457E76A28AA33D2A6EC006EF5FFD /* CollectionViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4F807E2912B8EA294755DB7E5B3D91 /* CollectionViewViewModel.swift */; };
 		ABBAC72C7DAE3A66EECD6C11E886B444 /* UITableViewCell+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44014B3606F25EBC742256CEEDCF8446 /* UITableViewCell+Utils.swift */; };
 		B97B3AAD917CCD2B076F7DEA8666F187 /* MVVMKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 46DAA1321449BE25896946FC34360494 /* MVVMKit-dummy.m */; };
+		C08968DA235CD2F4007CE30F /* ReactiveViewModel+Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08968D9235CD2F4007CE30F /* ReactiveViewModel+Coordinator.swift */; };
 		C0FB3050235C9BEA00D69253 /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FB304F235C9BEA00D69253 /* RootViewModel.swift */; };
 		C0FB3052235C9C7500D69253 /* ReactiveBaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FB3051235C9C7500D69253 /* ReactiveBaseViewModel.swift */; };
 		C0FB3055235C9CEA00D69253 /* ReactiveTableViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FB3054235C9CEA00D69253 /* ReactiveTableViewViewModel.swift */; };
@@ -101,6 +102,7 @@
 		9D4F807E2912B8EA294755DB7E5B3D91 /* CollectionViewViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CollectionViewViewModel.swift; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		B389C8C3E39BD746EA77E722BA260B1E /* WeakReference.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WeakReference.swift; sourceTree = "<group>"; };
+		C08968D9235CD2F4007CE30F /* ReactiveViewModel+Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReactiveViewModel+Coordinator.swift"; sourceTree = "<group>"; };
 		C0FB304F235C9BEA00D69253 /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
 		C0FB3051235C9C7500D69253 /* ReactiveBaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactiveBaseViewModel.swift; sourceTree = "<group>"; };
 		C0FB3054235C9CEA00D69253 /* ReactiveTableViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactiveTableViewViewModel.swift; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 				C0FB3056235C9CF800D69253 /* ReactiveCollectionViewViewModel.swift */,
 				C0FB3054235C9CEA00D69253 /* ReactiveTableViewViewModel.swift */,
 				C0FB305A235CA62500D69253 /* ReactiveViewModel.swift */,
+				C08968D9235CD2F4007CE30F /* ReactiveViewModel+Coordinator.swift */,
 			);
 			path = Reactive;
 			sourceTree = "<group>";
@@ -458,6 +461,7 @@
 				C0FB3050235C9BEA00D69253 /* RootViewModel.swift in Sources */,
 				FA8DEF8701585591975C9D715F511EEF /* Binder.swift in Sources */,
 				A653457E76A28AA33D2A6EC006EF5FFD /* CollectionViewViewModel.swift in Sources */,
+				C08968DA235CD2F4007CE30F /* ReactiveViewModel+Coordinator.swift in Sources */,
 				F918BB6960E98FD3819813BE88678D8F /* CollectionViewViewModelOwner.swift in Sources */,
 				99F72BDA9738A81B52DE8E3D117F3C3C /* Coordinator.swift in Sources */,
 				07FE6CBCD46B99856953D96F721F5A23 /* Delegator.swift in Sources */,
