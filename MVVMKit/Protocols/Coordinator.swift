@@ -44,6 +44,19 @@ public extension Coordinator {
  A protocols identifying a coordinator owner
  */
 public protocol CoordinatorOwner: class {
-    associatedtype CoordinatorType: Coordinator
+    associatedtype CoordinatorType: Coordinator = EmptyCoordinator
     var coordinator: CoordinatorType { get }
+}
+
+/**
+ A convenience empty coordinator
+ */
+public class EmptyCoordinator: Coordinator {
+    public typealias ViewController = UIViewController
+    
+    public var weakSourceViewController: WeakReference<UIViewController>?
+    
+    init(sourceViewController: ViewController) {
+        self.sourceViewController = sourceViewController
+    }
 }
