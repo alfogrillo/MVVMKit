@@ -30,6 +30,6 @@ If yor view controller manages a view owning cells (e.g. a table view) consider 
 `ReactiveTableViewViewModel` or `ReactiveCollectionViewViewModel`
 */
 @available(iOS 13.0, *)
-public protocol ReactiveBaseViewModel: RootViewModel, ReactiveViewModel { }
+public protocol ReactiveBaseViewModel: RootViewModel, ReactiveViewModel where BinderType == Never { }
 
 #endif
