@@ -1,5 +1,5 @@
 /*
- ReusableViewViewModel.swift
+ TableViewViewModelOwner.swift
  
  Copyright (c) 2019 Alfonso Grillo
  
@@ -22,12 +22,12 @@
  THE SOFTWARE.
  */
 
+import UIKit
+
 /**
- A view model for reusable views (cells, headers, footers)
+ A protocol describing the requirements of the owner of a table view.
+ Tipically the `TableViewViewModelOwner` is a `UIViewController`
  */
-public protocol ReusableViewViewModel: ViewModel {
-    /**
-     The identifier you use to register a reusable cell inside a table view or collection view
-     */
-    var identifier: String { get }
+public protocol TableViewViewModelOwner: ViewModelOwner, TableViewBinder where CustomViewModel: TableViewViewModel {
+    var tableView: UITableView! { get }
 }

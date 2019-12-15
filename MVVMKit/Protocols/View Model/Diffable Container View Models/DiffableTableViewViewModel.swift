@@ -1,5 +1,5 @@
 /*
-ReactiveBaseViewModel.swift
+DiffableTableViewViewModel.swift
 
 Copyright (c) 2019 Alfonso Grillo
 
@@ -24,12 +24,41 @@ THE SOFTWARE.
 
 #if canImport(Combine)
 
+import UIKit
+import Combine
+
 /**
-The view model for a UIViewController.
-If yor view controller manages a view owning cells (e.g. a table view) consider to use
-`ReactiveTableViewViewModel` or `ReactiveCollectionViewViewModel`
+A protocol describing a view model publishing snapshots feeding a UITableViewDiffableDataSource
 */
 @available(iOS 13.0, *)
-public protocol ReactiveBaseViewModel: RootViewModel, ReactiveViewModel where BinderType == Never { }
+public protocol DiffableTableViewViewModel: ReferenceViewModel {
+    associatedtype SectionType: DiffableTableViewSection
+    typealias Snapshot = NSDiffableDataSourceSnapshot<SectionType, ReusableViewViewModelAdapter>
+    typealias SnapshotAdapter = SnapshotUpdate<SectionType, ReusableViewViewModelAdapter>
+    
+    var snapshotPublisher: PassthroughSubject<SnapshotAdapter, Never> { get }
+}
+
+// MARK: - Section
+
+/**
+A protocol describing a section suitable with a UITableViewDiffableDataSource
+*/
+@available(iOS 13.0, *)
+public protocol DiffableTableViewSection: Hashable {
+    var headerViewModel: ReusableViewViewModel? { get }
+    var footerViewModel: ReusableViewViewModel? { get }
+}
+
+@available(iOS 13.0, *)
+public extension DiffableTableViewSection {
+    var headerViewModel: ReusableViewViewModel? {
+        nil
+    }
+    
+    var footerViewModel: ReusableViewViewModel? {
+        nil
+    }
+}
 
 #endif

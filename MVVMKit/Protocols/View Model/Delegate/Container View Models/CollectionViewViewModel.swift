@@ -28,7 +28,7 @@ import UIKit
 /**
  The view model for a UICollectionView
  */
-public protocol CollectionViewViewModel: RootViewModel where BinderType == CollectionViewBinder {
+public protocol CollectionViewViewModel: DelegatingViewModel where BinderType == CollectionViewBinder {
     var sections: [SectionViewModel] { get }
 }
 
@@ -58,7 +58,7 @@ public extension CollectionViewBinder where Self: CollectionViewViewModelOwner {
     }
 }
 
-internal func handle(update: CollectionViewUpdate, with collectionView: UICollectionView?) {
+private func handle(update: CollectionViewUpdate, with collectionView: UICollectionView?) {
     switch update {
     case .reloadData:
         collectionView?.reloadData()

@@ -1,5 +1,5 @@
 /*
- AppCoordinator.swift
+ DelegatingViewModel.swift
  
  Copyright (c) 2019 Alfonso Grillo
  
@@ -22,22 +22,19 @@
  THE SOFTWARE.
  */
 
-import MVVMKit
-
-class AppCoordinator: Coordinator {
-    var weakSourceViewController: WeakReference<UIViewController>?
-    weak var window: UIWindow?
-    
-    init(window: UIWindow) {
-        self.window = window
-    }
-    
-    func start() {
-        let rootViewController = RootViewController.instantiate(storyboardName: "Main")
-        let coordinator = RootCoordinator(sourceViewController: rootViewController)
-        rootViewController.viewModel = RootViewModel(model: RootModel(), coordinator: coordinator)
-        sourceViewController = UINavigationController(rootViewController: rootViewController)
-        window?.rootViewController = sourceViewController
-    }
+/**
+ A special kind of view model that can own subviews view models
+ */
+public protocol DelegatingViewModel: ReferenceViewModel {
+    associatedtype BinderType
+    /// The weak reference to the binder of the view model
+    var weakBinder: WeakReference<BinderType>? { get set }
 }
 
+public extension DelegatingViewModel {
+    // A convenience property to get and set the binder
+    var binder: BinderType? {
+        get { return weakBinder?.object }
+        set { weakBinder = WeakReference(newValue) }
+    }
+}

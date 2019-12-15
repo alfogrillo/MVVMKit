@@ -22,7 +22,6 @@
  THE SOFTWARE.
  */
 
-import UIKit
 import MVVMKit
 
 class RootViewController: UIViewController, ViewModelOwner {
@@ -47,5 +46,13 @@ class RootViewController: UIViewController, ViewModelOwner {
     
     @IBAction func didTapEmbeddedViewController(_ sender: UIButton) {
         viewModel?.didSelectEmbeddedViewController()
+    }
+    
+    @IBAction func didTapDiffableCollectionViewController(_ sender: UIButton) {
+        viewModel?.didSelectDiffableCollectionViewController()
+    }
+    
+    @IBAction func didTapDiffableTableViewController(_ sender: UIButton) {
+        viewModel?.didSelectDiffableTableViewController()
     }
 }

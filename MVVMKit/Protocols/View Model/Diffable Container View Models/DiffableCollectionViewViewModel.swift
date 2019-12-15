@@ -1,5 +1,5 @@
 /*
- ViewModelOwner.swift
+ DiffableCollectionViewViewModel.swift
  
  Copyright (c) 2019 Alfonso Grillo
  
@@ -22,18 +22,38 @@
  THE SOFTWARE.
  */
 
+#if canImport(Combine)
+
+import UIKit
+import Combine
+
 /**
- A view model owner is also the `Binder` for the view model that it owns.
+ A protocol describing a view model publishing snapshots feeding a UICollectionViewDiffableDataSource
  */
-public protocol ViewModelOwner: CustomBinder where CustomViewModel: RootViewModel {
-    /// The owned view model.
-    var viewModel: CustomViewModel? { get }
+@available(iOS 13.0, *)
+public protocol DiffableCollectionViewViewModel: ReferenceViewModel {
+    associatedtype SectionType: DiffableCollectionViewSection
+    typealias Snapshot = NSDiffableDataSourceSnapshot<SectionType, ReusableViewViewModelAdapter>
+    typealias SnapshotAdapter = SnapshotUpdate<SectionType, ReusableViewViewModelAdapter>
+    
+    var snapshotPublisher: PassthroughSubject<SnapshotAdapter, Never> { get }
 }
 
-public extension ViewModelOwner {
-    /// `bind` a convenience methods that binds the owned view model
-    func bind() {
-        guard let viewModel = self.viewModel else { return }
-        bind(viewModel: viewModel)
+// MARK: - Section
+
+/**
+ A protocol describing a section suitable with a UICollectionViewDiffableDataSource
+ */
+@available(iOS 13.0, *)
+public protocol DiffableCollectionViewSection: Hashable {
+    var supplementaryViewViewModels: [String: ReusableViewViewModel] { get }
+}
+
+@available(iOS 13.0, *)
+public extension DiffableCollectionViewSection {
+    var supplementaryViewViewModels: [String: ReusableViewViewModel] {
+        [:]
     }
 }
+
+#endif

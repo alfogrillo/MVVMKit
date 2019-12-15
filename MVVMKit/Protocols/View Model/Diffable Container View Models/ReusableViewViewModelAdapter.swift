@@ -1,5 +1,5 @@
 /*
-RootViewModel.swift
+ReusableViewViewModelAdapter.swift
 
 Copyright (c) 2019 Alfonso Grillo
 
@@ -23,18 +23,31 @@ THE SOFTWARE.
 */
 
 /**
- A special kind of view model that can own subviews view models
+ A protocol embedding a `ReusableViewViewModel`.
+ The `id` of the adapter should be provided by the model and is used by diffable data sources to compute the diffing.
  */
-public protocol RootViewModel: class, ViewModel {
-    associatedtype BinderType
-    /// The weak reference to the binder of the view model
-    var weakBinder: WeakReference<BinderType>? { get set }
+@available(iOS 13.0, *)
+public struct ReusableViewViewModelAdapter: Hashable {
+    private let id: AnyHashable
+    public let reusableViewViewModel: ReusableViewViewModel
+    
+    public init<H: Hashable>(id: H, reusableViewViewModel: ReusableViewViewModel) {
+        self.id = AnyHashable(id)
+        self.reusableViewViewModel = reusableViewViewModel
+    }
+    
+    public static func == (lhs: ReusableViewViewModelAdapter, rhs: ReusableViewViewModelAdapter) -> Bool {
+        lhs.id == rhs.id
+    }
+    
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
 }
 
-public extension RootViewModel {
-    // A convenience property to get and set the binder
-    var binder: BinderType? {
-        get { return weakBinder?.object }
-        set { weakBinder = WeakReference(newValue) }
+@available(iOS 13.0, *)
+public extension ReusableViewViewModel {
+    func adapted<H: Hashable>(id: H) -> ReusableViewViewModelAdapter {
+        .init(id: id, reusableViewViewModel: self)
     }
 }

@@ -1,5 +1,5 @@
 /*
- ViewModel+Coordinator.swift
+ HeaderFooterReusableView.swift
  
  Copyright (c) 2019 Alfonso Grillo
  
@@ -22,11 +22,18 @@
  THE SOFTWARE.
  */
 
-// A view model that delegates the navigation responsibility to a coordinator
-public protocol CoordinatedBaseViewModel: BaseViewModel, CoordinatorOwner { }
+import MVVMKit
 
-// A table view view model that delegates the navigation responsibility to a coordinator
-public protocol CoordinatedTableViewViewModel: TableViewViewModel, CoordinatorOwner { }
+struct HeaderFooterReusableViewViewModel: ReusableViewViewModel {
+    let identifier: String = HeaderFooterReusableView.identifier
+    
+    let text: String?
+}
 
-// A collection view view model that delegates the navigation responsibility to a coordinator
-public protocol CoordinatedCollectionViewViewModel: CollectionViewViewModel, CoordinatorOwner { }
+class HeaderFooterReusableView: UICollectionReusableView, CustomBinder {
+    @IBOutlet private weak var titleLabel: UILabel!
+    
+    func bind(viewModel: HeaderFooterReusableViewViewModel) {
+        titleLabel.text = viewModel.text
+    }
+}

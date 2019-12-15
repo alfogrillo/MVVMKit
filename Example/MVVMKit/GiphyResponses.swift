@@ -1,6 +1,3 @@
-//
-//  GiphyResponses.swift
-//  MVVMKit_Example
 /*
  GiphyResponses.swift
  

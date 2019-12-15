@@ -1,5 +1,5 @@
 /*
- UICollectionViewCell+Utils.swift
+ CoordinatedDelegatingViewModel.swift
  
  Copyright (c) 2019 Alfonso Grillo
  
@@ -22,11 +22,11 @@
  THE SOFTWARE.
  */
 
-import UIKit
+/// A view model that delegates the navigation responsibility to a coordinator
+public protocol CoordinatedBaseViewModel: BaseViewModel, CoordinatorOwner { }
 
-public extension UICollectionViewCell {
-    /// A default reusable identifier matching the type name
-    static var identifier: String {
-        return String(describing: self)
-    }
-}
+/// A table view view model that delegates the navigation responsibility to a coordinator
+public protocol CoordinatedTableViewViewModel: TableViewViewModel, CoordinatorOwner { }
+
+/// A collection view view model that delegates the navigation responsibility to a coordinator
+public protocol CoordinatedCollectionViewViewModel: CollectionViewViewModel, CoordinatorOwner { }

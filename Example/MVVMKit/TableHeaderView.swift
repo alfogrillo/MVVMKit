@@ -1,5 +1,5 @@
 /*
- AppCoordinator.swift
+ TableHeaderView.swift
  
  Copyright (c) 2019 Alfonso Grillo
  
@@ -24,20 +24,15 @@
 
 import MVVMKit
 
-class AppCoordinator: Coordinator {
-    var weakSourceViewController: WeakReference<UIViewController>?
-    weak var window: UIWindow?
-    
-    init(window: UIWindow) {
-        self.window = window
-    }
-    
-    func start() {
-        let rootViewController = RootViewController.instantiate(storyboardName: "Main")
-        let coordinator = RootCoordinator(sourceViewController: rootViewController)
-        rootViewController.viewModel = RootViewModel(model: RootModel(), coordinator: coordinator)
-        sourceViewController = UINavigationController(rootViewController: rootViewController)
-        window?.rootViewController = sourceViewController
-    }
+struct TableHeaderViewModel: ReusableViewViewModel {
+    let identifier: String = TableHeaderView.identifier
+    let text: String?
 }
 
+class TableHeaderView: UITableViewHeaderFooterView, CustomBinder {
+    @IBOutlet private weak var titleLabel: UILabel!
+    
+    func bind(viewModel: TableHeaderViewModel) {
+        titleLabel.text = viewModel.text
+    }
+}

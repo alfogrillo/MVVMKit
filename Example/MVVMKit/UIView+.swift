@@ -1,5 +1,5 @@
 /*
- AppCoordinator.swift
+ UIView+.swift
  
  Copyright (c) 2019 Alfonso Grillo
  
@@ -22,22 +22,14 @@
  THE SOFTWARE.
  */
 
-import MVVMKit
+import UIKit
 
-class AppCoordinator: Coordinator {
-    var weakSourceViewController: WeakReference<UIViewController>?
-    weak var window: UIWindow?
-    
-    init(window: UIWindow) {
-        self.window = window
+extension UIView {
+    static var identifier: String {
+        String(describing: self)
     }
     
-    func start() {
-        let rootViewController = RootViewController.instantiate(storyboardName: "Main")
-        let coordinator = RootCoordinator(sourceViewController: rootViewController)
-        rootViewController.viewModel = RootViewModel(model: RootModel(), coordinator: coordinator)
-        sourceViewController = UINavigationController(rootViewController: rootViewController)
-        window?.rootViewController = sourceViewController
+    static var nib: UINib {
+        UINib(nibName: identifier, bundle: Bundle(for: self))
     }
 }
-

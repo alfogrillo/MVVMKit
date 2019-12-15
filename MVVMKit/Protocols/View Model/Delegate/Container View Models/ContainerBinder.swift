@@ -1,5 +1,5 @@
 /*
- AppCoordinator.swift
+ ContainerBinder.swift
  
  Copyright (c) 2019 Alfonso Grillo
  
@@ -22,22 +22,16 @@
  THE SOFTWARE.
  */
 
-import MVVMKit
-
-class AppCoordinator: Coordinator {
-    var weakSourceViewController: WeakReference<UIViewController>?
-    weak var window: UIWindow?
-    
-    init(window: UIWindow) {
-        self.window = window
-    }
-    
-    func start() {
-        let rootViewController = RootViewController.instantiate(storyboardName: "Main")
-        let coordinator = RootCoordinator(sourceViewController: rootViewController)
-        rootViewController.viewModel = RootViewModel(model: RootModel(), coordinator: coordinator)
-        sourceViewController = UINavigationController(rootViewController: rootViewController)
-        window?.rootViewController = sourceViewController
-    }
+/**
+ A `TableViewBinder` is responsible to bind the view models of reusable view (cells, headers, footers).
+ */
+public protocol TableViewBinder: Binder {
+    func viewModel(_ viewModel: ViewModel, didChange viewChange: TableViewUpdate?)
 }
 
+/**
+ A `CollectionViewBinder` is responsible to bind the view models of reusable view (cells, headers, footers).
+ */
+public protocol CollectionViewBinder: Binder {
+    func viewModel(_ viewModel: ViewModel, didChange viewChange: CollectionViewUpdate?)
+}

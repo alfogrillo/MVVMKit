@@ -26,3 +26,18 @@
  A convenience base protocol for view models
  */
 public protocol ViewModel { }
+
+/**
+A convenience base protocol for reference type view models
+*/
+public protocol ReferenceViewModel: class, ViewModel { }
+
+/**
+ A view model for reusable views (cells, headers, footers)
+ */
+public protocol ReusableViewViewModel: ViewModel {
+    /**
+     The identifier you use to register a reusable cell inside a table view or collection view
+     */
+    var identifier: String { get }
+}

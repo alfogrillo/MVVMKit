@@ -28,7 +28,7 @@ import UIKit
 /**
  The view model for a UITableView
  */
-public protocol TableViewViewModel: RootViewModel where BinderType == TableViewBinder {
+public protocol TableViewViewModel: DelegatingViewModel where BinderType == TableViewBinder {
     var sections: [SectionViewModel] { get }
 }
 
@@ -58,7 +58,7 @@ public extension TableViewBinder where Self: TableViewViewModelOwner {
     }
 }
 
-internal func handle(update: TableViewUpdate, with tableView: UITableView?) {
+private func handle(update: TableViewUpdate, with tableView: UITableView?) {
     switch update {
     case .reloadData:
         tableView?.reloadData()

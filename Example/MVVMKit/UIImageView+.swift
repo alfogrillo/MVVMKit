@@ -26,7 +26,7 @@ import UIKit
 
 extension UIImageView {
     @discardableResult
-    func setGifImage(withUrl url: URL, completion: ((Result<Void>) -> Void)? = nil) -> URLSessionTask? {
+    func setGifImage(withUrl url: URL, completion: ((Result<Void, Error>) -> Void)? = nil) -> URLSessionTask? {
         image = nil
         task?.cancel()
         task = URLSession.imageSession.dataTask(with: URLRequest(url: url, cachePolicy: .returnCacheDataElseLoad)) { (data, _, error) in

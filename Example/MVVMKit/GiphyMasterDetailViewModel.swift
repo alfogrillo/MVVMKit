@@ -22,7 +22,6 @@
  THE SOFTWARE.
  */
 
-import UIKit
 import MVVMKit
 
 class GiphyMasterDetailViewModel: CoordinatedBaseViewModel {

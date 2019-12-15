@@ -24,14 +24,9 @@
 
 import Foundation
 
-enum Result<Payload> {
-    case success(Payload)
-    case failure(Error)
-}
-
 extension URLSession {
     @discardableResult
-    func dataTask<D: Decodable>(url: URL, parameters: [String: String], completion: @escaping (Result<D>) -> Void) -> URLSessionTask? {
+    func dataTask<D: Decodable>(url: URL, parameters: [String: String], completion: @escaping (Result<D, Error>) -> Void) -> URLSessionTask? {
         let url = url.url(encodingParameters: parameters)!
         return dataTask(with: url, completionHandler: { (data, _, error) in
             if let error = error {

@@ -27,4 +27,4 @@
  If yor view controller manages a view owning cells (e.g. a table view) consider to use
  `TableViewViewModel` or `CollectionViewViewModel`
  */
-public protocol BaseViewModel: RootViewModel where BinderType == Binder { }
+public protocol BaseViewModel: DelegatingViewModel where BinderType == Binder { }

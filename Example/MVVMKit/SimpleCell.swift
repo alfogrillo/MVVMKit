@@ -1,5 +1,5 @@
 /*
- AppCoordinator.swift
+ SimpleCell.swift
  
  Copyright (c) 2019 Alfonso Grillo
  
@@ -24,20 +24,30 @@
 
 import MVVMKit
 
-class AppCoordinator: Coordinator {
-    var weakSourceViewController: WeakReference<UIViewController>?
-    weak var window: UIWindow?
+struct SimpleCellViewModel: ReusableViewViewModel {
+    let identifier: String = SimpleCell.identifier
+    let text: String?
+}
+
+class SimpleCell: UICollectionViewCell, CustomBinder {
+    @IBOutlet private weak var titleLabel: UILabel!
     
-    init(window: UIWindow) {
-        self.window = window
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        backgroundColor = .random
     }
     
-    func start() {
-        let rootViewController = RootViewController.instantiate(storyboardName: "Main")
-        let coordinator = RootCoordinator(sourceViewController: rootViewController)
-        rootViewController.viewModel = RootViewModel(model: RootModel(), coordinator: coordinator)
-        sourceViewController = UINavigationController(rootViewController: rootViewController)
-        window?.rootViewController = sourceViewController
+    func bind(viewModel: SimpleCellViewModel) {
+        titleLabel.text = viewModel.text
+    }
+}
+
+private extension UIColor {
+    static var random: UIColor {
+        let r = CGFloat.random(in: 0...1)
+        let g = CGFloat.random(in: 0...1)
+        let b = CGFloat.random(in: 0...1)
+        return UIColor(red: r, green: g, blue: b, alpha: 1)
     }
 }
 

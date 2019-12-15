@@ -1,5 +1,5 @@
 /*
- ReactiveViewModel+Coordinator.swift
+ TextCell.swift
  
  Copyright (c) 2019 Alfonso Grillo
  
@@ -22,15 +22,17 @@
  THE SOFTWARE.
  */
 
-#if canImport(Combine)
+import MVVMKit
 
-// A view model that delegates the navigation responsibility to a coordinator
-public protocol CoordinatedReactiveBaseViewModel: ReactiveBaseViewModel, CoordinatorOwner { }
+struct TextCellViewModel: ReusableViewViewModel {
+    let identifier: String = TextCell.identifier
+    let text: String?
+}
 
-// A table view view model that delegates the navigation responsibility to a coordinator
-public protocol CoordinatedReactiveTableViewViewModel: ReactiveTableViewViewModel, CoordinatorOwner { }
-
-// A collection view view model that delegates the navigation responsibility to a coordinator
-public protocol CoordinatedReactiveCollectionViewViewModel: ReactiveCollectionViewViewModel, CoordinatorOwner { }
-
-#endif
+class TextCell: UITableViewCell, CustomBinder {
+    @IBOutlet weak var label: UILabel!
+    
+    func bind(viewModel: TextCellViewModel) {
+        label.text = viewModel.text
+    }
+}
