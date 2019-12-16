@@ -38,6 +38,7 @@ open class MVVMDiffableCollectionViewController<Model: DiffableCollectionViewVie
     public private(set) var dataSource: UICollectionViewDiffableDataSource<Model.SectionType, ReusableViewViewModelAdapter>!
     
     private var dataSourceSubscription: AnyCancellable?
+    private let snapshotQueue = DispatchQueue(label: "org.cocoapods.demo.MVVMKit-Example.collectionViewSnapshot")
     
     override open func viewDidLoad() {
         super.viewDidLoad()
@@ -45,14 +46,15 @@ open class MVVMDiffableCollectionViewController<Model: DiffableCollectionViewVie
     }
     
     open func bind(viewModel: Model) {
-        dataSourceSubscription = viewModel.snapshotPublisher.sink { [weak self] snapshotAdapter in
-            guard let self = self else { return }
-            self.dataSource.apply(snapshotAdapter.snapshot, animatingDifferences: snapshotAdapter.animated, completion: snapshotAdapter.completion)
-        }
+        dataSourceSubscription = viewModel.snapshotPublisher
+            .receive(on: snapshotQueue)
+            .sink { [weak self] snapshotAdapter in
+                self?.dataSource.apply(snapshotAdapter.snapshot, animatingDifferences: snapshotAdapter.animated, completion: snapshotAdapter.completion)
+            }
     }
     
     private func setupDataSource() {
-        dataSource = UICollectionViewDiffableDataSource(collectionView: collectionView) { [weak self] (collectionView, indexPath, adapter) -> UICollectionViewCell? in
+        dataSource = UICollectionViewDiffableDataSource(collectionView: collectionView) { [weak self] (collectionView, indexPath, adapter) in
             guard let self = self else { return nil }
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: adapter.reusableViewViewModel.identifier, for: indexPath)
             self.configureDelegate(of: cell)
@@ -60,7 +62,7 @@ open class MVVMDiffableCollectionViewController<Model: DiffableCollectionViewVie
             return cell
         }
         
-        dataSource.supplementaryViewProvider = { [weak self] (collectionView, kind, indexPath) -> UICollectionReusableView? in
+        dataSource.supplementaryViewProvider = { [weak self] (collectionView, kind, indexPath) in
             guard let self = self else { return nil }
             let section = self.dataSource.snapshot().sectionIdentifiers[indexPath.section]
             if let viewModel = section.supplementaryViewViewModels[kind] {

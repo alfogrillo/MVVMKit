@@ -36,7 +36,7 @@ public struct ReusableViewViewModelAdapter: Hashable {
         self.reusableViewViewModel = reusableViewViewModel
     }
     
-    public static func == (lhs: ReusableViewViewModelAdapter, rhs: ReusableViewViewModelAdapter) -> Bool {
+    public static func == (lhs: Self, rhs: Self) -> Bool {
         lhs.id == rhs.id
     }
     
