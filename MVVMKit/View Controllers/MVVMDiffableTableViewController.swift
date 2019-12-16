@@ -40,7 +40,6 @@ open class MVVMDiffableTableViewController<Model: DiffableTableViewViewModel>: U
     public private(set) var dataSource: UITableViewDiffableDataSource<Model.SectionType, ReusableViewViewModelAdapter>!
     
     private var dataSourceSubscription: AnyCancellable?
-    private let snapshotQueue = DispatchQueue(label: "org.cocoapods.demo.MVVMKit-Example.tableViewSnapshot")
     
     override open func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +48,7 @@ open class MVVMDiffableTableViewController<Model: DiffableTableViewViewModel>: U
     
     open func bind(viewModel: Model) {
         dataSourceSubscription = viewModel.snapshotPublisher
-            .receive(on: snapshotQueue)
+            .receive(on: DispatchQueue.diffingQueue)
             .sink { [weak self] snapshotAdapter in
                 self?.dataSource.apply(snapshotAdapter.snapshot, animatingDifferences: snapshotAdapter.animated, completion: snapshotAdapter.completion)
             }

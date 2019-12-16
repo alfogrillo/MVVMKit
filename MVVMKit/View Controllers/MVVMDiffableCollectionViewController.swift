@@ -38,7 +38,6 @@ open class MVVMDiffableCollectionViewController<Model: DiffableCollectionViewVie
     public private(set) var dataSource: UICollectionViewDiffableDataSource<Model.SectionType, ReusableViewViewModelAdapter>!
     
     private var dataSourceSubscription: AnyCancellable?
-    private let snapshotQueue = DispatchQueue(label: "org.cocoapods.demo.MVVMKit-Example.collectionViewSnapshot")
     
     override open func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +46,7 @@ open class MVVMDiffableCollectionViewController<Model: DiffableCollectionViewVie
     
     open func bind(viewModel: Model) {
         dataSourceSubscription = viewModel.snapshotPublisher
-            .receive(on: snapshotQueue)
+            .receive(on: DispatchQueue.diffingQueue)
             .sink { [weak self] snapshotAdapter in
                 self?.dataSource.apply(snapshotAdapter.snapshot, animatingDifferences: snapshotAdapter.animated, completion: snapshotAdapter.completion)
             }
