@@ -40,7 +40,7 @@ class DiffableTableViewModel: DiffableTableViewViewModel {
         var snapshot = Snapshot()
     
         let filteredModels = model
-            .filter { searchText.isEmpty || $0.lowercased().contains(searchText.lowercased()) }
+            .filter { searchText.isEmpty || $0.containsIgnoringCase(text: searchText) }
             .map { TextCellViewModel(text: $0).adapted(id: $0) }
         
         if !filteredModels.isEmpty {

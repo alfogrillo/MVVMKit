@@ -97,6 +97,6 @@ enum SupplementaryViewKind: String {
 private extension Array where Element == DiffableCollectionViewModel.ModelEntry {
     func filter(searchKey: String) -> [DiffableCollectionViewModel.ModelEntry] {
         guard !searchKey.isEmpty else { return self }
-        return filter { $0.text.lowercased().contains(searchKey.lowercased()) }
+        return filter { $0.text.containsIgnoringCase(text: searchKey) }
     }
 }

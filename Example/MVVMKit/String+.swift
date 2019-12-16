@@ -29,4 +29,8 @@ extension String {
             accumulator + String(chars.randomElement()!)
         }
     }
+    
+    func containsIgnoringCase(text: String) -> Bool {
+        range(of: text, options: .caseInsensitive) != nil
+    }
 }
