@@ -1,5 +1,5 @@
 /*
- BaseViewModel.swift
+ BaseDelegatingViewModel.swift
  
  Copyright (c) 2019 Alfonso Grillo
  
@@ -27,4 +27,4 @@
  If yor view controller manages a view owning cells (e.g. a table view) consider to use
  `TableViewViewModel` or `CollectionViewViewModel`
  */
-public protocol BaseViewModel: DelegatingViewModel where BinderType == Binder { }
+public protocol BaseDelegatingViewModel: DelegatingViewModel where BinderType == Binder { }

@@ -33,6 +33,7 @@ A protocol describing a view model publishing snapshots feeding a UITableViewDif
 @available(iOS 13.0, *)
 public protocol DiffableTableViewViewModel: ReferenceViewModel {
     associatedtype SectionType: DiffableTableViewSection
+    
     typealias Snapshot = NSDiffableDataSourceSnapshot<SectionType, ReusableViewViewModelAdapter>
     typealias SnapshotAdapter = SnapshotUpdate<SectionType, ReusableViewViewModelAdapter>
     

@@ -23,7 +23,7 @@
  */
 
 /// A view model that delegates the navigation responsibility to a coordinator
-public protocol CoordinatedBaseViewModel: BaseViewModel, CoordinatorOwner { }
+public protocol CoordinatedBaseDelegatingViewModel: BaseDelegatingViewModel, CoordinatorOwner { }
 
 /// A table view view model that delegates the navigation responsibility to a coordinator
 public protocol CoordinatedTableViewViewModel: TableViewViewModel, CoordinatorOwner { }

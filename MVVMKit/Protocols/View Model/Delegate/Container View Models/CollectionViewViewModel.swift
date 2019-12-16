@@ -32,6 +32,13 @@ public protocol CollectionViewViewModel: DelegatingViewModel where BinderType ==
     var sections: [SectionViewModel] { get }
 }
 
+/**
+ A `CollectionViewBinder` is responsible to bind the view models of reusable view (cells, headers, footers).
+ */
+public protocol CollectionViewBinder: Binder {
+    func viewModel(_ viewModel: ViewModel, didChange viewChange: CollectionViewUpdate?)
+}
+
 /// An enum describing what should be updated inside a collection view
 public enum CollectionViewUpdate {
     case reloadData

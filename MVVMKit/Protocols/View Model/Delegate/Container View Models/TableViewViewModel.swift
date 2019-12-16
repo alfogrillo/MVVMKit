@@ -32,6 +32,13 @@ public protocol TableViewViewModel: DelegatingViewModel where BinderType == Tabl
     var sections: [SectionViewModel] { get }
 }
 
+/**
+ A `TableViewBinder` is responsible to bind the view models of reusable view (cells, headers, footers).
+ */
+public protocol TableViewBinder: Binder {
+    func viewModel(_ viewModel: ViewModel, didChange viewChange: TableViewUpdate?)
+}
+
 /// An enum describing what should be updated inside a table view
 public enum TableViewUpdate {
     case reloadData

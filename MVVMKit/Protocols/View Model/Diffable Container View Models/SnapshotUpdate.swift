@@ -9,7 +9,7 @@ import UIKit
 
 /**
  A container for a NSDiffableDataSourceSnapshot.
- This container describe if snapshot should be animated and provides a snapshot application completion.
+ This container describe if the diffing of a snapshot should be animated and provides a diffing completion.
  */
 @available(iOS 13.0, *)
 public struct SnapshotUpdate<SectionType: Hashable, ItemType: Hashable> {

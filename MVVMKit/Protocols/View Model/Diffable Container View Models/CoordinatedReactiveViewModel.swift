@@ -1,5 +1,5 @@
 /*
- ContainerBinder.swift
+ DiffableViewModel+Coordinator.swift
  
  Copyright (c) 2019 Alfonso Grillo
  
@@ -22,16 +22,15 @@
  THE SOFTWARE.
  */
 
-/**
- A `TableViewBinder` is responsible to bind the view models of reusable view (cells, headers, footers).
- */
-public protocol TableViewBinder: Binder {
-    func viewModel(_ viewModel: ViewModel, didChange viewChange: TableViewUpdate?)
-}
+#if canImport(Combine)
 
-/**
- A `CollectionViewBinder` is responsible to bind the view models of reusable view (cells, headers, footers).
- */
-public protocol CollectionViewBinder: Binder {
-    func viewModel(_ viewModel: ViewModel, didChange viewChange: CollectionViewUpdate?)
-}
+/// A view model for the view of a view controller. The protocol is intended to be conformed by Combine publishing view models.
+public protocol CoordinatedReactiveViewModel: ReferenceViewModel, CoordinatorOwner { }
+
+/// A table view view model that delegates the navigation responsibility to a coordinator
+public protocol CoordinatedDiffableTableViewViewModel: DiffableCollectionViewViewModel, CoordinatorOwner { }
+
+/// A collection view view model that delegates the navigation responsibility to a coordinator
+public protocol CoordinatedDiffableCollectionViewViewModel: DiffableTableViewViewModel, CoordinatorOwner { }
+
+#endif

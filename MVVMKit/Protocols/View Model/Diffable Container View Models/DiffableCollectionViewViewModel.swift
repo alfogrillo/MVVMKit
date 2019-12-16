@@ -33,6 +33,7 @@ import Combine
 @available(iOS 13.0, *)
 public protocol DiffableCollectionViewViewModel: ReferenceViewModel {
     associatedtype SectionType: DiffableCollectionViewSection
+    
     typealias Snapshot = NSDiffableDataSourceSnapshot<SectionType, ReusableViewViewModelAdapter>
     typealias SnapshotAdapter = SnapshotUpdate<SectionType, ReusableViewViewModelAdapter>
     

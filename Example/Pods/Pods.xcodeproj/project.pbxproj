@@ -22,8 +22,7 @@
 /* Begin PBXBuildFile section */
 		1F9AC2136B5E358D8DE958D0F0701F26 /* MVVMTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD029DFC6284E8A8561BF6FAA4DA7F2 /* MVVMTableViewController.swift */; };
 		21702EB047CF7D64CC5D2DAF4751F888 /* UIViewController+MVVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA00F50808B143B8B4A3FE608505358 /* UIViewController+MVVM.swift */; };
-		2B1EA0A72DAF7934520D094895401561 /* ReactiveViewModel+Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769EFC372C94570ED3FA545EBCD0FB24 /* ReactiveViewModel+Coordinator.swift */; };
-		2D68BD9323A66D82007C7395 /* ContainerBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D68BD9223A66D82007C7395 /* ContainerBinder.swift */; };
+		2B1EA0A72DAF7934520D094895401561 /* CoordinatedReactiveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769EFC372C94570ED3FA545EBCD0FB24 /* CoordinatedReactiveViewModel.swift */; };
 		2D68BD9523A67E67007C7395 /* DiffableTableViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D68BD9423A67E67007C7395 /* DiffableTableViewViewModel.swift */; };
 		2D68BD9723A681A8007C7395 /* CoordinatorOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D68BD9623A681A8007C7395 /* CoordinatorOwner.swift */; };
 		2D701B2D23A7E98E00931BF5 /* DispatchQueue+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D701B2C23A7E98E00931BF5 /* DispatchQueue+.swift */; };
@@ -38,7 +37,7 @@
 		6C594423ECDD03B357527009D69565BC /* MVVMCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6E54892BB5BE5AD741A5892596C5D2 /* MVVMCollectionViewController.swift */; };
 		74BA37297B9EA03FA9A4B6F2187A6722 /* ReusableViewViewModelAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B962AD688CDBB72AD2018F904DB159D /* ReusableViewViewModelAdapter.swift */; };
 		8668690B665A56AC287806A068B32B91 /* ViewModelOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214A655BF3EAD392167DB4B631D06F14 /* ViewModelOwner.swift */; };
-		874F1F2CEF12CBAB6DCDD343B02CC02C /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882C6F853D2F8F7F9AC26C3D8BFBC881 /* BaseViewModel.swift */; };
+		874F1F2CEF12CBAB6DCDD343B02CC02C /* BaseDelegatingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882C6F853D2F8F7F9AC26C3D8BFBC881 /* BaseDelegatingViewModel.swift */; };
 		88F3CE6BE367866D3AA13D346258E341 /* TableViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25D0C8DAE33E38D4F930AD6550761F4 /* TableViewViewModel.swift */; };
 		8B44C51FAB503E93FB773E1CC6A118E4 /* Delegator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E940F40C3265295A09592614EC0E4581 /* Delegator.swift */; };
 		9CF4249DF7A3D2E9A4DA854F10C6E59D /* MVVMKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B2F7CE23EDD56064218B139AC10173 /* MVVMKit-dummy.m */; };
@@ -77,7 +76,6 @@
 		214A655BF3EAD392167DB4B631D06F14 /* ViewModelOwner.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ViewModelOwner.swift; sourceTree = "<group>"; };
 		27189C6457CC3652BA8F04FA0D59628F /* Pods-MVVMKit_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MVVMKit_Example-frameworks.sh"; sourceTree = "<group>"; };
 		2A843F8A2212414C6A8D204956A8937B /* MVVMKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = MVVMKit.modulemap; sourceTree = "<group>"; };
-		2D68BD9223A66D82007C7395 /* ContainerBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerBinder.swift; sourceTree = "<group>"; };
 		2D68BD9423A67E67007C7395 /* DiffableTableViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffableTableViewViewModel.swift; sourceTree = "<group>"; };
 		2D68BD9623A681A8007C7395 /* CoordinatorOwner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorOwner.swift; sourceTree = "<group>"; };
 		2D701B2C23A7E98E00931BF5 /* DispatchQueue+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+.swift"; sourceTree = "<group>"; };
@@ -100,11 +98,11 @@
 		66451C8D7C3279943AE160525849DF20 /* MVVMDiffableCollectionViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MVVMDiffableCollectionViewController.swift; sourceTree = "<group>"; };
 		66F37C89F5632B99C298B5AF104C2028 /* Pods-MVVMKit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MVVMKit_Example.release.xcconfig"; sourceTree = "<group>"; };
 		72B697004BECAE9F16C24F76B5A13933 /* Binder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Binder.swift; sourceTree = "<group>"; };
-		769EFC372C94570ED3FA545EBCD0FB24 /* ReactiveViewModel+Coordinator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "ReactiveViewModel+Coordinator.swift"; sourceTree = "<group>"; };
+		769EFC372C94570ED3FA545EBCD0FB24 /* CoordinatedReactiveViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CoordinatedReactiveViewModel.swift; sourceTree = "<group>"; };
 		7A7C5A94AB579D03E2C364021E109ED2 /* Pods_MVVMKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVMKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BD029DFC6284E8A8561BF6FAA4DA7F2 /* MVVMTableViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MVVMTableViewController.swift; sourceTree = "<group>"; };
 		827FB96EC6C8E07984A41BC26A9FCF2B /* CoordinatedDelegatingViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CoordinatedDelegatingViewModel.swift; sourceTree = "<group>"; };
-		882C6F853D2F8F7F9AC26C3D8BFBC881 /* BaseViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		882C6F853D2F8F7F9AC26C3D8BFBC881 /* BaseDelegatingViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BaseDelegatingViewModel.swift; sourceTree = "<group>"; };
 		89F85ACF3D78B39506B75103B4694B36 /* SwiftLint.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftLint.xcconfig; sourceTree = "<group>"; };
 		9227915FDB8318C20C5474B3BE0AAC22 /* MVVMKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = MVVMKit.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9A0124F2A452B2806AE955FD728A2E56 /* Pods-MVVMKit_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MVVMKit_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
@@ -166,11 +164,11 @@
 		1A7D839E87F5EC9F930E684655E79EBD /* Diffable Container View Models */ = {
 			isa = PBXGroup;
 			children = (
+				769EFC372C94570ED3FA545EBCD0FB24 /* CoordinatedReactiveViewModel.swift */,
 				AF3B8BAB4356A03B8E8E73066257B1FE /* DiffableCollectionViewViewModel.swift */,
 				2D68BD9423A67E67007C7395 /* DiffableTableViewViewModel.swift */,
 				9B962AD688CDBB72AD2018F904DB159D /* ReusableViewViewModelAdapter.swift */,
 				2D78AD5123A666A900797910 /* SnapshotUpdate.swift */,
-				769EFC372C94570ED3FA545EBCD0FB24 /* ReactiveViewModel+Coordinator.swift */,
 			);
 			path = "Diffable Container View Models";
 			sourceTree = "<group>";
@@ -202,7 +200,6 @@
 			isa = PBXGroup;
 			children = (
 				497D73ED23F71FE45E7CE15CC72CC855 /* CollectionViewViewModel.swift */,
-				2D68BD9223A66D82007C7395 /* ContainerBinder.swift */,
 				60D68337BE42A09F5DB18C9EAC7E5EC1 /* SectionViewModel.swift */,
 				F25D0C8DAE33E38D4F930AD6550761F4 /* TableViewViewModel.swift */,
 			);
@@ -212,7 +209,7 @@
 		2DC056D223A669730069EB2F /* Delegate */ = {
 			isa = PBXGroup;
 			children = (
-				882C6F853D2F8F7F9AC26C3D8BFBC881 /* BaseViewModel.swift */,
+				882C6F853D2F8F7F9AC26C3D8BFBC881 /* BaseDelegatingViewModel.swift */,
 				2DD15F55A92555B0BE8364B9008B35E5 /* CollectionViewViewModelOwner.swift */,
 				827FB96EC6C8E07984A41BC26A9FCF2B /* CoordinatedDelegatingViewModel.swift */,
 				A08D6729E8A24338934B83B3F0CE7CD3 /* DelegatingViewModel.swift */,
@@ -479,7 +476,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				874F1F2CEF12CBAB6DCDD343B02CC02C /* BaseViewModel.swift in Sources */,
+				874F1F2CEF12CBAB6DCDD343B02CC02C /* BaseDelegatingViewModel.swift in Sources */,
 				C013C2D90A1B5EA195B773D0180374B1 /* Binder.swift in Sources */,
 				2D78AD5223A666A900797910 /* SnapshotUpdate.swift in Sources */,
 				426BD34473623D9C45FC665D33CFC562 /* CollectionViewViewModel.swift in Sources */,
@@ -492,10 +489,9 @@
 				FF7981D59814FF768019054F93773B95 /* MVVMDiffableTableViewController.swift in Sources */,
 				2D701B2D23A7E98E00931BF5 /* DispatchQueue+.swift in Sources */,
 				9CF4249DF7A3D2E9A4DA854F10C6E59D /* MVVMKit-dummy.m in Sources */,
-				2D68BD9323A66D82007C7395 /* ContainerBinder.swift in Sources */,
 				2D68BD9523A67E67007C7395 /* DiffableTableViewViewModel.swift in Sources */,
 				1F9AC2136B5E358D8DE958D0F0701F26 /* MVVMTableViewController.swift in Sources */,
-				2B1EA0A72DAF7934520D094895401561 /* ReactiveViewModel+Coordinator.swift in Sources */,
+				2B1EA0A72DAF7934520D094895401561 /* CoordinatedReactiveViewModel.swift in Sources */,
 				74BA37297B9EA03FA9A4B6F2187A6722 /* ReusableViewViewModelAdapter.swift in Sources */,
 				3E85B5515B7F06607331DF091277E71D /* DelegatingViewModel.swift in Sources */,
 				2D68BD9723A681A8007C7395 /* CoordinatorOwner.swift in Sources */,
