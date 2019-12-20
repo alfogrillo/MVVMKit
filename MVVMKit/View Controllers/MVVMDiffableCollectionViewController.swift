@@ -34,7 +34,9 @@ open class MVVMDiffableCollectionViewController<Model: DiffableCollectionViewVie
     public typealias CustomViewModel = Model
     
     @IBOutlet public weak var collectionView: UICollectionView!
-    public var viewModel: Model?
+    public var viewModel: Model? {
+        didSet { bindIfViewLoaded() }
+    }
     public private(set) var dataSource: UICollectionViewDiffableDataSource<Model.SectionType, ReusableViewViewModelAdapter>!
     
     private var dataSourceSubscription: AnyCancellable?
@@ -42,6 +44,7 @@ open class MVVMDiffableCollectionViewController<Model: DiffableCollectionViewVie
     override open func viewDidLoad() {
         super.viewDidLoad()
         setupDataSource()
+        bindIfViewLoaded()
     }
     
     open func bind(viewModel: Model) {
