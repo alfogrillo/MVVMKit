@@ -1,5 +1,5 @@
 /*
- UITableViewCell+Utils.swift
+ String+.swift
  
  Copyright (c) 2019 Alfonso Grillo
  
@@ -22,11 +22,15 @@
  THE SOFTWARE.
  */
 
-import UIKit
-
-public extension UITableViewCell {
-    /// A default reusable identifier matching the type name
-    static var identifier: String {
-        return String(describing: self)
+extension String {
+    static func random(length: Int) -> String {
+        let chars = "abcdefghijklmnopqrstuvwxyz"
+        return (0..<length).reduce("") { (accumulator, _) -> String in
+            accumulator + String(chars.randomElement()!)
+        }
+    }
+    
+    func containsIgnoringCase(text: String) -> Bool {
+        range(of: text, options: .caseInsensitive) != nil
     }
 }

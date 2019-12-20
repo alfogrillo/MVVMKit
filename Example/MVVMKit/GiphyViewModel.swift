@@ -51,9 +51,9 @@ class GiphyViewModel: CollectionViewViewModel {
     }
     
     @discardableResult
-    func fetchGiphyResults(keyword: String, completion: ((Result<Void>) -> Void)? = nil) -> URLSessionTask? {
+    func fetchGiphyResults(keyword: String, completion: ((Result<Void, Error>) -> Void)? = nil) -> URLSessionTask? {
         startFetch()
-        return GiphyApi.search(keyword: keyword).request { [weak self] (result: Result<GiphySearchResponse>) in
+        return GiphyApi.search(keyword: keyword).request { [weak self] (result: Result<GiphySearchResponse, Error>) in
             guard let `self` = self else { return }
             switch result {
             case .success(let response):

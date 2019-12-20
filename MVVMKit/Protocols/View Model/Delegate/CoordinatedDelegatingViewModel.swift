@@ -1,5 +1,5 @@
 /*
- AppCoordinator.swift
+ CoordinatedDelegatingViewModel.swift
  
  Copyright (c) 2019 Alfonso Grillo
  
@@ -22,22 +22,11 @@
  THE SOFTWARE.
  */
 
-import MVVMKit
+/// A view model that delegates the navigation responsibility to a coordinator
+public protocol CoordinatedBaseDelegatingViewModel: BaseDelegatingViewModel, CoordinatorOwner { }
 
-class AppCoordinator: Coordinator {
-    var weakSourceViewController: WeakReference<UIViewController>?
-    weak var window: UIWindow?
-    
-    init(window: UIWindow) {
-        self.window = window
-    }
-    
-    func start() {
-        let rootViewController = RootViewController.instantiate(storyboardName: "Main")
-        let coordinator = RootCoordinator(sourceViewController: rootViewController)
-        rootViewController.viewModel = RootViewModel(model: RootModel(), coordinator: coordinator)
-        sourceViewController = UINavigationController(rootViewController: rootViewController)
-        window?.rootViewController = sourceViewController
-    }
-}
+/// A table view view model that delegates the navigation responsibility to a coordinator
+public protocol CoordinatedTableViewViewModel: TableViewViewModel, CoordinatorOwner { }
 
+/// A collection view view model that delegates the navigation responsibility to a coordinator
+public protocol CoordinatedCollectionViewViewModel: CollectionViewViewModel, CoordinatorOwner { }

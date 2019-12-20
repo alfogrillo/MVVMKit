@@ -28,8 +28,15 @@ import UIKit
 /**
  The view model for a UITableView
  */
-public protocol TableViewViewModel: RootViewModel where BinderType == TableViewBinder {
+public protocol TableViewViewModel: DelegatingViewModel where BinderType == TableViewBinder {
     var sections: [SectionViewModel] { get }
+}
+
+/**
+ A `TableViewBinder` is responsible to bind the view models of reusable view (cells, headers, footers).
+ */
+public protocol TableViewBinder: Binder {
+    func viewModel(_ viewModel: ViewModel, didChange viewChange: TableViewUpdate?)
 }
 
 /// An enum describing what should be updated inside a table view
@@ -58,7 +65,7 @@ public extension TableViewBinder where Self: TableViewViewModelOwner {
     }
 }
 
-internal func handle(update: TableViewUpdate, with tableView: UITableView?) {
+private func handle(update: TableViewUpdate, with tableView: UITableView?) {
     switch update {
     case .reloadData:
         tableView?.reloadData()

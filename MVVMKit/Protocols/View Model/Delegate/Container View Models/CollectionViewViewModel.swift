@@ -28,8 +28,15 @@ import UIKit
 /**
  The view model for a UICollectionView
  */
-public protocol CollectionViewViewModel: RootViewModel where BinderType == CollectionViewBinder {
+public protocol CollectionViewViewModel: DelegatingViewModel where BinderType == CollectionViewBinder {
     var sections: [SectionViewModel] { get }
+}
+
+/**
+ A `CollectionViewBinder` is responsible to bind the view models of reusable view (cells, headers, footers).
+ */
+public protocol CollectionViewBinder: Binder {
+    func viewModel(_ viewModel: ViewModel, didChange viewChange: CollectionViewUpdate?)
 }
 
 /// An enum describing what should be updated inside a collection view
@@ -58,7 +65,7 @@ public extension CollectionViewBinder where Self: CollectionViewViewModelOwner {
     }
 }
 
-internal func handle(update: CollectionViewUpdate, with collectionView: UICollectionView?) {
+private func handle(update: CollectionViewUpdate, with collectionView: UICollectionView?) {
     switch update {
     case .reloadData:
         collectionView?.reloadData()

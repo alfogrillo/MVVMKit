@@ -1,5 +1,5 @@
 /*
- ReactiveViewModel+Coordinator.swift
+ BaseDelegatingViewModel.swift
  
  Copyright (c) 2019 Alfonso Grillo
  
@@ -22,15 +22,9 @@
  THE SOFTWARE.
  */
 
-#if canImport(Combine)
-
-// A view model that delegates the navigation responsibility to a coordinator
-public protocol CoordinatedReactiveBaseViewModel: ReactiveBaseViewModel, CoordinatorOwner { }
-
-// A table view view model that delegates the navigation responsibility to a coordinator
-public protocol CoordinatedReactiveTableViewViewModel: ReactiveTableViewViewModel, CoordinatorOwner { }
-
-// A collection view view model that delegates the navigation responsibility to a coordinator
-public protocol CoordinatedReactiveCollectionViewViewModel: ReactiveCollectionViewViewModel, CoordinatorOwner { }
-
-#endif
+/**
+ The view model for a UIViewController.
+ If yor view controller manages a view owning cells (e.g. a table view) consider to use
+ `TableViewViewModel` or `CollectionViewViewModel`
+ */
+public protocol BaseDelegatingViewModel: DelegatingViewModel where BinderType == Binder { }

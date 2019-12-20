@@ -25,9 +25,7 @@
 import MVVMKit
 
 struct GiphyCellViewModel: ReusableViewViewModel {
-    var identifier: String {
-        return GiphyCell.identifier
-    }
+    var identifier: String = GiphyCell.identifier
     var url: String
 }
 

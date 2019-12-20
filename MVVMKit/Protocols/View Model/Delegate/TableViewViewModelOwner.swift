@@ -1,5 +1,5 @@
 /*
- ViewModelOwner.swift
+ TableViewViewModelOwner.swift
  
  Copyright (c) 2019 Alfonso Grillo
  
@@ -22,18 +22,12 @@
  THE SOFTWARE.
  */
 
-/**
- A view model owner is also the `Binder` for the view model that it owns.
- */
-public protocol ViewModelOwner: CustomBinder where CustomViewModel: RootViewModel {
-    /// The owned view model.
-    var viewModel: CustomViewModel? { get }
-}
+import UIKit
 
-public extension ViewModelOwner {
-    /// `bind` a convenience methods that binds the owned view model
-    func bind() {
-        guard let viewModel = self.viewModel else { return }
-        bind(viewModel: viewModel)
-    }
+/**
+ A protocol describing the requirements of the owner of a table view.
+ Tipically the `TableViewViewModelOwner` is a `UIViewController`
+ */
+public protocol TableViewViewModelOwner: ViewModelOwner, TableViewBinder where CustomViewModel: TableViewViewModel {
+    var tableView: UITableView! { get }
 }

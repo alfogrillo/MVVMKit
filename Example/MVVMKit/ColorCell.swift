@@ -22,14 +22,10 @@
  THE SOFTWARE.
  */
 
-import UIKit
 import MVVMKit
 
 struct ColorCellViewModel: ReusableViewViewModel {
-    var identifier: String {
-        return ColorCell.identifier
-    }
-    
+    var identifier: String = ColorCell.identifier
     let title: String
     let color: UIColor
     let isEditable: Bool

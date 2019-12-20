@@ -1,5 +1,5 @@
 /*
- ViewModel+Coordinator.swift
+ DelegatingViewModel.swift
  
  Copyright (c) 2019 Alfonso Grillo
  
@@ -22,11 +22,19 @@
  THE SOFTWARE.
  */
 
-// A view model that delegates the navigation responsibility to a coordinator
-public protocol CoordinatedBaseViewModel: BaseViewModel, CoordinatorOwner { }
+/**
+ A special kind of view model that can own subviews view models
+ */
+public protocol DelegatingViewModel: ReferenceViewModel {
+    associatedtype BinderType
+    /// The weak reference to the binder of the view model
+    var weakBinder: WeakReference<BinderType>? { get set }
+}
 
-// A table view view model that delegates the navigation responsibility to a coordinator
-public protocol CoordinatedTableViewViewModel: TableViewViewModel, CoordinatorOwner { }
-
-// A collection view view model that delegates the navigation responsibility to a coordinator
-public protocol CoordinatedCollectionViewViewModel: CollectionViewViewModel, CoordinatorOwner { }
+public extension DelegatingViewModel {
+    // A convenience property to get and set the binder
+    var binder: BinderType? {
+        get { return weakBinder?.object }
+        set { weakBinder = WeakReference(newValue) }
+    }
+}

@@ -1,5 +1,5 @@
 /*
- AppCoordinator.swift
+ DiffableViewModel+Coordinator.swift
  
  Copyright (c) 2019 Alfonso Grillo
  
@@ -22,22 +22,15 @@
  THE SOFTWARE.
  */
 
-import MVVMKit
+#if canImport(Combine)
 
-class AppCoordinator: Coordinator {
-    var weakSourceViewController: WeakReference<UIViewController>?
-    weak var window: UIWindow?
-    
-    init(window: UIWindow) {
-        self.window = window
-    }
-    
-    func start() {
-        let rootViewController = RootViewController.instantiate(storyboardName: "Main")
-        let coordinator = RootCoordinator(sourceViewController: rootViewController)
-        rootViewController.viewModel = RootViewModel(model: RootModel(), coordinator: coordinator)
-        sourceViewController = UINavigationController(rootViewController: rootViewController)
-        window?.rootViewController = sourceViewController
-    }
-}
+/// A view model for the view of a view controller. The protocol is intended to be conformed by Combine publishing view models.
+public protocol CoordinatedReactiveViewModel: ReferenceViewModel, CoordinatorOwner { }
 
+/// A table view view model that delegates the navigation responsibility to a coordinator
+public protocol CoordinatedDiffableTableViewViewModel: DiffableCollectionViewViewModel, CoordinatorOwner { }
+
+/// A collection view view model that delegates the navigation responsibility to a coordinator
+public protocol CoordinatedDiffableCollectionViewViewModel: DiffableTableViewViewModel, CoordinatorOwner { }
+
+#endif

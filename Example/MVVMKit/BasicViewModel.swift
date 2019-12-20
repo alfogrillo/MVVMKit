@@ -24,7 +24,7 @@
 
 import MVVMKit
 
-class BasicViewModel: BaseViewModel {
+class BasicViewModel: BaseDelegatingViewModel {
     var weakBinder: WeakReference<Binder>?
     
     struct Model {

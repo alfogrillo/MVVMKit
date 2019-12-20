@@ -1,5 +1,5 @@
 /*
- ReusableViewViewModel.swift
+ HeaderFooterReusableView.swift
  
  Copyright (c) 2019 Alfonso Grillo
  
@@ -22,12 +22,18 @@
  THE SOFTWARE.
  */
 
-/**
- A view model for reusable views (cells, headers, footers)
- */
-public protocol ReusableViewViewModel: ViewModel {
-    /**
-     The identifier you use to register a reusable cell inside a table view or collection view
-     */
-    var identifier: String { get }
+import MVVMKit
+
+struct HeaderFooterReusableViewViewModel: ReusableViewViewModel {
+    let identifier: String = HeaderFooterReusableView.identifier
+    
+    let text: String?
+}
+
+class HeaderFooterReusableView: UICollectionReusableView, CustomBinder {
+    @IBOutlet private weak var titleLabel: UILabel!
+    
+    func bind(viewModel: HeaderFooterReusableViewViewModel) {
+        titleLabel.text = viewModel.text
+    }
 }

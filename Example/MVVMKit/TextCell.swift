@@ -1,5 +1,5 @@
 /*
- TableViewViewModelOwner.swift
+ TextCell.swift
  
  Copyright (c) 2019 Alfonso Grillo
  
@@ -22,12 +22,17 @@
  THE SOFTWARE.
  */
 
-import UIKit
+import MVVMKit
 
-/**
- A protocol describing the requirements of the owner of a table view.
- Tipically the `TableViewViewModelOwner` is a `UIViewController`
- */
-public protocol TableViewViewModelOwner: ViewModelOwner, TableViewBinder where Self.CustomViewModel: TableViewViewModel {
-    var tableView: UITableView! { get }
+struct TextCellViewModel: ReusableViewViewModel {
+    let identifier: String = TextCell.identifier
+    let text: String?
+}
+
+class TextCell: UITableViewCell, CustomBinder {
+    @IBOutlet weak var label: UILabel!
+    
+    func bind(viewModel: TextCellViewModel) {
+        label.text = viewModel.text
+    }
 }

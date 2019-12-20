@@ -1,5 +1,5 @@
 /*
- AppCoordinator.swift
+ DiffableCollectionViewViewModel.swift
  
  Copyright (c) 2019 Alfonso Grillo
  
@@ -22,22 +22,39 @@
  THE SOFTWARE.
  */
 
-import MVVMKit
+#if canImport(Combine)
 
-class AppCoordinator: Coordinator {
-    var weakSourceViewController: WeakReference<UIViewController>?
-    weak var window: UIWindow?
+import UIKit
+import Combine
+
+/**
+ A protocol describing a view model publishing snapshots feeding a UICollectionViewDiffableDataSource
+ */
+@available(iOS 13.0, *)
+public protocol DiffableCollectionViewViewModel: ReferenceViewModel {
+    associatedtype SectionType: DiffableCollectionViewSection
     
-    init(window: UIWindow) {
-        self.window = window
-    }
+    typealias Snapshot = NSDiffableDataSourceSnapshot<SectionType, ReusableViewViewModelAdapter>
+    typealias SnapshotAdapter = SnapshotUpdate<SectionType, ReusableViewViewModelAdapter>
     
-    func start() {
-        let rootViewController = RootViewController.instantiate(storyboardName: "Main")
-        let coordinator = RootCoordinator(sourceViewController: rootViewController)
-        rootViewController.viewModel = RootViewModel(model: RootModel(), coordinator: coordinator)
-        sourceViewController = UINavigationController(rootViewController: rootViewController)
-        window?.rootViewController = sourceViewController
+    var snapshotPublisher: PassthroughSubject<SnapshotAdapter, Never> { get }
+}
+
+// MARK: - Section
+
+/**
+ A protocol describing a section suitable with a UICollectionViewDiffableDataSource
+ */
+@available(iOS 13.0, *)
+public protocol DiffableCollectionViewSection: Hashable {
+    var supplementaryViewViewModels: [String: ReusableViewViewModel] { get }
+}
+
+@available(iOS 13.0, *)
+public extension DiffableCollectionViewSection {
+    var supplementaryViewViewModels: [String: ReusableViewViewModel] {
+        [:]
     }
 }
 
+#endif

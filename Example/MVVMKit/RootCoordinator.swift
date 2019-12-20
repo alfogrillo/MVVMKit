@@ -26,22 +26,20 @@ import MVVMKit
 
 class RootCoordinator: Coordinator {
     var weakSourceViewController: WeakReference<UIViewController>?
-    private let model: RootModel
     
-    init(model: RootModel, sourceViewController viewController: UIViewController) {
-        self.model = model
+    init(sourceViewController viewController: UIViewController) {
         sourceViewController = viewController
     }
     
-    func didSelectBasicViewController() {
+    func didSelectBasicViewController(model: BasicViewModel.Model) {
         let viewController = BasicViewController.instantiate(storyboardName: "Main")
-        viewController.viewModel = BasicViewModel(model: model.basicModel)
+        viewController.viewModel = BasicViewModel(model: model)
         sourceViewController?.show(viewController, sender: nil)
     }
     
-    func didSelectTableViewController() {
+    func didSelectTableViewController(model: ColorsViewModel.Model) {
         let viewController = ColorsViewController.instantiate(storyboardName: "Main")
-        viewController.viewModel = ColorsViewModel(model: model.colorsModel)
+        viewController.viewModel = ColorsViewModel(model: model)
         sourceViewController?.show(viewController, sender: nil)
     }
     
@@ -55,6 +53,18 @@ class RootCoordinator: Coordinator {
         let viewController = GiphyMasterDetailViewController.instantiate(storyboardName: "Main")
         let coordinator = GiphyMasterDetailCoordinator(sourceViewController: viewController)
         viewController.viewModel = GiphyMasterDetailViewModel(coordinator: coordinator)
+        sourceViewController?.show(viewController, sender: nil)
+    }
+    
+    func didSelectDiffableCollectionViewController() {
+        let viewController = DiffableCollectionViewController.instantiate(storyboardName: "Main")
+        viewController.viewModel = DiffableCollectionViewModel()
+        sourceViewController?.show(viewController, sender: nil)
+    }
+    
+    func didSelectDiffableTableViewController() {
+        let viewController = DiffableTableViewController.instantiate(storyboardName: "Main")
+        viewController.viewModel = DiffableTableViewModel()
         sourceViewController?.show(viewController, sender: nil)
     }
 }

@@ -31,7 +31,7 @@ enum GiphyApi {
 
 extension GiphyApi {
     @discardableResult
-    func request<D: Decodable>(completion: @escaping (Result<D>) -> Void) -> URLSessionTask? {
+    func request<D: Decodable>(completion: @escaping (Result<D, Error>) -> Void) -> URLSessionTask? {
         let url: URL = URL(string: "https://api.giphy.com/v1/gifs/search")!
         var urlParameters: [String: String] = ["api_key": GiphyApi.apiKey]
         switch self {

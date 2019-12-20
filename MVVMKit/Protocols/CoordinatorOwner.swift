@@ -1,5 +1,5 @@
 /*
- AppCoordinator.swift
+ CoordinatorOnwer.swift
  
  Copyright (c) 2019 Alfonso Grillo
  
@@ -20,24 +20,27 @@
  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
+*/
+
+import UIKit
+
+/**
+ A protocols identifying a coordinator owner
  */
-
-import MVVMKit
-
-class AppCoordinator: Coordinator {
-    var weakSourceViewController: WeakReference<UIViewController>?
-    weak var window: UIWindow?
-    
-    init(window: UIWindow) {
-        self.window = window
-    }
-    
-    func start() {
-        let rootViewController = RootViewController.instantiate(storyboardName: "Main")
-        let coordinator = RootCoordinator(sourceViewController: rootViewController)
-        rootViewController.viewModel = RootViewModel(model: RootModel(), coordinator: coordinator)
-        sourceViewController = UINavigationController(rootViewController: rootViewController)
-        window?.rootViewController = sourceViewController
-    }
+public protocol CoordinatorOwner: class {
+    associatedtype CoordinatorType: Coordinator = DefaultCoordinator
+    var coordinator: CoordinatorType { get }
 }
 
+/**
+ A convenience default coordinator
+ */
+public class DefaultCoordinator: Coordinator {
+    public typealias ViewController = UIViewController
+    
+    public var weakSourceViewController: WeakReference<UIViewController>?
+    
+    init(sourceViewController: ViewController) {
+        self.sourceViewController = sourceViewController
+    }
+}

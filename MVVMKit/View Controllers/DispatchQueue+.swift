@@ -1,5 +1,5 @@
 /*
- BaseViewModel.swift
+ DispatchQueue+.swift
  
  Copyright (c) 2019 Alfonso Grillo
  
@@ -22,9 +22,8 @@
  THE SOFTWARE.
  */
 
-/**
- The view model for a UIViewController.
- If yor view controller manages a view owning cells (e.g. a table view) consider to use
- `TableViewViewModel` or `CollectionViewViewModel`
- */
-public protocol BaseViewModel: RootViewModel where BinderType == Binder { }
+import Foundation
+
+internal extension DispatchQueue {
+    static let diffingQueue: DispatchQueue = .init(label: "MVVMKit.DiffingQueue")
+}
