@@ -27,23 +27,20 @@ import UIKit
 /**
  A convenience class for a view controller handling a UITableView.
  The class fully implements the UITableViewDataSource.
+ 
+ `MVVMTableViewController` implements the following behaviors:
+ - It sets the data source of the table view to self.
+ - It implements the viewWillAppear(_:) method and automatically calls `bind(viewModel:)` on first appearance.
+ - It implements the viewDidAppear(_:) method and automatically flashes the table view's scroll indicators when it first appears.
  */
 open class MVVMTableViewController<Model: TableViewViewModel>: UIViewController, TableViewViewModelOwner, UITableViewDataSource, UITableViewDelegate {
+    public typealias CustomViewModel = Model
     
     @IBOutlet public weak var tableView: UITableView! {
         didSet {
             tableView.dataSource = self
             tableView.delegate = self
         }
-    }
-    
-    // MARK: - CustomViewModelConfigurable
-    
-    public typealias CustomViewModel = Model
-    
-    /// Override this method to bind your view model to the view
-    open func bind(viewModel: Model) {
-        
     }
     
     /**
@@ -56,8 +53,32 @@ open class MVVMTableViewController<Model: TableViewViewModel>: UIViewController,
         }
     }
     
-    public var sections: [SectionViewModel] {
+    private var sections: [SectionViewModel] {
         return viewModel?.sections ?? []
+    }
+    
+    /// A boolean value that determines whether the view controller is about to appear the first time.
+    private var needsFirstBind = true
+    
+    // MARK: - Lifecycle
+    
+    open override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        guard needsFirstBind else { return }
+        bind()
+        needsFirstBind = false
+    }
+    
+    open override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        tableView.flashScrollIndicators()
+    }
+    
+    /// Override this method to bind your view model to the view
+    ///
+    /// You must call the super implementation of `bind(viewModel:)` to give parent classes the opportunity to perform any additional binding they require. Although the default implementation of this method does nothing, some MVVMKit classes provide non-empty implementations. You may call the super implementation at any point during your own `bind(viewModel:)` method.
+    open func bind(viewModel: Model) {
+        needsFirstBind = false
     }
     
     // MARK: - UITableViewDataSource
