@@ -45,7 +45,10 @@ open class MVVMCollectionViewController<Model: CollectionViewViewModel>: UIViewC
      The view controller view model
      */
     open var viewModel: Model? {
-        didSet { viewModel?.binder = self }
+        didSet {
+            viewModel?.binder = self
+            bindIfViewLoaded()
+        }
     }
     
     public var sections: [SectionViewModel] {

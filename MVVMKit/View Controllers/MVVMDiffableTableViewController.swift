@@ -46,7 +46,7 @@ open class MVVMDiffableTableViewController<Model: DiffableTableViewViewModel>: U
     override open func viewDidLoad() {
         super.viewDidLoad()
         setupDataSource()
-        bindIfViewLoaded()
+        bind()
     }
     
     open func bind(viewModel: Model) {

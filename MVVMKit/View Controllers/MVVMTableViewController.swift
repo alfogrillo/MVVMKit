@@ -50,7 +50,10 @@ open class MVVMTableViewController<Model: TableViewViewModel>: UIViewController,
      The view controller view model
      */
     open var viewModel: Model? {
-        didSet { viewModel?.binder = self }
+        didSet {
+            viewModel?.binder = self
+            bindIfViewLoaded()
+        }
     }
     
     public var sections: [SectionViewModel] {

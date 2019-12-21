@@ -44,7 +44,7 @@ open class MVVMDiffableCollectionViewController<Model: DiffableCollectionViewVie
     override open func viewDidLoad() {
         super.viewDidLoad()
         setupDataSource()
-        bindIfViewLoaded()
+        bind()
     }
     
     open func bind(viewModel: Model) {
