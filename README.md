@@ -70,7 +70,7 @@ pod 'MVVMKit'
 
 ## Author
 
-drakon-ag, alfogrillo@gmail.com
+[alfogrillo](https://github.com/alfogrillo)
 
 ## License
 
