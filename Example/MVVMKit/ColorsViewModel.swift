@@ -24,26 +24,27 @@
 
 import MVVMKit
 
+struct ColorsModel {
+    var colors: [Color]
+    var selectedColor: Color?
+}
+
 struct Color {
     let name: String
     let values: (r: CGFloat, g: CGFloat, b: CGFloat)
 }
 
 class ColorsViewModel: TableViewViewModel {
-    var weakBinder: WeakReference<TableViewBinder>?
+    var binder: AnyTableViewBinder<ColorsViewModel>?
+    
     var sections: [SectionViewModel] = []
     private var state: State = .normal
     
-    struct Model {
-        var colors: [Color]
-        var selectedColor: Color?
-    }
-    
-    private var model: Model {
+    private var model: ColorsModel {
         didSet { updateSections() }
     }
     
-    init(model: Model) {
+    init(model: ColorsModel) {
         sections = []
         self.model = model
         updateSections()
@@ -58,19 +59,19 @@ class ColorsViewModel: TableViewViewModel {
     
     func didSelectColor(at index: Int) {
         model.selectedColor = model.colors[index]
-        binder?.viewModel(self, didChange: nil)
+        binder?.bind(viewModel: self, update: nil)
     }
     
     func invertColor(at index: Int) {
         model.colors[index] = model.colors[index].inverted
-        binder?.viewModel(self, didChange: .reloadRows([IndexPath(row: index, section: 0)], with: .automatic))
+        binder?.bind(viewModel: self, update: .reloadRows([IndexPath(row: index, section: 0)], with: .automatic))
     }
     
     func setEditMode(enabled: Bool) {
         state = enabled ? .edit : .normal
         model.selectedColor = nil
         updateSections()
-        binder?.viewModel(self, didChange: .reloadData)
+        binder?.bind(viewModel: self, update: .reloadData)
     }
     
     // MARK - Read only prorperties

@@ -40,7 +40,7 @@ public class DefaultCoordinator: Coordinator {
     
     public var weakSourceViewController: WeakReference<UIViewController>?
     
-    init(sourceViewController: ViewController) {
+    public init(sourceViewController: ViewController) {
         self.sourceViewController = sourceViewController
     }
 }

@@ -28,6 +28,6 @@ import UIKit
  A protocol describing the requirements of the owner of a collection view.
  Tipically the `CollectionViewViewModelOwner` is a `UIViewController`
  */
-public protocol CollectionViewViewModelOwner: ViewModelOwner, CollectionViewBinder where CustomViewModel: CollectionViewViewModel {
+public protocol CollectionViewViewModelOwner: ViewModelOwner, CollectionViewBinder {
     var collectionView: UICollectionView! { get }
 }

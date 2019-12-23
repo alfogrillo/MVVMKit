@@ -26,15 +26,7 @@
  A special kind of view model that can own subviews view models
  */
 public protocol DelegatingViewModel: ReferenceViewModel {
-    associatedtype BinderType
-    /// The weak reference to the binder of the view model
-    var weakBinder: WeakReference<BinderType>? { get set }
-}
-
-public extension DelegatingViewModel {
-    // A convenience property to get and set the binder
-    var binder: BinderType? {
-        get { return weakBinder?.object }
-        set { weakBinder = WeakReference(newValue) }
-    }
+    associatedtype BinderType: CustomBinder
+    /// The reference to the binder of the view model
+    var binder: BinderType? { get set }
 }

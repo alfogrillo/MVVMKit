@@ -32,7 +32,7 @@ class BasicViewController: UIViewController, ViewModelOwner {
     typealias CustomViewModel = BasicViewModel
     
     var viewModel: BasicViewModel? {
-        didSet { viewModel?.binder = self }
+        didSet { viewModel?.binder = AnyBinder(self) }
     }
     
     override func viewDidLoad() {

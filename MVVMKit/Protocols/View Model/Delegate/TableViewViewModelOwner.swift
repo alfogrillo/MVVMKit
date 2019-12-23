@@ -28,6 +28,6 @@ import UIKit
  A protocol describing the requirements of the owner of a table view.
  Tipically the `TableViewViewModelOwner` is a `UIViewController`
  */
-public protocol TableViewViewModelOwner: ViewModelOwner, TableViewBinder where CustomViewModel: TableViewViewModel {
+public protocol TableViewViewModelOwner: ViewModelOwner, TableViewBinder {
     var tableView: UITableView! { get }
 }
