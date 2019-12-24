@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="9Uh-tC-1l8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9Uh-tC-1l8">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,10 +12,6 @@
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController storyboardIdentifier="RootViewController" id="vXZ-lx-hvc" customClass="RootViewController" customModule="MVVMKit_Example" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
-                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -79,7 +76,7 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="Tly-Xa-lNN" firstAttribute="leading" secondItem="i1H-eM-hVV" secondAttribute="leading" id="9FU-M4-zis"/>
-                                    <constraint firstAttribute="trailing" secondItem="Tly-Xa-lNN" secondAttribute="trailing" constant="20" symbolic="YES" id="Lxx-s2-7Wc"/>
+                                    <constraint firstAttribute="trailing" secondItem="Tly-Xa-lNN" secondAttribute="trailing" id="Lxx-s2-7Wc"/>
                                     <constraint firstItem="Tly-Xa-lNN" firstAttribute="top" secondItem="i1H-eM-hVV" secondAttribute="top" id="VfS-IR-9R5"/>
                                     <constraint firstAttribute="bottom" secondItem="Tly-Xa-lNN" secondAttribute="bottom" id="co5-dm-Xeu"/>
                                     <constraint firstItem="Tly-Xa-lNN" firstAttribute="width" secondItem="JAp-kZ-H8c" secondAttribute="width" id="lva-bV-EVm"/>
@@ -90,11 +87,12 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="i1H-eM-hVV" secondAttribute="trailing" id="1Fm-IB-5Iv"/>
-                            <constraint firstItem="i1H-eM-hVV" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="9nS-2B-g6h"/>
+                            <constraint firstItem="m3L-cp-HKU" firstAttribute="trailing" secondItem="i1H-eM-hVV" secondAttribute="trailing" id="1Fm-IB-5Iv"/>
+                            <constraint firstItem="i1H-eM-hVV" firstAttribute="leading" secondItem="m3L-cp-HKU" secondAttribute="leading" id="9nS-2B-g6h"/>
                             <constraint firstAttribute="bottom" secondItem="i1H-eM-hVV" secondAttribute="bottom" id="Y64-Ld-97L"/>
-                            <constraint firstItem="i1H-eM-hVV" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="aN1-PJ-LHd"/>
+                            <constraint firstItem="i1H-eM-hVV" firstAttribute="top" secondItem="m3L-cp-HKU" secondAttribute="top" id="aN1-PJ-LHd"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="m3L-cp-HKU"/>
                     </view>
                     <navigationItem key="navigationItem" id="z8b-Hv-O4w"/>
                 </viewController>
@@ -106,10 +104,6 @@
         <scene sceneID="rmr-hp-tjw">
             <objects>
                 <viewController storyboardIdentifier="BasicViewController" id="6iJ-9p-xco" customClass="BasicViewController" customModule="MVVMKit_Example" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="gql-F4-5al"/>
-                        <viewControllerLayoutGuide type="bottom" id="lIj-2X-H6a"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="f3r-v7-FcU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -143,9 +137,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="fpR-Ip-diX" firstAttribute="centerX" secondItem="f3r-v7-FcU" secondAttribute="centerX" id="P1S-N2-Bpn"/>
+                            <constraint firstItem="fpR-Ip-diX" firstAttribute="centerX" secondItem="a0H-gM-LI5" secondAttribute="centerX" id="P1S-N2-Bpn"/>
                             <constraint firstItem="fpR-Ip-diX" firstAttribute="centerY" secondItem="f3r-v7-FcU" secondAttribute="centerY" id="gs8-rl-niN"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="a0H-gM-LI5"/>
                     </view>
                     <connections>
                         <outlet property="label" destination="NcF-2a-UdD" id="oqC-Sn-LAW"/>
@@ -161,10 +156,6 @@
         <scene sceneID="ykf-wK-WQJ">
             <objects>
                 <viewController storyboardIdentifier="ColorsViewController" id="o9a-vj-Ehw" customClass="ColorsViewController" customModule="MVVMKit_Example" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="4wl-IB-DZc"/>
-                        <viewControllerLayoutGuide type="bottom" id="0Ns-WQ-RjA"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="gDQ-Lk-eDl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -247,11 +238,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="q8V-WB-01f" secondAttribute="trailing" id="Apv-dT-94k"/>
-                            <constraint firstItem="q8V-WB-01f" firstAttribute="leading" secondItem="gDQ-Lk-eDl" secondAttribute="leading" id="Azz-BG-uLv"/>
+                            <constraint firstItem="K2q-JQ-fvh" firstAttribute="trailing" secondItem="q8V-WB-01f" secondAttribute="trailing" id="Apv-dT-94k"/>
+                            <constraint firstItem="q8V-WB-01f" firstAttribute="leading" secondItem="K2q-JQ-fvh" secondAttribute="leading" id="Azz-BG-uLv"/>
                             <constraint firstAttribute="bottom" secondItem="q8V-WB-01f" secondAttribute="bottom" id="XXk-z3-DBS"/>
-                            <constraint firstItem="q8V-WB-01f" firstAttribute="top" secondItem="4wl-IB-DZc" secondAttribute="bottom" id="iPm-5G-RoC"/>
+                            <constraint firstItem="q8V-WB-01f" firstAttribute="top" secondItem="K2q-JQ-fvh" secondAttribute="top" id="iPm-5G-RoC"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="K2q-JQ-fvh"/>
                     </view>
                     <navigationItem key="navigationItem" id="p9f-hf-2q9"/>
                     <connections>
@@ -267,10 +259,6 @@
         <scene sceneID="2ho-6X-X6h">
             <objects>
                 <viewController storyboardIdentifier="DiffableCollectionViewController" id="Yhn-F8-r1v" customClass="DiffableCollectionViewController" customModule="MVVMKit_Example" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Luo-ag-XxB"/>
-                        <viewControllerLayoutGuide type="bottom" id="Rjz-LS-ftm"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="1n7-gR-CZW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -296,14 +284,15 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="0Lr-KN-mjz" firstAttribute="top" secondItem="Luo-ag-XxB" secondAttribute="bottom" id="17v-88-rfT"/>
-                            <constraint firstAttribute="trailing" secondItem="thk-ef-TXc" secondAttribute="trailing" id="Ccg-3a-yFs"/>
-                            <constraint firstItem="0Lr-KN-mjz" firstAttribute="leading" secondItem="1n7-gR-CZW" secondAttribute="leading" id="Vl2-kA-R1O"/>
+                            <constraint firstItem="0Lr-KN-mjz" firstAttribute="top" secondItem="x7w-nF-fva" secondAttribute="top" id="17v-88-rfT"/>
+                            <constraint firstItem="x7w-nF-fva" firstAttribute="trailing" secondItem="thk-ef-TXc" secondAttribute="trailing" id="Ccg-3a-yFs"/>
+                            <constraint firstItem="0Lr-KN-mjz" firstAttribute="leading" secondItem="x7w-nF-fva" secondAttribute="leading" id="Vl2-kA-R1O"/>
                             <constraint firstAttribute="bottom" secondItem="thk-ef-TXc" secondAttribute="bottom" id="Y2X-Io-Wgg"/>
-                            <constraint firstAttribute="trailing" secondItem="0Lr-KN-mjz" secondAttribute="trailing" id="YRO-Nc-fUS"/>
+                            <constraint firstItem="x7w-nF-fva" firstAttribute="trailing" secondItem="0Lr-KN-mjz" secondAttribute="trailing" id="YRO-Nc-fUS"/>
                             <constraint firstItem="thk-ef-TXc" firstAttribute="top" secondItem="0Lr-KN-mjz" secondAttribute="bottom" id="keW-ms-G2W"/>
-                            <constraint firstItem="thk-ef-TXc" firstAttribute="leading" secondItem="1n7-gR-CZW" secondAttribute="leading" id="pRM-f0-mHi"/>
+                            <constraint firstItem="thk-ef-TXc" firstAttribute="leading" secondItem="x7w-nF-fva" secondAttribute="leading" id="pRM-f0-mHi"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="x7w-nF-fva"/>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="thk-ef-TXc" id="6V7-f5-vca"/>
@@ -317,10 +306,6 @@
         <scene sceneID="9i0-gA-VO0">
             <objects>
                 <viewController storyboardIdentifier="DiffableTableViewController" id="Uhm-SO-gTz" customClass="DiffableTableViewController" customModule="MVVMKit_Example" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="SCD-HZ-RQS"/>
-                        <viewControllerLayoutGuide type="bottom" id="d6K-XJ-Gly"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="d12-H3-G4h">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -366,14 +351,15 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="eri-8n-fNx" firstAttribute="leading" secondItem="d12-H3-G4h" secondAttribute="leading" id="3L4-S6-0Hv"/>
+                            <constraint firstItem="eri-8n-fNx" firstAttribute="leading" secondItem="fnJ-ej-X1k" secondAttribute="leading" id="3L4-S6-0Hv"/>
                             <constraint firstAttribute="bottom" secondItem="XlJ-bM-Spm" secondAttribute="bottom" id="AUm-YA-blc"/>
                             <constraint firstItem="XlJ-bM-Spm" firstAttribute="top" secondItem="eri-8n-fNx" secondAttribute="bottom" id="I5r-hd-Uce"/>
-                            <constraint firstAttribute="trailing" secondItem="eri-8n-fNx" secondAttribute="trailing" id="OUY-I7-xT2"/>
-                            <constraint firstItem="XlJ-bM-Spm" firstAttribute="leading" secondItem="d12-H3-G4h" secondAttribute="leading" id="Xz1-S0-NxD"/>
-                            <constraint firstAttribute="trailing" secondItem="XlJ-bM-Spm" secondAttribute="trailing" id="cTd-qa-92U"/>
-                            <constraint firstItem="eri-8n-fNx" firstAttribute="top" secondItem="SCD-HZ-RQS" secondAttribute="bottom" id="vyB-TW-Eeg"/>
+                            <constraint firstItem="fnJ-ej-X1k" firstAttribute="trailing" secondItem="eri-8n-fNx" secondAttribute="trailing" id="OUY-I7-xT2"/>
+                            <constraint firstItem="XlJ-bM-Spm" firstAttribute="leading" secondItem="fnJ-ej-X1k" secondAttribute="leading" id="Xz1-S0-NxD"/>
+                            <constraint firstItem="fnJ-ej-X1k" firstAttribute="trailing" secondItem="XlJ-bM-Spm" secondAttribute="trailing" id="cTd-qa-92U"/>
+                            <constraint firstItem="eri-8n-fNx" firstAttribute="top" secondItem="fnJ-ej-X1k" secondAttribute="top" id="vyB-TW-Eeg"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="fnJ-ej-X1k"/>
                     </view>
                     <connections>
                         <outlet property="tableView" destination="XlJ-bM-Spm" id="A00-LT-IKM"/>
@@ -405,10 +391,6 @@
         <scene sceneID="4Km-kQ-MDw">
             <objects>
                 <viewController storyboardIdentifier="GiphyMasterDetailViewController" id="guq-Ni-R1q" customClass="GiphyMasterDetailViewController" customModule="MVVMKit_Example" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="BHz-uR-sxd"/>
-                        <viewControllerLayoutGuide type="bottom" id="6B2-C1-MLs"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="yeo-mV-3yW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -452,11 +434,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="eiB-Rh-6Jh" firstAttribute="leading" secondItem="yeo-mV-3yW" secondAttribute="leading" id="HwK-vy-f48"/>
-                            <constraint firstItem="6B2-C1-MLs" firstAttribute="top" secondItem="eiB-Rh-6Jh" secondAttribute="bottom" id="MKT-zd-jnh"/>
-                            <constraint firstAttribute="trailing" secondItem="eiB-Rh-6Jh" secondAttribute="trailing" id="NHh-dN-kYk"/>
-                            <constraint firstItem="eiB-Rh-6Jh" firstAttribute="top" secondItem="BHz-uR-sxd" secondAttribute="bottom" id="uH2-PW-EdJ"/>
+                            <constraint firstItem="eiB-Rh-6Jh" firstAttribute="leading" secondItem="G1d-rb-lKJ" secondAttribute="leading" id="HwK-vy-f48"/>
+                            <constraint firstItem="G1d-rb-lKJ" firstAttribute="bottom" secondItem="eiB-Rh-6Jh" secondAttribute="bottom" id="MKT-zd-jnh"/>
+                            <constraint firstItem="G1d-rb-lKJ" firstAttribute="trailing" secondItem="eiB-Rh-6Jh" secondAttribute="trailing" id="NHh-dN-kYk"/>
+                            <constraint firstItem="eiB-Rh-6Jh" firstAttribute="top" secondItem="G1d-rb-lKJ" secondAttribute="top" id="uH2-PW-EdJ"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="G1d-rb-lKJ"/>
                     </view>
                     <connections>
                         <outlet property="activityIndicatorView" destination="8v8-F7-TdO" id="zCE-W4-ogQ"/>
@@ -472,10 +455,6 @@
         <scene sceneID="kJu-vM-omC">
             <objects>
                 <viewController storyboardIdentifier="GiphyViewController" id="xJF-Ja-Hmh" customClass="GiphyViewController" customModule="MVVMKit_Example" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="UhJ-Iw-KBk"/>
-                        <viewControllerLayoutGuide type="bottom" id="98X-nQ-frI"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="sSS-5p-wCe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -552,15 +531,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="LyQ-Fo-JbP" secondAttribute="trailing" id="0pg-Ro-thA"/>
+                            <constraint firstItem="3SK-IG-6cu" firstAttribute="trailing" secondItem="LyQ-Fo-JbP" secondAttribute="trailing" id="0pg-Ro-thA"/>
                             <constraint firstItem="hOR-l2-vWr" firstAttribute="centerY" secondItem="m7Z-rf-Wbe" secondAttribute="centerY" id="Axy-YH-dSy"/>
                             <constraint firstItem="uaF-1n-gve" firstAttribute="centerY" secondItem="m7Z-rf-Wbe" secondAttribute="centerY" id="DaY-Yq-J0k"/>
                             <constraint firstAttribute="bottom" secondItem="LyQ-Fo-JbP" secondAttribute="bottom" id="Lwh-0N-L3r"/>
-                            <constraint firstItem="LyQ-Fo-JbP" firstAttribute="top" secondItem="UhJ-Iw-KBk" secondAttribute="bottom" id="PXS-nn-AAf"/>
+                            <constraint firstItem="LyQ-Fo-JbP" firstAttribute="top" secondItem="3SK-IG-6cu" secondAttribute="top" id="PXS-nn-AAf"/>
                             <constraint firstItem="hOR-l2-vWr" firstAttribute="centerX" secondItem="m7Z-rf-Wbe" secondAttribute="centerX" id="qu9-pO-HhG"/>
                             <constraint firstItem="uaF-1n-gve" firstAttribute="centerX" secondItem="m7Z-rf-Wbe" secondAttribute="centerX" id="xkh-QU-2Ti"/>
-                            <constraint firstItem="LyQ-Fo-JbP" firstAttribute="leading" secondItem="sSS-5p-wCe" secondAttribute="leading" id="zo3-Cb-P4Z"/>
+                            <constraint firstItem="LyQ-Fo-JbP" firstAttribute="leading" secondItem="3SK-IG-6cu" secondAttribute="leading" id="zo3-Cb-P4Z"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="3SK-IG-6cu"/>
                     </view>
                     <connections>
                         <outlet property="activityIndicatorView" destination="uaF-1n-gve" id="wa6-Gs-kLI"/>

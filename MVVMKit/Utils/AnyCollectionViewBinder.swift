@@ -58,7 +58,7 @@ public final class AnyCollectionViewBinder<V: CollectionViewViewModel>: Collecti
         box.bind(viewModel: viewModel)
     }
     
-    public func bind(viewModel: V, update viewChange: CollectionViewUpdate?) {
-        box.bind(viewModel: viewModel, update: viewChange)
+    public func bind(viewModel: V, update: CollectionViewUpdate?) {
+        box.bind(viewModel: viewModel, update: update)
     }
 }

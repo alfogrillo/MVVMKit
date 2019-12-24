@@ -58,7 +58,7 @@ public final class AnyTableViewBinder<V: TableViewViewModel>: TableViewBinder {
         box.bind(viewModel: viewModel)
     }
     
-    public func bind(viewModel: V, update viewChange: TableViewUpdate?) {
-        box.bind(viewModel: viewModel, update: viewChange)
+    public func bind(viewModel: V, update: TableViewUpdate?) {
+        box.bind(viewModel: viewModel, update: update)
     }
 }
