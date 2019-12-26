@@ -72,17 +72,17 @@ class DiffableCollectionViewModel: DiffableCollectionViewViewModel {
         case main
         case second
         
-        var supplementaryViewViewModels: [String : ReusableViewViewModel] {
+        var supplementaryViewViewModels: [SupplementaryViewKind: ReusableViewViewModel] {
             switch self {
             case .main:
                 return [
-                    SupplementaryViewKind.header.rawValue: HeaderFooterReusableViewViewModel(text: "Main Header"),
-                    SupplementaryViewKind.footer.rawValue: HeaderFooterReusableViewViewModel(text: "Main Footer"),
+                    .header: HeaderFooterReusableViewViewModel(text: "Main Header"),
+                    .footer: HeaderFooterReusableViewViewModel(text: "Main Footer"),
                 ]
             case .second:
                 return [
-                    SupplementaryViewKind.header.rawValue: HeaderFooterReusableViewViewModel(text: "Second Header"),
-                    SupplementaryViewKind.footer.rawValue: HeaderFooterReusableViewViewModel(text: "Second Footer")
+                    .header: HeaderFooterReusableViewViewModel(text: "Second Header"),
+                    .footer: HeaderFooterReusableViewViewModel(text: "Second Footer")
                 ]
             }
         }

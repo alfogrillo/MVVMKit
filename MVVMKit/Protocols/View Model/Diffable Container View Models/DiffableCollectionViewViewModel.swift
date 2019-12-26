@@ -47,13 +47,25 @@ public protocol DiffableCollectionViewViewModel: ReferenceViewModel {
  */
 @available(iOS 13.0, *)
 public protocol DiffableCollectionViewSection: Hashable {
-    var supplementaryViewViewModels: [String: ReusableViewViewModel] { get }
+    associatedtype SupplementaryViewKind: RawRepresentable & Hashable = Never where SupplementaryViewKind.RawValue == String
+    
+    var supplementaryViewViewModels: [SupplementaryViewKind: ReusableViewViewModel] { get }
 }
 
 @available(iOS 13.0, *)
-public extension DiffableCollectionViewSection {
-    var supplementaryViewViewModels: [String: ReusableViewViewModel] {
+public extension DiffableCollectionViewSection where SupplementaryViewKind == Never {
+    var supplementaryViewViewModels: [SupplementaryViewKind: ReusableViewViewModel] {
         [:]
+    }
+}
+
+extension Never: RawRepresentable {
+    public typealias RawValue = String
+    public init?(rawValue: Self.RawValue) {
+        nil
+    }
+    public var rawValue: String {
+        String(describing: self)
     }
 }
 

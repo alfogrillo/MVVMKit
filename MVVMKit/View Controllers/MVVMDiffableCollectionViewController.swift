@@ -61,16 +61,16 @@ open class MVVMDiffableCollectionViewController<Model: DiffableCollectionViewVie
             return cell
         }
         
-        dataSource.supplementaryViewProvider = { [weak self] (collectionView, kind, indexPath) in
+        dataSource.supplementaryViewProvider = { [weak self] (collectionView, rawKind, indexPath) in
             guard let self = self else { return nil }
             let section = self.dataSource.snapshot().sectionIdentifiers[indexPath.section]
-            if let viewModel = section.supplementaryViewViewModels[kind] {
-                let reusableView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: viewModel.identifier, for: indexPath)
+            if let kind = Model.SectionType.SupplementaryViewKind(rawValue: rawKind), let viewModel = section.supplementaryViewViewModels[kind] {
+                let reusableView = collectionView.dequeueReusableSupplementaryView(ofKind: rawKind, withReuseIdentifier: viewModel.identifier, for: indexPath)
                 self.configureDelegate(of: reusableView)
                 self.configure(view: reusableView, with: viewModel)
                 return reusableView
             } else {
-                fatalError("No view model found for the supplementary view of kind \(kind)")
+                fatalError("No view model found for the supplementary view of kind \(rawKind)")
             }
         }
     }
