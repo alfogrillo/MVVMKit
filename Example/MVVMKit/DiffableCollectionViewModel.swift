@@ -77,7 +77,7 @@ class DiffableCollectionViewModel: DiffableCollectionViewViewModel {
             case .main:
                 return [
                     .header: HeaderFooterReusableViewViewModel(text: "Main Header"),
-                    .footer: HeaderFooterReusableViewViewModel(text: "Main Footer"),
+                    .footer: HeaderFooterReusableViewViewModel(text: "Main Footer")
                 ]
             case .second:
                 return [
