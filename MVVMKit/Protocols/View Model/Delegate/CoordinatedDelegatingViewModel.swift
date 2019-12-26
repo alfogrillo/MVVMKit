@@ -23,10 +23,10 @@
  */
 
 /// A view model that delegates the navigation responsibility to a coordinator
-public protocol CoordinatedBaseDelegatingViewModel: BaseDelegatingViewModel, CoordinatorOwner { }
+public typealias CoordinatedBaseDelegatingViewModel = BaseDelegatingViewModel & CoordinatorOwner
 
 /// A table view view model that delegates the navigation responsibility to a coordinator
-public protocol CoordinatedTableViewViewModel: TableViewViewModel, CoordinatorOwner { }
+public typealias CoordinatedTableViewViewModel = TableViewViewModel & CoordinatorOwner
 
 /// A collection view view model that delegates the navigation responsibility to a coordinator
-public protocol CoordinatedCollectionViewViewModel: CollectionViewViewModel, CoordinatorOwner { }
+public typealias CoordinatedCollectionViewViewModel = CollectionViewViewModel & CoordinatorOwner

@@ -25,12 +25,15 @@
 #if canImport(Combine)
 
 /// A view model for the view of a view controller. The protocol is intended to be conformed by Combine publishing view models.
-public protocol CoordinatedReactiveViewModel: ReferenceViewModel, CoordinatorOwner { }
+@available(iOS 13.0, *)
+public typealias CoordinatedReactiveViewModel = ReferenceViewModel & CoordinatorOwner
 
 /// A table view view model that delegates the navigation responsibility to a coordinator
-public protocol CoordinatedDiffableTableViewViewModel: DiffableCollectionViewViewModel, CoordinatorOwner { }
+@available(iOS 13.0, *)
+public typealias CoordinatedDiffableTableViewViewModel = DiffableCollectionViewViewModel & CoordinatorOwner
 
 /// A collection view view model that delegates the navigation responsibility to a coordinator
-public protocol CoordinatedDiffableCollectionViewViewModel: DiffableTableViewViewModel, CoordinatorOwner { }
+@available(iOS 13.0, *)
+public typealias CoordinatedDiffableCollectionViewViewModel = DiffableTableViewViewModel & CoordinatorOwner
 
 #endif
