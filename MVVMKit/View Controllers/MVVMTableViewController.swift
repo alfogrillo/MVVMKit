@@ -50,14 +50,7 @@ open class MVVMTableViewController<Model: TableViewViewModel>: UIViewController,
      The view controller view model
      */
     open var viewModel: Model? {
-        didSet {
-            viewModel?.binder = self
-            bindIfViewLoaded()
-        }
-    }
-    
-    public var sections: [SectionViewModel] {
-        return viewModel?.sections ?? []
+        didSet { viewModel?.binder = self }
     }
     
     // MARK: - UITableViewDataSource
@@ -300,5 +293,11 @@ open class MVVMTableViewController<Model: TableViewViewModel>: UIViewController,
     
     open func scrollViewDidChangeAdjustedContentInset(_ scrollView: UIScrollView) {
         
+    }
+}
+
+private extension MVVMTableViewController {
+    private var sections: [SectionViewModel] {
+        return viewModel?.sections ?? []
     }
 }

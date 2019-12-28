@@ -45,14 +45,7 @@ open class MVVMCollectionViewController<Model: CollectionViewViewModel>: UIViewC
      The view controller view model
      */
     open var viewModel: Model? {
-        didSet {
-            viewModel?.binder = self
-            bindIfViewLoaded()
-        }
-    }
-    
-    public var sections: [SectionViewModel] {
-        return viewModel?.sections ?? []
+        didSet { viewModel?.binder = self }
     }
     
     // MARK: - UICollectionViewDataSource
@@ -108,5 +101,11 @@ open class MVVMCollectionViewController<Model: CollectionViewViewModel>: UIViewC
     
     open func collectionView(_ collectionView: UICollectionView, indexPathForIndexTitle title: String, at index: Int) -> IndexPath {
         return IndexPath(item: 0, section: 0)
+    }
+}
+
+private extension MVVMCollectionViewController {
+    private var sections: [SectionViewModel] {
+        return viewModel?.sections ?? []
     }
 }
