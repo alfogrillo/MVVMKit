@@ -53,10 +53,6 @@ open class MVVMTableViewController<Model: TableViewViewModel>: UIViewController,
         didSet { viewModel?.binder = self }
     }
     
-    public var sections: [SectionViewModel] {
-        return viewModel?.sections ?? []
-    }
-    
     // MARK: - UITableViewDataSource
     
     public final func numberOfSections(in tableView: UITableView) -> Int {
@@ -297,5 +293,11 @@ open class MVVMTableViewController<Model: TableViewViewModel>: UIViewController,
     
     open func scrollViewDidChangeAdjustedContentInset(_ scrollView: UIScrollView) {
         
+    }
+}
+
+private extension MVVMTableViewController {
+    private var sections: [SectionViewModel] {
+        return viewModel?.sections ?? []
     }
 }

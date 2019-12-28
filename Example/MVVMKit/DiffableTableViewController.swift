@@ -25,12 +25,10 @@
 import MVVMKit
 
 class DiffableTableViewController: MVVMDiffableTableViewController<DiffableTableViewModel> {
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
         dataSource.defaultRowAnimation = .fade
-        bind()
     }
     
     override func viewDidAppear(_ animated: Bool) {

@@ -36,7 +36,9 @@ open class MVVMDiffableTableViewController<Model: DiffableTableViewViewModel>: U
     @IBOutlet public weak var tableView: UITableView! {
         didSet { tableView.delegate = self }
     }
-    public var viewModel: Model?
+    public var viewModel: Model? {
+        didSet { bindIfViewLoaded() }
+    }
     public private(set) var dataSource: UITableViewDiffableDataSource<Model.SectionType, ReusableViewViewModelAdapter>!
     
     private var dataSourceSubscription: AnyCancellable?
@@ -44,6 +46,7 @@ open class MVVMDiffableTableViewController<Model: DiffableTableViewViewModel>: U
     override open func viewDidLoad() {
         super.viewDidLoad()
         setupDataSource()
+        bind()
     }
     
     open func bind(viewModel: Model) {

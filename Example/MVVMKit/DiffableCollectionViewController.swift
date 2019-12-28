@@ -28,7 +28,6 @@ class DiffableCollectionViewController: MVVMDiffableCollectionViewController<Dif
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
-        bind()
         viewModel?.loadData()
     }
     

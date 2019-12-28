@@ -48,10 +48,6 @@ open class MVVMCollectionViewController<Model: CollectionViewViewModel>: UIViewC
         didSet { viewModel?.binder = self }
     }
     
-    public var sections: [SectionViewModel] {
-        return viewModel?.sections ?? []
-    }
-    
     // MARK: - UICollectionViewDataSource
     
     final public func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -105,5 +101,11 @@ open class MVVMCollectionViewController<Model: CollectionViewViewModel>: UIViewC
     
     open func collectionView(_ collectionView: UICollectionView, indexPathForIndexTitle title: String, at index: Int) -> IndexPath {
         return IndexPath(item: 0, section: 0)
+    }
+}
+
+private extension MVVMCollectionViewController {
+    private var sections: [SectionViewModel] {
+        return viewModel?.sections ?? []
     }
 }
