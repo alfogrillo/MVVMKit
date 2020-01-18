@@ -50,7 +50,11 @@ open class MVVMTableViewController<Model: TableViewViewModel>: UIViewController,
      The view controller view model
      */
     open var viewModel: Model? {
-        didSet { viewModel?.binder = self }
+        /*
+            The cast isn't really needed here, but for some reason the compiler won't build without it.
+            This issue doesn't seem to affect subclasses.
+         */
+        didSet { viewModel?.binder = AnyTableViewBinder<Model>(self) as? Model.BinderType }
     }
     
     // MARK: - UITableViewDataSource

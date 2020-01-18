@@ -31,13 +31,13 @@ class RootCoordinator: Coordinator {
         sourceViewController = viewController
     }
     
-    func didSelectBasicViewController(model: BasicViewModel.Model) {
+    func didSelectBasicViewController(model: BasicModel) {
         let viewController = BasicViewController.instantiate(storyboardName: "Main")
         viewController.viewModel = BasicViewModel(model: model)
         sourceViewController?.show(viewController, sender: nil)
     }
     
-    func didSelectTableViewController(model: ColorsViewModel.Model) {
+    func didSelectTableViewController(model: ColorsModel) {
         let viewController = ColorsViewController.instantiate(storyboardName: "Main")
         viewController.viewModel = ColorsViewModel(model: model)
         sourceViewController?.show(viewController, sender: nil)

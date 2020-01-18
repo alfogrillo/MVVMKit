@@ -29,7 +29,7 @@ protocol GiphyViewModelDelegate: class {
 }
 
 class GiphyViewModel: CollectionViewViewModel {
-    var weakBinder: WeakReference<CollectionViewBinder>?
+    var binder: AnyCollectionViewBinder<GiphyViewModel>?
     weak var delegate: GiphyViewModelDelegate?
     var sections: [SectionViewModel] = []
     
@@ -81,12 +81,12 @@ class GiphyViewModel: CollectionViewViewModel {
     private func startFetch() {
         model.isFetching = true
         model.gifs = []
-        binder?.viewModel(self, didChange: .reloadData)
+        binder?.bind(viewModel: self, update: .reloadData)
     }
     
     private func endFetch() {
         model.isFetching = false
-        self.binder?.viewModel(self, didChange: .reloadData)
+        self.binder?.bind(viewModel: self, update: .reloadData)
     }
     
     private func updateSections() {

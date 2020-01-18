@@ -31,7 +31,7 @@ class GiphyMasterDetailViewController: UIViewController, ViewModelOwner {
     @IBOutlet private weak var containerView: UIView!
     
     var viewModel: GiphyMasterDetailViewModel? {
-        didSet { viewModel?.binder = self }
+        didSet { viewModel?.binder = AnyBinder(self) }
     }
     
     override func viewDidLoad() {

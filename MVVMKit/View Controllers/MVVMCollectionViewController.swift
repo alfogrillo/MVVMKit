@@ -45,7 +45,11 @@ open class MVVMCollectionViewController<Model: CollectionViewViewModel>: UIViewC
      The view controller view model
      */
     open var viewModel: Model? {
-        didSet { viewModel?.binder = self }
+        /*
+            The cast isn't really needed here, but for some reason the compiler won't build without it.
+            This issue doesn't seem to affect subclasses.
+         */
+        didSet { viewModel?.binder = AnyCollectionViewBinder(self) as? Model.BinderType }
     }
     
     // MARK: - UICollectionViewDataSource

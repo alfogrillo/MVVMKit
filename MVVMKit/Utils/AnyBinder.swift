@@ -1,5 +1,5 @@
 /*
- RootModel.swift
+ AnyBinder.swift
  
  Copyright (c) 2019 Alfonso Grillo
  
@@ -22,18 +22,34 @@
  THE SOFTWARE.
  */
 
-/// A stub for the application state
-struct RootModel {
-    var basicModel = BasicModel(value: 5, state: .on)
-    var colorsModel = ColorsModel(colors: Color.colors, selectedColor: nil)
+private class AnyBinderBase<V: ViewModel>: CustomBinder {
+    func bind(viewModel: V) { }
 }
 
-private extension Color {
-    static let colors: [Color] = [
-        Color(name: "Red", values: (r: 1, g: 0, b: 0)),
-        Color(name: "Green", values: (r: 0, g: 1, b: 0)),
-        Color(name: "Blue", values: (r: 0, g: 0, b: 1)),
-        Color(name: "Purple", values: (r: 1, g: 0, b: 1))
-    ]
+private final class AnyBinderBox<B: CustomBinder>: AnyBinderBase<B.CustomViewModel> {
+    weak var base: B?
+    
+    init(_ base: B) {
+        self.base = base
+    }
+    
+    override func bind(viewModel: B.CustomViewModel) {
+        base?.bind(viewModel: viewModel)
+    }
 }
 
+/**
+ The type erasure of `CustomBinder`.
+ - Attention: To avoid memory leak `AnyBinder` has a weak reference to the embedded `CustomBinder`
+ */
+public final class AnyBinder<V: ViewModel>: CustomBinder {
+    private let box: AnyBinderBase<V>
+    
+    public init<B: CustomBinder>(_ binder: B) where B.CustomViewModel == V {
+        box = AnyBinderBox(binder)
+    }
+    
+    public func bind(viewModel: V) {
+        box.bind(viewModel: viewModel)
+    }
+}

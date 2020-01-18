@@ -24,25 +24,25 @@
 
 import MVVMKit
 
-class BasicViewModel: BaseDelegatingViewModel {
-    var weakBinder: WeakReference<Binder>?
-    
-    struct Model {
-        var value: Float
-        var state: State
-    }
+struct BasicModel {
+    var value: Float
+    var state: State
     
     enum State {
         case on
         case off
     }
+}
+
+class BasicViewModel: BaseDelegatingViewModel {
+    var binder: AnyBinder<BasicViewModel>?
     
-    init(model: Model) {
+    init(model: BasicModel) {
         self.model = model
     }
     
     // MARK: Model
-    private var model: Model {
+    private var model: BasicModel {
         didSet { binder?.bind(viewModel: self) }
     }
     
@@ -96,7 +96,7 @@ class BasicViewModel: BaseDelegatingViewModel {
         model.value = value
     }
     
-    func set(state: State) {
+    func set(state: BasicModel.State) {
         model.state = state
     }
     
