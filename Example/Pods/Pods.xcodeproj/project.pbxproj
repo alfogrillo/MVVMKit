@@ -22,6 +22,7 @@
 /* Begin PBXBuildFile section */
 		0645A86BEF554EF9F7DA45E96A4F9EF5 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8DA2D971384248B54D935BB7012520 /* ViewModel.swift */; };
 		22D295641C3149CDC03002067A22ED1B /* CollectionViewViewModelOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1EC3B958338864EE3D31D56D19FD3E /* CollectionViewViewModelOwner.swift */; };
+		2D96A63D23D38A9A00BBF83B /* MVVMDiffableCollectionViewController+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D96A63C23D38A9A00BBF83B /* MVVMDiffableCollectionViewController+Register.swift */; };
 		2DB067D923B0B30C0051C480 /* AnyBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB067D823B0B30C0051C480 /* AnyBinder.swift */; };
 		2DB067DB23B0B3710051C480 /* AnyTableViewBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB067DA23B0B3710051C480 /* AnyTableViewBinder.swift */; };
 		2DB067DD23B0B37A0051C480 /* AnyCollectionViewBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB067DC23B0B37A0051C480 /* AnyCollectionViewBinder.swift */; };
@@ -87,6 +88,7 @@
 		267EEE90A5A3EEB674F0A626E92A5382 /* MVVMKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = MVVMKit.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		27189C6457CC3652BA8F04FA0D59628F /* Pods-MVVMKit_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MVVMKit_Example-frameworks.sh"; sourceTree = "<group>"; };
 		272C385A3FA2B20805610BDC8B19D525 /* TableViewViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TableViewViewModel.swift; sourceTree = "<group>"; };
+		2D96A63C23D38A9A00BBF83B /* MVVMDiffableCollectionViewController+Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MVVMDiffableCollectionViewController+Register.swift"; sourceTree = "<group>"; };
 		2DB067D823B0B30C0051C480 /* AnyBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyBinder.swift; sourceTree = "<group>"; };
 		2DB067DA23B0B3710051C480 /* AnyTableViewBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyTableViewBinder.swift; sourceTree = "<group>"; };
 		2DB067DC23B0B37A0051C480 /* AnyCollectionViewBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyCollectionViewBinder.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 				2DB067D823B0B30C0051C480 /* AnyBinder.swift */,
 				2DB067DC23B0B37A0051C480 /* AnyCollectionViewBinder.swift */,
 				2DB067DA23B0B3710051C480 /* AnyTableViewBinder.swift */,
+				2D96A63C23D38A9A00BBF83B /* MVVMDiffableCollectionViewController+Register.swift */,
 				A3778C6553845886F79080FDF8BB2AF6 /* WeakReference.swift */,
 			);
 			name = Utils;
@@ -479,6 +482,7 @@
 			files = (
 				B72C9768931A1008DCE15DDD3D308AB0 /* BaseDelegatingViewModel.swift in Sources */,
 				2DB067DB23B0B3710051C480 /* AnyTableViewBinder.swift in Sources */,
+				2D96A63D23D38A9A00BBF83B /* MVVMDiffableCollectionViewController+Register.swift in Sources */,
 				35A8AE5B3058E690B8F63E7EA2537063 /* Binder.swift in Sources */,
 				66637A5E367A86F184CC1C701B1DB284 /* CollectionViewViewModel.swift in Sources */,
 				22D295641C3149CDC03002067A22ED1B /* CollectionViewViewModelOwner.swift in Sources */,

@@ -39,16 +39,15 @@ class DiffableCollectionViewController: MVVMDiffableCollectionViewController<Dif
     private func setupCollectionView() {
         collectionView.register(SimpleCell.nib, forCellWithReuseIdentifier: SimpleCell.identifier)
         
-        collectionView.register(
-            HeaderFooterReusableView.nib,
-            forSupplementaryViewOfKind: SupplementaryViewKind.header.rawValue,
+        register(
+            nib: HeaderFooterReusableView.nib,
+            forSupplementaryViewOfKind: .header,
             withReuseIdentifier: HeaderFooterReusableView.identifier)
         
-        collectionView.register(
-            HeaderFooterReusableView.nib,
-            forSupplementaryViewOfKind: SupplementaryViewKind.footer.rawValue,
+        register(
+            nib: HeaderFooterReusableView.nib,
+            forSupplementaryViewOfKind: .footer,
             withReuseIdentifier: HeaderFooterReusableView.identifier)
-        
         
         let layout = UICollectionViewCompositionalLayout { (sectionIndex, _) -> NSCollectionLayoutSection? in
             switch sectionIndex {
