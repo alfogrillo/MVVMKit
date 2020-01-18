@@ -28,7 +28,7 @@ import UIKit
  A convenience class for a view controller handling a UITableView.
  The class fully implements the UITableViewDataSource.
  */
-open class MVVMTableViewController<Model: TableViewViewModel>: UIViewController, TableViewViewModelOwner, UITableViewDataSource, UITableViewDelegate {
+open class MVVMTableViewController<ViewModelType: TableViewViewModel>: UIViewController, TableViewViewModelOwner, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet public weak var tableView: UITableView! {
         didSet {
@@ -39,22 +39,22 @@ open class MVVMTableViewController<Model: TableViewViewModel>: UIViewController,
     
     // MARK: - CustomViewModelConfigurable
     
-    public typealias CustomViewModel = Model
+    public typealias CustomViewModel = ViewModelType
     
     /// Override this method to bind your view model to the view
-    open func bind(viewModel: Model) {
+    open func bind(viewModel: ViewModelType) {
         
     }
     
     /**
      The view controller view model
      */
-    open var viewModel: Model? {
-        didSet { viewModel?.binder = self }
-    }
-    
-    public var sections: [SectionViewModel] {
-        return viewModel?.sections ?? []
+    open var viewModel: ViewModelType? {
+        /*
+            The cast isn't really needed here, but for some reason the compiler won't build without it.
+            This issue doesn't seem to affect subclasses.
+         */
+        didSet { viewModel?.binder = AnyTableViewBinder<ViewModelType>(self) as? ViewModelType.BinderType }
     }
     
     // MARK: - UITableViewDataSource
@@ -297,5 +297,11 @@ open class MVVMTableViewController<Model: TableViewViewModel>: UIViewController,
     
     open func scrollViewDidChangeAdjustedContentInset(_ scrollView: UIScrollView) {
         
+    }
+}
+
+private extension MVVMTableViewController {
+    private var sections: [SectionViewModel] {
+        return viewModel?.sections ?? []
     }
 }

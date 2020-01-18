@@ -26,8 +26,8 @@ import MVVMKit
 
 class GiphyMasterDetailViewModel: CoordinatedBaseDelegatingViewModel {
     typealias CoordinatorType = GiphyMasterDetailCoordinator
+    var binder: AnyBinder<GiphyMasterDetailViewModel>?
     var coordinator: GiphyMasterDetailCoordinator
-    var weakBinder: WeakReference<Binder>?
     
     struct Model {
         var selectedGif: GiphyResult? = nil

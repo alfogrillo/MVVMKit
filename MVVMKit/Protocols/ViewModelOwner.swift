@@ -37,3 +37,10 @@ public extension ViewModelOwner {
         bind(viewModel: viewModel)
     }
 }
+
+internal extension ViewModelOwner where Self: UIViewController {
+    func bindIfViewLoaded() {
+        guard isViewLoaded else { return }
+        bind()
+    }
+}

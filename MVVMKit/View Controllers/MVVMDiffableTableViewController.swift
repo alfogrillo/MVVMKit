@@ -30,23 +30,26 @@ import Combine
  The class fully implements the data source of the UITableView using a UICollectionViewDiffableDataSource.
  */
 @available(iOS 13.0, *)
-open class MVVMDiffableTableViewController<Model: DiffableTableViewViewModel>: UIViewController, ViewModelOwner, UITableViewDelegate {
-    public typealias CustomViewModel = Model
+open class MVVMDiffableTableViewController<ViewModelType: DiffableTableViewViewModel>: UIViewController, ViewModelOwner, UITableViewDelegate {
+    public typealias CustomViewModel = ViewModelType
     
     @IBOutlet public weak var tableView: UITableView! {
         didSet { tableView.delegate = self }
     }
-    public var viewModel: Model?
-    public private(set) var dataSource: UITableViewDiffableDataSource<Model.SectionType, ReusableViewViewModelAdapter>!
+    public var viewModel: ViewModelType? {
+        didSet { bindIfViewLoaded() }
+    }
+    public private(set) var dataSource: UITableViewDiffableDataSource<ViewModelType.SectionType, ReusableViewViewModelAdapter>!
     
     private var dataSourceSubscription: AnyCancellable?
     
     override open func viewDidLoad() {
         super.viewDidLoad()
         setupDataSource()
+        bind()
     }
     
-    open func bind(viewModel: Model) {
+    open func bind(viewModel: ViewModelType) {
         dataSourceSubscription = viewModel.snapshotPublisher
             .receive(on: DispatchQueue.diffingQueue)
             .sink { [weak self] snapshotAdapter in

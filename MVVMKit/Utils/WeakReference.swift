@@ -23,13 +23,8 @@
  */
 
 /// A wrapper of a weak reference.
-public struct WeakReference<T> {
-    private weak var privateRef: AnyObject?
-    
-    public var object: T? {
-        get { return privateRef as? T }
-        set { privateRef = newValue as AnyObject }
-    }
+public struct WeakReference<T: AnyObject> {
+    public weak var object: T?
     
     public init(_ ref: T? = nil) {
         object = ref
