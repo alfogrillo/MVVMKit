@@ -40,33 +40,32 @@ public protocol DiffableCollectionViewViewModel: ReferenceViewModel {
     var snapshotPublisher: PassthroughSubject<SnapshotAdapter, Never> { get }
 }
 
-// MARK: - Section
+// MARK: - Section definition
 
 /**
  A protocol describing a section suitable with a UICollectionViewDiffableDataSource
  */
 @available(iOS 13.0, *)
 public protocol DiffableCollectionViewSection: Hashable {
-    associatedtype SupplementaryViewKind: RawRepresentable & Hashable = Never where SupplementaryViewKind.RawValue == String
+    associatedtype SupplementaryViewKind: RawRepresentable & Hashable = None where SupplementaryViewKind.RawValue == String
     
     var supplementaryViewViewModels: [SupplementaryViewKind: ReusableViewViewModel] { get }
 }
 
 @available(iOS 13.0, *)
-public extension DiffableCollectionViewSection where SupplementaryViewKind == Never {
+public extension DiffableCollectionViewSection where SupplementaryViewKind == None {
     var supplementaryViewViewModels: [SupplementaryViewKind: ReusableViewViewModel] {
         [:]
     }
 }
 
-extension Never: RawRepresentable {
+/**
+ A type placeholder for `DiffableCollectionViewSection` without supplementary views
+ */
+public enum None: RawRepresentable, Hashable {
     public typealias RawValue = String
-    public init?(rawValue: Self.RawValue) {
-        nil
-    }
-    public var rawValue: String {
-        String(describing: self)
-    }
+    public init?(rawValue: Self.RawValue) { nil }
+    public var rawValue: String { String(describing: self) }
 }
 
 #endif

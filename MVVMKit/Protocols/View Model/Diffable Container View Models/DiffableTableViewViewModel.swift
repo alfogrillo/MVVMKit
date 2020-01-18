@@ -40,7 +40,7 @@ public protocol DiffableTableViewViewModel: ReferenceViewModel {
     var snapshotPublisher: PassthroughSubject<SnapshotAdapter, Never> { get }
 }
 
-// MARK: - Section
+// MARK: - Section definition
 
 /**
 A protocol describing a section suitable with a UITableViewDiffableDataSource
