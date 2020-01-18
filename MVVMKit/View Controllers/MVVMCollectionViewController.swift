@@ -28,28 +28,28 @@ import UIKit
  A convenience class for a view controller handling a UICollectionView.
  The class fully implements the UICollectionViewDataSource.
  */
-open class MVVMCollectionViewController<Model: CollectionViewViewModel>: UIViewController, CollectionViewViewModelOwner, UICollectionViewDataSource {
+open class MVVMCollectionViewController<ViewModelType: CollectionViewViewModel>: UIViewController, CollectionViewViewModelOwner, UICollectionViewDataSource {
     
     @IBOutlet public weak var collectionView: UICollectionView! {
         didSet { collectionView.dataSource = self }
     }
     
-    public typealias CustomViewModel = Model
+    public typealias CustomViewModel = ViewModelType
     
     /// Override this method to bind your view model to the view
-    open func bind(viewModel: Model) {
+    open func bind(viewModel: ViewModelType) {
         
     }
     
     /**
      The view controller view model
      */
-    open var viewModel: Model? {
+    open var viewModel: ViewModelType? {
         /*
             The cast isn't really needed here, but for some reason the compiler won't build without it.
             This issue doesn't seem to affect subclasses.
          */
-        didSet { viewModel?.binder = AnyCollectionViewBinder(self) as? Model.BinderType }
+        didSet { viewModel?.binder = AnyCollectionViewBinder(self) as? ViewModelType.BinderType }
     }
     
     // MARK: - UICollectionViewDataSource

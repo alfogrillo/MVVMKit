@@ -28,7 +28,7 @@ import UIKit
  A convenience class for a view controller handling a UITableView.
  The class fully implements the UITableViewDataSource.
  */
-open class MVVMTableViewController<Model: TableViewViewModel>: UIViewController, TableViewViewModelOwner, UITableViewDataSource, UITableViewDelegate {
+open class MVVMTableViewController<ViewModelType: TableViewViewModel>: UIViewController, TableViewViewModelOwner, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet public weak var tableView: UITableView! {
         didSet {
@@ -39,22 +39,22 @@ open class MVVMTableViewController<Model: TableViewViewModel>: UIViewController,
     
     // MARK: - CustomViewModelConfigurable
     
-    public typealias CustomViewModel = Model
+    public typealias CustomViewModel = ViewModelType
     
     /// Override this method to bind your view model to the view
-    open func bind(viewModel: Model) {
+    open func bind(viewModel: ViewModelType) {
         
     }
     
     /**
      The view controller view model
      */
-    open var viewModel: Model? {
+    open var viewModel: ViewModelType? {
         /*
             The cast isn't really needed here, but for some reason the compiler won't build without it.
             This issue doesn't seem to affect subclasses.
          */
-        didSet { viewModel?.binder = AnyTableViewBinder<Model>(self) as? Model.BinderType }
+        didSet { viewModel?.binder = AnyTableViewBinder<ViewModelType>(self) as? ViewModelType.BinderType }
     }
     
     // MARK: - UITableViewDataSource

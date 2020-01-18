@@ -30,14 +30,14 @@ import Combine
  The class fully implements the data source of the UICollectionView using a UICollectionViewDiffableDataSource.
  */
 @available(iOS 13.0, *)
-open class MVVMDiffableCollectionViewController<Model: DiffableCollectionViewViewModel>: UIViewController, ViewModelOwner {
-    public typealias CustomViewModel = Model
+open class MVVMDiffableCollectionViewController<ViewModelType: DiffableCollectionViewViewModel>: UIViewController, ViewModelOwner {
+    public typealias CustomViewModel = ViewModelType
     
     @IBOutlet public weak var collectionView: UICollectionView!
-    public var viewModel: Model? {
+    public var viewModel: ViewModelType? {
         didSet { bindIfViewLoaded() }
     }
-    public private(set) var dataSource: UICollectionViewDiffableDataSource<Model.SectionType, ReusableViewViewModelAdapter>!
+    public private(set) var dataSource: UICollectionViewDiffableDataSource<ViewModelType.SectionType, ReusableViewViewModelAdapter>!
     
     private var dataSourceSubscription: AnyCancellable?
     
@@ -47,7 +47,7 @@ open class MVVMDiffableCollectionViewController<Model: DiffableCollectionViewVie
         bind()
     }
     
-    open func bind(viewModel: Model) {
+    open func bind(viewModel: ViewModelType) {
         dataSourceSubscription = viewModel.snapshotPublisher
             .receive(on: DispatchQueue.diffingQueue)
             .sink { [weak self] snapshotAdapter in
