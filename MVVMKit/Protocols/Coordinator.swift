@@ -27,15 +27,14 @@ import UIKit
 /**
  A convenience base protocol for coordinators
  */
-public protocol Coordinator: class {
+public protocol Coordinator {
     associatedtype ViewController: UIViewController
-    var weakSourceViewController: WeakReference<ViewController>? { get set }
+    var weakSourceViewController: WeakReference<ViewController> { get }
 }
 
 public extension Coordinator {
-    // A convenience property to get and set the source view controller
+    /// A convenience property to get the source view controller
     var sourceViewController: ViewController? {
-        get { return weakSourceViewController?.object }
-        set { weakSourceViewController = WeakReference(newValue) }
+        weakSourceViewController.object
     }
 }

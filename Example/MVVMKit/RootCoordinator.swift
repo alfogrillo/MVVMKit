@@ -25,10 +25,10 @@
 import MVVMKit
 
 class RootCoordinator: Coordinator {
-    var weakSourceViewController: WeakReference<UIViewController>?
+    let weakSourceViewController: WeakReference<UIViewController>
     
     init(sourceViewController viewController: UIViewController) {
-        sourceViewController = viewController
+        weakSourceViewController = .init(viewController)
     }
     
     func didSelectBasicViewController(model: BasicModel) {
