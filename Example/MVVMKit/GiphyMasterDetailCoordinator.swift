@@ -25,10 +25,10 @@
 import MVVMKit
 
 class GiphyMasterDetailCoordinator: Coordinator {
-    var weakSourceViewController: WeakReference<UIViewController>?
+    let weakSourceViewController: WeakReference<UIViewController>
     
     init(sourceViewController viewController: UIViewController) {
-        sourceViewController = viewController
+        weakSourceViewController = .init(viewController)
     }
     
     var embeddedViewController: GiphyViewController{

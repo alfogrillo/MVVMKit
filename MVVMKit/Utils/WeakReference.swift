@@ -24,7 +24,7 @@
 
 /// A wrapper of a weak reference.
 public struct WeakReference<T: AnyObject> {
-    public weak var object: T?
+    public private(set) weak var object: T?
     
     public init(_ ref: T? = nil) {
         object = ref
