@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'MVVMKit'
-  s.version          = '2.0.0'
+  s.version          = '2.1.0'
   s.summary          = 'The MVVM pattern protocol oriented'
   s.homepage         = 'https://github.com/drakon-ag/MVVMKit'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
