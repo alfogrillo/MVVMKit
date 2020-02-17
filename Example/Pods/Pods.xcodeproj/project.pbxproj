@@ -38,7 +38,6 @@
 		5A92F49C08CD28DC24AA713F10781A05 /* TableViewViewModelOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011952ABF11D576CB381AD3D2E1F4A98 /* TableViewViewModelOwner.swift */; };
 		63A2378953030567870E39696A8B5F66 /* Delegator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A24BFB7E71EF0A6974D34B221F8598 /* Delegator.swift */; };
 		66637A5E367A86F184CC1C701B1DB284 /* CollectionViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779E8C9DD8799681F0D632FDA8791794 /* CollectionViewViewModel.swift */; };
-		7352ED1EB47F7CEAF6D7FBE3E95EE4DD /* CoordinatedReactiveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175FFE43CDB446D76CCB6F19F73C155B /* CoordinatedReactiveViewModel.swift */; };
 		73A0B466DC132624DA222C7A7B71C341 /* MVVMDiffableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C872466F2D2688BA82B2268F1B68232F /* MVVMDiffableTableViewController.swift */; };
 		785E7689E76F6F986E9A56537A6A7A36 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
 		79E76349C07ADBF8C2BC32EEB6C6E135 /* WeakReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3778C6553845886F79080FDF8BB2AF6 /* WeakReference.swift */; };
@@ -81,7 +80,6 @@
 		1083D3BCBF6F9E736E18C115AF5C0DA5 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		10C51CC07C3359496F2EBF8A6BE1E748 /* DelegatingViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DelegatingViewModel.swift; sourceTree = "<group>"; };
 		147C03E18C3BB63934D5FBCB710735B4 /* DiffableCollectionViewViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DiffableCollectionViewViewModel.swift; sourceTree = "<group>"; };
-		175FFE43CDB446D76CCB6F19F73C155B /* CoordinatedReactiveViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CoordinatedReactiveViewModel.swift; sourceTree = "<group>"; };
 		176DEFE429E6F53F7DC1C6FB713B4830 /* MVVMKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = MVVMKit.modulemap; sourceTree = "<group>"; };
 		1847DEBB8C8E5C231BF19E145101858C /* MVVMKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MVVMKit-dummy.m"; sourceTree = "<group>"; };
 		267EEE90A5A3EEB674F0A626E92A5382 /* MVVMKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = MVVMKit.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -272,7 +270,6 @@
 		C68D9203AED6073C65D3434F5A6CA107 /* Diffable Container View Models */ = {
 			isa = PBXGroup;
 			children = (
-				175FFE43CDB446D76CCB6F19F73C155B /* CoordinatedReactiveViewModel.swift */,
 				147C03E18C3BB63934D5FBCB710735B4 /* DiffableCollectionViewViewModel.swift */,
 				37F7FB9753C21BDE3DCD1213C3F51DED /* DiffableTableViewViewModel.swift */,
 				E9CA93F98D0395FE918EFF2C2A4BB782 /* ReusableViewViewModelAdapter.swift */,
@@ -483,7 +480,6 @@
 				66637A5E367A86F184CC1C701B1DB284 /* CollectionViewViewModel.swift in Sources */,
 				22D295641C3149CDC03002067A22ED1B /* CollectionViewViewModelOwner.swift in Sources */,
 				B1F0BB19477D3214F86B4E8B7D789ECC /* CoordinatedDelegatingViewModel.swift in Sources */,
-				7352ED1EB47F7CEAF6D7FBE3E95EE4DD /* CoordinatedReactiveViewModel.swift in Sources */,
 				2DB067DD23B0B37A0051C480 /* AnyCollectionViewBinder.swift in Sources */,
 				2DB067D923B0B30C0051C480 /* AnyBinder.swift in Sources */,
 				46CFA6AC77CBBB6D3A1FE715469EA455 /* Coordinator.swift in Sources */,
