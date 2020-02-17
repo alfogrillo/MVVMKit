@@ -24,7 +24,7 @@
 
 import MVVMKit
 
-class GiphyMasterDetailViewModel: CoordinatedBaseDelegatingViewModel {
+class GiphyMasterDetailViewModel: DelegatingViewModel, CoordinatorOwner {
     typealias CoordinatorType = GiphyMasterDetailCoordinator
     var binder: AnyBinder<GiphyMasterDetailViewModel>?
     var coordinator: GiphyMasterDetailCoordinator

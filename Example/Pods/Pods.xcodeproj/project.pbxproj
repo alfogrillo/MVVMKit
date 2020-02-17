@@ -44,7 +44,6 @@
 		7D24D477DCB721835D0F7C0B4E4E0509 /* MVVMKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1847DEBB8C8E5C231BF19E145101858C /* MVVMKit-dummy.m */; };
 		B0589F08382566F8CCBFB7096CB7ED36 /* CoordinatorOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6389A4C7305E28A6573AB548CB77B096 /* CoordinatorOwner.swift */; };
 		B16711191AF97A868B0D4D4FD7119FB3 /* MVVMCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80E5BCBEB8FBF2793946848FC2B125B /* MVVMCollectionViewController.swift */; };
-		B1F0BB19477D3214F86B4E8B7D789ECC /* CoordinatedDelegatingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B957C8F0E0CFBAFA702A1D13BF1C89 /* CoordinatedDelegatingViewModel.swift */; };
 		B72C9768931A1008DCE15DDD3D308AB0 /* BaseDelegatingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AB103D6D853A09993C1239B3BE21A /* BaseDelegatingViewModel.swift */; };
 		C9802F4643783BD477127AAB1027CF40 /* ReusableViewViewModelAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CA93F98D0395FE918EFF2C2A4BB782 /* ReusableViewViewModelAdapter.swift */; };
 		CAEAA6016ECCDB9D241FF3F6B585814C /* MVVMKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D62D045431C219AB7574A08889BEBD95 /* MVVMKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -123,7 +122,6 @@
 		E412029DAD3BD9D82DC3D6504A2B5484 /* Pods-MVVMKit_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MVVMKit_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		E427DF622C8453CE180733AE5CD0939D /* Pods-MVVMKit_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MVVMKit_Example-dummy.m"; sourceTree = "<group>"; };
 		E9CA93F98D0395FE918EFF2C2A4BB782 /* ReusableViewViewModelAdapter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ReusableViewViewModelAdapter.swift; sourceTree = "<group>"; };
-		F1B957C8F0E0CFBAFA702A1D13BF1C89 /* CoordinatedDelegatingViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CoordinatedDelegatingViewModel.swift; sourceTree = "<group>"; };
 		FE5691435A23734721C2E7B6D1BE3CBD /* MVVMKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "MVVMKit-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -208,7 +206,6 @@
 			children = (
 				847AB103D6D853A09993C1239B3BE21A /* BaseDelegatingViewModel.swift */,
 				3B1EC3B958338864EE3D31D56D19FD3E /* CollectionViewViewModelOwner.swift */,
-				F1B957C8F0E0CFBAFA702A1D13BF1C89 /* CoordinatedDelegatingViewModel.swift */,
 				10C51CC07C3359496F2EBF8A6BE1E748 /* DelegatingViewModel.swift */,
 				011952ABF11D576CB381AD3D2E1F4A98 /* TableViewViewModelOwner.swift */,
 				D635BEF581083C3034CBC3CD8714700E /* Container View Models */,
@@ -479,7 +476,6 @@
 				35A8AE5B3058E690B8F63E7EA2537063 /* Binder.swift in Sources */,
 				66637A5E367A86F184CC1C701B1DB284 /* CollectionViewViewModel.swift in Sources */,
 				22D295641C3149CDC03002067A22ED1B /* CollectionViewViewModelOwner.swift in Sources */,
-				B1F0BB19477D3214F86B4E8B7D789ECC /* CoordinatedDelegatingViewModel.swift in Sources */,
 				2DB067DD23B0B37A0051C480 /* AnyCollectionViewBinder.swift in Sources */,
 				2DB067D923B0B30C0051C480 /* AnyBinder.swift in Sources */,
 				46CFA6AC77CBBB6D3A1FE715469EA455 /* Coordinator.swift in Sources */,
