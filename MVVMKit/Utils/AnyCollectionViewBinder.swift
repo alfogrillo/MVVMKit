@@ -24,7 +24,7 @@
 
 private class AnyCollectionViewBinderBase<V: CollectionViewViewModel>: CollectionViewBinder {
     func bind(viewModel: V) { }
-    func bind(viewModel: V, update: CollectionViewUpdate?) { }
+    func bind(viewModel: V, update: CollectionViewUpdate) { }
 }
 
 private final class AnyCollectionViewBinderBox<B: CollectionViewBinder>: AnyCollectionViewBinderBase<B.CustomViewModel> {
@@ -38,8 +38,8 @@ private final class AnyCollectionViewBinderBox<B: CollectionViewBinder>: AnyColl
         base?.bind(viewModel: viewModel)
     }
     
-    override func bind(viewModel: B.CustomViewModel, update viewChange: CollectionViewUpdate?) {
-        base?.bind(viewModel: viewModel, update: viewChange)
+    override func bind(viewModel: B.CustomViewModel, update: CollectionViewUpdate) {
+        base?.bind(viewModel: viewModel, update: update)
     }
 }
 
@@ -58,7 +58,7 @@ public final class AnyCollectionViewBinder<V: CollectionViewViewModel>: Collecti
         box.bind(viewModel: viewModel)
     }
     
-    public func bind(viewModel: V, update: CollectionViewUpdate?) {
+    public func bind(viewModel: V, update: CollectionViewUpdate) {
         box.bind(viewModel: viewModel, update: update)
     }
 }

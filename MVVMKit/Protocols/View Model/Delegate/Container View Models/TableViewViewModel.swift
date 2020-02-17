@@ -36,7 +36,7 @@ public protocol TableViewViewModel: DelegatingViewModel where BinderType == AnyT
  A `TableViewBinder` is responsible to bind the view models of reusable view (cells, headers, footers).
  */
 public protocol TableViewBinder: CustomBinder where CustomViewModel: TableViewViewModel {
-    func bind(viewModel: CustomViewModel, update: TableViewUpdate?)
+    func bind(viewModel: CustomViewModel, update: TableViewUpdate)
 }
 
 /// An enum describing what should be updated inside a table view
@@ -54,14 +54,9 @@ public enum TableViewUpdate {
 }
 
 public extension TableViewBinder where Self: TableViewViewModelOwner {
-    func bind(viewModel: CustomViewModel, update: TableViewUpdate?) {
-        defer { bind(viewModel: viewModel) }
-        
-        guard let change = update else {
-            return
-        }
-        
-        handle(update: change, with: tableView)
+    func bind(viewModel: CustomViewModel, update: TableViewUpdate) {
+        handle(update: update, with: tableView)
+        bind(viewModel: viewModel)
     }
 }
 
