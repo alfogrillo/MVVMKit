@@ -59,7 +59,7 @@ class ColorsViewModel: TableViewViewModel {
     
     func didSelectColor(at index: Int) {
         model.selectedColor = model.colors[index]
-        binder?.bind(viewModel: self, update: nil)
+        binder?.bind(viewModel: self)
     }
     
     func invertColor(at index: Int) {
