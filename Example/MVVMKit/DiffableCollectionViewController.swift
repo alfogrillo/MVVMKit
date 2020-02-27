@@ -49,6 +49,10 @@ class DiffableCollectionViewController: MVVMDiffableCollectionViewController<Dif
             forSupplementaryViewOfKind: SupplementaryViewKind.footer.rawValue,
             withReuseIdentifier: HeaderFooterReusableView.identifier)
         
+        collectionView.register(
+            BadgeReusableView.nib,
+            forSupplementaryViewOfKind: SupplementaryViewKind.badge.rawValue,
+            withReuseIdentifier: BadgeReusableView.identifier)
         
         let layout = UICollectionViewCompositionalLayout { (sectionIndex, _) -> NSCollectionLayoutSection? in
             switch sectionIndex {
@@ -77,7 +81,14 @@ private extension DiffableCollectionViewController {
             widthDimension: .fractionalWidth(1.0),
             heightDimension: .fractionalHeight(1.0))
         
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        // Item supplementary view
+        let itemSupplementarySize = NSCollectionLayoutSize(widthDimension: .estimated(50), heightDimension: .absolute(25))
+        let itemSupplementaryView = NSCollectionLayoutSupplementaryItem(
+            layoutSize: itemSupplementarySize,
+            elementKind: SupplementaryViewKind.badge.rawValue,
+            containerAnchor: .init(edges: [.top, .trailing], absoluteOffset: .init(x: -4, y: 4)))
+        
+        let item = NSCollectionLayoutItem(layoutSize: itemSize, supplementaryItems: [itemSupplementaryView])
         
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),

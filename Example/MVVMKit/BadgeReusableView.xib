@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="U6b-Vx-4bR" customClass="BadgeReusableView" customModule="MVVMKit_Example" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="323" height="92"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rZR-ar-hSj">
+                    <rect key="frame" x="0.0" y="0.0" width="323" height="92"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sCs-4p-WwO">
+                            <rect key="frame" x="4" y="4" width="315" height="84"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="sCs-4p-WwO" secondAttribute="bottom" constant="4" id="QxV-QF-Leh"/>
+                        <constraint firstItem="sCs-4p-WwO" firstAttribute="top" secondItem="rZR-ar-hSj" secondAttribute="top" constant="4" id="Xr4-cW-bPu"/>
+                        <constraint firstItem="sCs-4p-WwO" firstAttribute="leading" secondItem="rZR-ar-hSj" secondAttribute="leading" constant="4" id="ZQk-36-LSW"/>
+                        <constraint firstAttribute="trailing" secondItem="sCs-4p-WwO" secondAttribute="trailing" constant="4" id="vzk-o4-CsD"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="rZR-ar-hSj" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" id="KHE-Hu-IuM"/>
+                <constraint firstItem="rZR-ar-hSj" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" id="KQy-9F-fLj"/>
+                <constraint firstAttribute="bottom" secondItem="rZR-ar-hSj" secondAttribute="bottom" id="XCe-If-cDG"/>
+                <constraint firstAttribute="trailing" secondItem="rZR-ar-hSj" secondAttribute="trailing" id="d3j-41-GHU"/>
+            </constraints>
+            <connections>
+                <outlet property="label" destination="sCs-4p-WwO" id="uf4-Ve-ZSJ"/>
+            </connections>
+            <point key="canvasLocation" x="139.85507246376812" y="139.95535714285714"/>
+        </collectionReusableView>
+    </objects>
+</document>

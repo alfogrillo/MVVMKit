@@ -32,32 +32,23 @@ A protocol describing a view model publishing snapshots feeding a UITableViewDif
 */
 @available(iOS 13.0, *)
 public protocol DiffableTableViewViewModel: ReferenceViewModel {
-    associatedtype SectionType: DiffableTableViewSection
+    associatedtype SectionType: Hashable
     
     typealias Snapshot = NSDiffableDataSourceSnapshot<SectionType, ReusableViewViewModelAdapter>
     typealias SnapshotAdapter = SnapshotUpdate<SectionType, ReusableViewViewModelAdapter>
     
     var snapshotPublisher: PassthroughSubject<SnapshotAdapter, Never> { get }
-}
-
-// MARK: - Section
-
-/**
-A protocol describing a section suitable with a UITableViewDiffableDataSource
-*/
-@available(iOS 13.0, *)
-public protocol DiffableTableViewSection: Hashable {
-    var headerViewModel: ReusableViewViewModel? { get }
-    var footerViewModel: ReusableViewViewModel? { get }
+    func headerViewModel(for section: SectionType, at sectionIndex: Int) -> ReusableViewViewModel?
+    func footerViewModel(for section: SectionType, at section: Int) -> ReusableViewViewModel?
 }
 
 @available(iOS 13.0, *)
-public extension DiffableTableViewSection {
-    var headerViewModel: ReusableViewViewModel? {
+public extension DiffableTableViewViewModel {
+    func headerViewModel(for section: SectionType, at sectionIndex: Int) -> ReusableViewViewModel? {
         nil
     }
     
-    var footerViewModel: ReusableViewViewModel? {
+    func footerViewModel(for section: SectionType, at sectionIndex: Int) -> ReusableViewViewModel? {
         nil
     }
 }

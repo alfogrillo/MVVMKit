@@ -67,7 +67,7 @@ open class MVVMDiffableCollectionViewController<ViewModelType: DiffableCollectio
         dataSource.supplementaryViewProvider = { [weak self] (collectionView, kind, indexPath) in
             guard let self = self else { return nil }
             let section = self.dataSource.snapshot().sectionIdentifiers[indexPath.section]
-            if let viewModel = section.supplementaryViewViewModels[kind] {
+            if let viewModel = self.viewModel?.supplementaryViewViewModel(in: section, forKind: kind, at: indexPath) {
                 let reusableView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: viewModel.identifier, for: indexPath)
                 self.configureDelegate(of: reusableView)
                 self.configure(view: reusableView, with: viewModel)

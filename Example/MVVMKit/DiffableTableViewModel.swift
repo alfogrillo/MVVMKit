@@ -56,21 +56,15 @@ class DiffableTableViewModel: DiffableTableViewViewModel {
         updateSnapshot()
     }
     
-    enum Section: DiffableTableViewSection {
+    func headerViewModel(for section: Section, at sectionIndex: Int) -> ReusableViewViewModel? {
+        TableHeaderViewModel(text: "Header \(section)")
+    }
+    
+    func footerViewModel(for section: Section, at sectionIndex: Int) -> ReusableViewViewModel? {
+        TableHeaderViewModel(text: "Footer \(section)")
+    }
+    
+    enum Section {
         case main
-        
-        var headerViewModel: ReusableViewViewModel? {
-            switch self {
-            case .main:
-                return TableHeaderViewModel(text: "Header")
-            }
-        }
-        
-        var footerViewModel: ReusableViewViewModel? {
-            switch self {
-            case .main:
-                return TableHeaderViewModel(text: "Footer")
-            }
-        }
     }
 }

@@ -1,7 +1,7 @@
 /*
- DiffableCollectionViewViewModel.swift
+ BadgeReusableView.swift
  
- Copyright (c) 2019 Alfonso Grillo
+ Copyright (c) 2020 Alfonso Grillo
  
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -22,30 +22,24 @@
  THE SOFTWARE.
  */
 
-#if canImport(Combine)
+import MVVMKit
 
-import UIKit
-import Combine
-
-/**
- A protocol describing a view model publishing snapshots feeding a UICollectionViewDiffableDataSource
- */
-@available(iOS 13.0, *)
-public protocol DiffableCollectionViewViewModel: ReferenceViewModel {
-    associatedtype SectionType: Hashable
+struct BadgeReusableViewViewModel: ReusableViewViewModel {
+    let identifier: String = BadgeReusableView.identifier
     
-    typealias Snapshot = NSDiffableDataSourceSnapshot<SectionType, ReusableViewViewModelAdapter>
-    typealias SnapshotAdapter = SnapshotUpdate<SectionType, ReusableViewViewModelAdapter>
-    
-    var snapshotPublisher: PassthroughSubject<SnapshotAdapter, Never> { get }
-    func supplementaryViewViewModel(in section: SectionType, forKind kind: String, at indexPath: IndexPath) -> ReusableViewViewModel?
+    let text: String?
 }
 
-@available(iOS 13.0, *)
-public extension DiffableCollectionViewViewModel {
-    func supplementaryViewViewModel(in section: SectionType, forKind kind: String, at indexPath: IndexPath) -> ReusableViewViewModel? {
-        nil
+class BadgeReusableView: UICollectionReusableView, CustomBinder {
+    typealias CustomViewModel = BadgeReusableViewViewModel
+    @IBOutlet private weak var label: UILabel!
+    
+    func bind(viewModel: BadgeReusableViewViewModel) {
+        label.text = viewModel.text
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        layer.cornerRadius = min(bounds.height/2, bounds.width/2)
     }
 }
-
-#endif

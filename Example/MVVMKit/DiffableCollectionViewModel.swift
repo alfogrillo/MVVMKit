@@ -68,30 +68,33 @@ class DiffableCollectionViewModel: DiffableCollectionViewViewModel {
         snapshotPublisher.send(snapshot.adapted())
     }
     
-    enum Section: DiffableCollectionViewSection {
+    func supplementaryViewViewModel(in section: Section, forKind kind: String, at indexPath: IndexPath) -> ReusableViewViewModel? {
+        let headerText = "Header \(section)"
+        let footerText = "Footer \(section)"
+        let badgeText = String(model[indexPath.section][indexPath.row].text.prefix(3))
+        
+        switch kind {
+        case SupplementaryViewKind.header.rawValue:
+            return HeaderFooterReusableViewViewModel(text: headerText)
+        case SupplementaryViewKind.footer.rawValue:
+            return HeaderFooterReusableViewViewModel(text: footerText)
+        case SupplementaryViewKind.badge.rawValue:
+            return BadgeReusableViewViewModel(text: badgeText)
+        default:
+            return nil
+        }
+    }
+    
+    enum Section {
         case main
         case second
-        
-        var supplementaryViewViewModels: [String : ReusableViewViewModel] {
-            switch self {
-            case .main:
-                return [
-                    SupplementaryViewKind.header.rawValue: HeaderFooterReusableViewViewModel(text: "Main Header"),
-                    SupplementaryViewKind.footer.rawValue: HeaderFooterReusableViewViewModel(text: "Main Footer"),
-                ]
-            case .second:
-                return [
-                    SupplementaryViewKind.header.rawValue: HeaderFooterReusableViewViewModel(text: "Second Header"),
-                    SupplementaryViewKind.footer.rawValue: HeaderFooterReusableViewViewModel(text: "Second Footer")
-                ]
-            }
-        }
     }
 }
 
 enum SupplementaryViewKind: String {
     case header
     case footer
+    case badge
 }
 
 private extension Array where Element == DiffableCollectionViewModel.ModelEntry {
