@@ -68,7 +68,7 @@ class DiffableCollectionViewModel: DiffableCollectionViewViewModel {
         snapshotPublisher.send(snapshot.adapted())
     }
     
-    func supplementaryViewViewModel(in section: Section, forKind kind: String, at indexPath: IndexPath) -> ReusableViewViewModel? {
+    func supplementaryViewViewModel(for section: Section, forKind kind: String, at indexPath: IndexPath) -> ReusableViewViewModel? {
         let headerText = "Header \(section)"
         let footerText = "Footer \(section)"
         let badgeText = String(model[indexPath.section][indexPath.row].text.prefix(3))

@@ -38,12 +38,12 @@ public protocol DiffableCollectionViewViewModel: ReferenceViewModel {
     typealias SnapshotAdapter = SnapshotUpdate<SectionType, ReusableViewViewModelAdapter>
     
     var snapshotPublisher: PassthroughSubject<SnapshotAdapter, Never> { get }
-    func supplementaryViewViewModel(in section: SectionType, forKind kind: String, at indexPath: IndexPath) -> ReusableViewViewModel?
+    func supplementaryViewViewModel(for section: SectionType, forKind kind: String, at indexPath: IndexPath) -> ReusableViewViewModel?
 }
 
 @available(iOS 13.0, *)
 public extension DiffableCollectionViewViewModel {
-    func supplementaryViewViewModel(in section: SectionType, forKind kind: String, at indexPath: IndexPath) -> ReusableViewViewModel? {
+    func supplementaryViewViewModel(for section: SectionType, forKind kind: String, at indexPath: IndexPath) -> ReusableViewViewModel? {
         nil
     }
 }
