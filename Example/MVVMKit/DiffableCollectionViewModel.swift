@@ -79,7 +79,7 @@ class DiffableCollectionViewModel: DiffableCollectionViewViewModel {
         case SupplementaryViewKind.footer.rawValue:
             return HeaderFooterReusableViewViewModel(text: footerText)
         case SupplementaryViewKind.badge.rawValue:
-            return BadgeReusableViewViewModel(text: badgeText)
+            return BadgeReusableViewViewModel(isVisible: indexPath.row % 3 == 0, text: badgeText)
         default:
             return nil
         }

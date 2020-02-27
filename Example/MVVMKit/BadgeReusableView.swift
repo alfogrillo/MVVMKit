@@ -26,6 +26,7 @@ import MVVMKit
 
 struct BadgeReusableViewViewModel: ReusableViewViewModel {
     let identifier: String = BadgeReusableView.identifier
+    let isVisible: Bool
     
     let text: String?
 }
@@ -36,6 +37,7 @@ class BadgeReusableView: UICollectionReusableView, CustomBinder {
     
     func bind(viewModel: BadgeReusableViewViewModel) {
         label.text = viewModel.text
+        isHidden = !viewModel.isVisible
     }
     
     override func layoutSubviews() {
