@@ -28,7 +28,11 @@ import Combine
 class DiffableCollectionViewModel: DiffableCollectionViewViewModel {
     typealias SectionType = Section
     
-    let snapshotPublisher: PassthroughSubject<SnapshotAdapter, Never> = .init()
+    var snapshotPublisher: AnyPublisher<SnapshotAdapter, Never> {
+        snapshotSubject.eraseToAnyPublisher()
+    }
+    
+    private let snapshotSubject: PassthroughSubject<SnapshotAdapter, Never> = .init()
     
     struct ModelEntry {
         let id: UUID = .init()
@@ -65,7 +69,7 @@ class DiffableCollectionViewModel: DiffableCollectionViewViewModel {
             snapshot.appendItems(items2, toSection: .second)
         }
         
-        snapshotPublisher.send(snapshot.adapted())
+        snapshotSubject.send(snapshot.adapted())
     }
     
     func supplementaryViewViewModel(for section: Section, forKind kind: String, at indexPath: IndexPath) -> ReusableViewViewModel? {

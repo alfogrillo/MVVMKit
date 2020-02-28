@@ -37,7 +37,7 @@ public protocol DiffableCollectionViewViewModel: ReferenceViewModel {
     typealias Snapshot = NSDiffableDataSourceSnapshot<SectionType, ReusableViewViewModelAdapter>
     typealias SnapshotAdapter = SnapshotUpdate<SectionType, ReusableViewViewModelAdapter>
     
-    var snapshotPublisher: PassthroughSubject<SnapshotAdapter, Never> { get }
+    var snapshotPublisher: AnyPublisher<SnapshotAdapter, Never> { get }
     func supplementaryViewViewModel(for section: SectionType, forKind kind: String, at indexPath: IndexPath) -> ReusableViewViewModel?
 }
 

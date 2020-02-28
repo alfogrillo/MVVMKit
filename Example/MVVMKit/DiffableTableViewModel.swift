@@ -28,7 +28,11 @@ import Combine
 class DiffableTableViewModel: DiffableTableViewViewModel {
     typealias SectionType = Section
     
-    let snapshotPublisher: PassthroughSubject<SnapshotAdapter, Never> = .init()
+    var snapshotPublisher: AnyPublisher<SnapshotAdapter, Never> {
+        snapshotSubject.eraseToAnyPublisher()
+    }
+    
+    private let snapshotSubject: PassthroughSubject<SnapshotAdapter, Never> = .init()
     private var searchText: String = ""
     private var model = (1...50).map {_ in String.random(length: 10) }
     
@@ -48,7 +52,7 @@ class DiffableTableViewModel: DiffableTableViewViewModel {
             snapshot.appendItems(filteredModels, toSection: .main)
         }
         
-        snapshotPublisher.send(snapshot.adapted())
+        snapshotSubject.send(snapshot.adapted())
     }
     
     func searchTextDidChange(searchText: String) {
