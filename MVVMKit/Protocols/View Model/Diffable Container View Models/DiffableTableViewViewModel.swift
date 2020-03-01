@@ -39,7 +39,7 @@ public protocol DiffableTableViewViewModel: ReferenceViewModel {
     
     var snapshotPublisher: AnyPublisher<SnapshotAdapter, Never> { get }
     func headerViewModel(for section: SectionType, at sectionIndex: Int) -> ReusableViewViewModel?
-    func footerViewModel(for section: SectionType, at section: Int) -> ReusableViewViewModel?
+    func footerViewModel(for section: SectionType, at sectionIndex: Int) -> ReusableViewViewModel?
 }
 
 @available(iOS 13.0, *)

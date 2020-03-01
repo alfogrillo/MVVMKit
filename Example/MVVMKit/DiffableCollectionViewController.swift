@@ -28,7 +28,6 @@ class DiffableCollectionViewController: MVVMDiffableCollectionViewController<Dif
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
-        viewModel?.loadData()
     }
     
     func bind(viewModel: ViewModel) {
@@ -82,7 +81,7 @@ private extension DiffableCollectionViewController {
             heightDimension: .fractionalHeight(1.0))
         
         // Item supplementary view
-        let itemSupplementarySize = NSCollectionLayoutSize(widthDimension: .estimated(50), heightDimension: .absolute(25))
+        let itemSupplementarySize = NSCollectionLayoutSize(widthDimension: .absolute(30), heightDimension: .absolute(30))
         let itemSupplementaryView = NSCollectionLayoutSupplementaryItem(
             layoutSize: itemSupplementarySize,
             elementKind: SupplementaryViewKind.badge.rawValue,
@@ -90,11 +89,14 @@ private extension DiffableCollectionViewController {
         
         let item = NSCollectionLayoutItem(layoutSize: itemSize, supplementaryItems: [itemSupplementaryView])
         
+        let insetValue: CGFloat = 3
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
             heightDimension: .absolute(44))
         
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: columns)
+        group.interItemSpacing = .fixed(insetValue)
+        group.contentInsets = .init(top: 0, leading: insetValue, bottom: 0, trailing: insetValue)
         
         let section = NSCollectionLayoutSection(group: group)
         
@@ -112,6 +114,8 @@ private extension DiffableCollectionViewController {
         sectionHeader.pinToVisibleBounds = true
         sectionHeader.zIndex = 2
         section.boundarySupplementaryItems = [sectionHeader, sectionFooter]
+        section.interGroupSpacing = insetValue
+        section.contentInsets = .init(top: insetValue, leading: 0, bottom: insetValue, trailing: 0)
         return section
     }
 }

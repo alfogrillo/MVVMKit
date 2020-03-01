@@ -29,18 +29,14 @@ class DiffableTableViewModel: DiffableTableViewViewModel {
     typealias SectionType = Section
     
     var snapshotPublisher: AnyPublisher<SnapshotAdapter, Never> {
-        snapshotSubject.eraseToAnyPublisher()
+        searchText.map(snapshot(searchText:)).eraseToAnyPublisher()
     }
     
     private let snapshotSubject: PassthroughSubject<SnapshotAdapter, Never> = .init()
-    private var searchText: String = ""
-    private var model = (1...50).map {_ in String.random(length: 10) }
+    private let searchText: CurrentValueSubject<String, Never> = .init("")
+    private let model = (1...50).map { _ in String.random(length: 10) }
     
-    func loadData() {
-        updateSnapshot()
-    }
-    
-    private func updateSnapshot() {
+    private func snapshot(searchText: String) -> SnapshotAdapter {
         var snapshot = Snapshot()
     
         let filteredModels = model
@@ -52,12 +48,11 @@ class DiffableTableViewModel: DiffableTableViewViewModel {
             snapshot.appendItems(filteredModels, toSection: .main)
         }
         
-        snapshotSubject.send(snapshot.adapted())
+        return snapshot.adapted()
     }
     
     func searchTextDidChange(searchText: String) {
-        self.searchText = searchText
-        updateSnapshot()
+        self.searchText.value = searchText
     }
     
     func headerViewModel(for section: Section, at sectionIndex: Int) -> ReusableViewViewModel? {

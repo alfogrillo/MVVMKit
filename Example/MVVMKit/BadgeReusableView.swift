@@ -27,7 +27,6 @@ import MVVMKit
 struct BadgeReusableViewViewModel: ReusableViewViewModel {
     let identifier: String = BadgeReusableView.identifier
     let isVisible: Bool
-    
     let text: String?
 }
 

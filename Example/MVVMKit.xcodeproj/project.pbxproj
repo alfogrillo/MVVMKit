@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2D0E934D24083764001373AB /* BadgeReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0E934B24083764001373AB /* BadgeReusableView.swift */; };
 		2D0E934E24083764001373AB /* BadgeReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D0E934C24083764001373AB /* BadgeReusableView.xib */; };
+		2D12AFF5240C1DA4009946EE /* Collection+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D12AFF4240C1DA4009946EE /* Collection+.swift */; };
 		2D78AD4923A6504700797910 /* DiffableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D78AD4823A6504700797910 /* DiffableTableViewController.swift */; };
 		2D78AD4B23A6505100797910 /* DiffableTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D78AD4A23A6505100797910 /* DiffableTableViewModel.swift */; };
 		2D78AD4E23A6534500797910 /* TextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D78AD4D23A6534500797910 /* TextCell.swift */; };
@@ -56,6 +57,7 @@
 		10C228D194A3294F2714E5C8 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		2D0E934B24083764001373AB /* BadgeReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeReusableView.swift; sourceTree = "<group>"; };
 		2D0E934C24083764001373AB /* BadgeReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BadgeReusableView.xib; sourceTree = "<group>"; };
+		2D12AFF4240C1DA4009946EE /* Collection+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+.swift"; sourceTree = "<group>"; };
 		2D78AD4823A6504700797910 /* DiffableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffableTableViewController.swift; sourceTree = "<group>"; };
 		2D78AD4A23A6505100797910 /* DiffableTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffableTableViewModel.swift; sourceTree = "<group>"; };
 		2D78AD4D23A6534500797910 /* TextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCell.swift; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 				C012C0A22238FEA700BD5549 /* UIViewController+.swift */,
 				2D8B6D4423A579340062194E /* UIView+.swift */,
 				2D78AD4F23A6547E00797910 /* String+.swift */,
+				2D12AFF4240C1DA4009946EE /* Collection+.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -465,6 +468,7 @@
 				C0F340DA21B5E7CF00DDE19E /* RootViewController.swift in Sources */,
 				2D78AD4923A6504700797910 /* DiffableTableViewController.swift in Sources */,
 				C0A15A6321BBBED300A499C5 /* GiphyResponses.swift in Sources */,
+				2D12AFF5240C1DA4009946EE /* Collection+.swift in Sources */,
 				2D8B6D3823A573F40062194E /* DiffableCollectionViewController.swift in Sources */,
 				2DAA5F7923A6889100EFF2BF /* TableHeaderView.swift in Sources */,
 				C0F340D521B5E4B500DDE19E /* BasicViewController.swift in Sources */,
