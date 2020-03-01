@@ -54,12 +54,12 @@ class DiffableCollectionViewController: MVVMDiffableCollectionViewController<Dif
             forSupplementaryViewOfKind: SupplementaryViewKind.badge.rawValue,
             withReuseIdentifier: BadgeReusableView.identifier)
         
-        let layout = UICollectionViewCompositionalLayout { (sectionIndex, _) -> NSCollectionLayoutSection? in
+        let layout = UICollectionViewCompositionalLayout { [weak self] (sectionIndex, _) -> NSCollectionLayoutSection? in
             switch sectionIndex {
             case 0:
-                return self.listSection(columns: 1)
+                return self?.listSection(columns: 1)
             case 1:
-                return self.listSection(columns: 2)
+                return self?.listSection(columns: 2)
             default:
                 return nil
             }
