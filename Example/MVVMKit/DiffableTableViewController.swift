@@ -31,11 +31,6 @@ class DiffableTableViewController: MVVMDiffableTableViewController<DiffableTable
         dataSource.defaultRowAnimation = .fade
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        viewModel?.loadData()
-    }
-    
     override func bind(viewModel: DiffableTableViewModel) {
         super.bind(viewModel: viewModel)
     }

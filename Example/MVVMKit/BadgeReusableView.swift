@@ -1,7 +1,7 @@
 /*
- SimpleCell.swift
+ BadgeReusableView.swift
  
- Copyright (c) 2019 Alfonso Grillo
+ Copyright (c) 2020 Alfonso Grillo
  
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -24,25 +24,23 @@
 
 import MVVMKit
 
-struct SimpleCellViewModel: ReusableViewViewModel {
-    let identifier: String = SimpleCell.identifier
+struct BadgeReusableViewViewModel: ReusableViewViewModel {
+    let identifier: String = BadgeReusableView.identifier
+    let isVisible: Bool
     let text: String?
 }
 
-class SimpleCell: UICollectionViewCell, CustomBinder {
-    @IBOutlet private weak var titleLabel: UILabel!
+class BadgeReusableView: UICollectionReusableView, CustomBinder {
+    typealias CustomViewModel = BadgeReusableViewViewModel
+    @IBOutlet private weak var label: UILabel!
     
-    func bind(viewModel: SimpleCellViewModel) {
-        titleLabel.text = viewModel.text
+    func bind(viewModel: BadgeReusableViewViewModel) {
+        label.text = viewModel.text
+        isHidden = !viewModel.isVisible
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        layer.cornerRadius = min(bounds.height/2, bounds.width/2)
     }
 }
-
-private extension UIColor {
-    static var random: UIColor {
-        let r = CGFloat.random(in: 0...1)
-        let g = CGFloat.random(in: 0...1)
-        let b = CGFloat.random(in: 0...1)
-        return UIColor(red: r, green: g, blue: b, alpha: 1)
-    }
-}
-

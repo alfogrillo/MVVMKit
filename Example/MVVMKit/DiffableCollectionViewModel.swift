@@ -28,75 +28,100 @@ import Combine
 class DiffableCollectionViewModel: DiffableCollectionViewViewModel {
     typealias SectionType = Section
     
-    let snapshotPublisher: PassthroughSubject<SnapshotAdapter, Never> = .init()
+    var snapshotPublisher: AnyPublisher<SnapshotAdapter, Never> {
+        searchText.map(snapshot(searchText:)).eraseToAnyPublisher()
+    }
     
-    struct ModelEntry {
+    private let snapshotSubject: PassthroughSubject<SnapshotAdapter, Never> = .init()
+    
+    struct ModelEntry: Hashable {
         let id: UUID = .init()
         let text: String
     }
     
-    private let model = [
-        (1...20).map { _ in ModelEntry(text: .random(length: 10)) },
-        (1...20).map { _ in ModelEntry(text: .random(length: 10)) }
-    ]
-    private var searchText: String = ""
-    
-    func loadData() {
-        updateSnapshot()
+    private struct ModelEntryAdapter: Hashable {
+        let entry: ModelEntry
+        let searchText: String
+        
+        func hash(into hasher: inout Hasher) {
+            hasher.combine(entry)
+        }
+        
+        static func == (lhs: Self, rhs: Self) -> Bool {
+            lhs.entry == rhs.entry && lhs.searchText  == rhs.searchText
+        }
     }
+    
+    private let model = [
+        (1...20).map { _ in ModelEntry(text: .random(length: 12)) },
+        (1...20).map { _ in ModelEntry(text: .random(length: 12)) }
+    ]
+    
+    private var filteredModel: [[ModelEntry]] {
+        model.map { $0.filter(searchKey: searchText.value) }
+    }
+    
+    private let searchText: CurrentValueSubject<String, Never> = .init("")
     
     func searchTextDidChange(searchText: String) {
-        self.searchText = searchText
-        updateSnapshot()
+        self.searchText.value = searchText
     }
     
-    private func updateSnapshot() {
+    private func snapshot(searchText: String) -> SnapshotAdapter {
         var snapshot = Snapshot()
+        let filteredModel = self.filteredModel
         
-        let items1 = model[0].filter(searchKey: searchText).map { SimpleCellViewModel(text: $0.text).adapted(id: $0.id) }
-        if !items1.isEmpty {
-            snapshot.appendSections([.main])
-            snapshot.appendItems(items1, toSection: .main)
+        for section in Section.allCases {
+            let items = filteredModel[section.rawValue].map {
+                SimpleCellViewModel(text: $0.text)
+                    .adapted(id: ModelEntryAdapter(entry: $0, searchText: searchText) )
+            }
+            snapshot.appendSections([section])
+            snapshot.appendItems(items, toSection: section)
         }
         
-        let items2 = model[1].filter(searchKey: searchText).map { SimpleCellViewModel(text: $0.text).adapted(id: $0.id) }
-        if !items2.isEmpty {
-            snapshot.appendSections([.second])
-            snapshot.appendItems(items2, toSection: .second)
-        }
-        
-        snapshotPublisher.send(snapshot.adapted())
+        return snapshot.adapted()
     }
     
-    enum Section: DiffableCollectionViewSection {
-        case main
-        case second
-        
-        var supplementaryViewViewModels: [String : ReusableViewViewModel] {
-            switch self {
-            case .main:
-                return [
-                    SupplementaryViewKind.header.rawValue: HeaderFooterReusableViewViewModel(text: "Main Header"),
-                    SupplementaryViewKind.footer.rawValue: HeaderFooterReusableViewViewModel(text: "Main Footer"),
-                ]
-            case .second:
-                return [
-                    SupplementaryViewKind.header.rawValue: HeaderFooterReusableViewViewModel(text: "Second Header"),
-                    SupplementaryViewKind.footer.rawValue: HeaderFooterReusableViewViewModel(text: "Second Footer")
-                ]
-            }
+    func supplementaryViewViewModel(for section: Section, forKind kind: String, at indexPath: IndexPath) -> ReusableViewViewModel? {
+        let headerText = "Header \(section)"
+        let footerText = "Footer \(section)"
+        let modelItem = filteredModel[safe: indexPath.section]?[safe: indexPath.row]
+        let badgeCount = modelItem?.text.numberOfOccurences(of: searchText.value) ?? 0
+
+        switch kind {
+        case SupplementaryViewKind.header.rawValue:
+            return HeaderFooterReusableViewViewModel(text: headerText)
+        case SupplementaryViewKind.footer.rawValue:
+            return HeaderFooterReusableViewViewModel(text: footerText)
+        case SupplementaryViewKind.badge.rawValue:
+            return BadgeReusableViewViewModel(isVisible: badgeCount > 0, text: "\(badgeCount)")
+        default:
+            return nil
         }
+    }
+    
+    enum Section: Int, CaseIterable {
+        case main = 0
+        case second = 1
     }
 }
 
 enum SupplementaryViewKind: String {
     case header
     case footer
+    case badge
 }
 
 private extension Array where Element == DiffableCollectionViewModel.ModelEntry {
     func filter(searchKey: String) -> [DiffableCollectionViewModel.ModelEntry] {
         guard !searchKey.isEmpty else { return self }
         return filter { $0.text.containsIgnoringCase(text: searchKey) }
+    }
+}
+
+private extension String {
+    func numberOfOccurences(of string: String) -> Int {
+        lowercased().components(separatedBy: string.lowercased()).count - 1
     }
 }

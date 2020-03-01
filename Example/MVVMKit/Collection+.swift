@@ -1,5 +1,5 @@
 /*
- SimpleCell.swift
+ Collection+.swift
  
  Copyright (c) 2019 Alfonso Grillo
  
@@ -22,27 +22,9 @@
  THE SOFTWARE.
  */
 
-import MVVMKit
-
-struct SimpleCellViewModel: ReusableViewViewModel {
-    let identifier: String = SimpleCell.identifier
-    let text: String?
-}
-
-class SimpleCell: UICollectionViewCell, CustomBinder {
-    @IBOutlet private weak var titleLabel: UILabel!
-    
-    func bind(viewModel: SimpleCellViewModel) {
-        titleLabel.text = viewModel.text
+extension Collection {
+    subscript(safe index: Index) -> Element? {
+        guard indices.contains(index) else { return nil }
+        return self[index]
     }
 }
-
-private extension UIColor {
-    static var random: UIColor {
-        let r = CGFloat.random(in: 0...1)
-        let g = CGFloat.random(in: 0...1)
-        let b = CGFloat.random(in: 0...1)
-        return UIColor(red: r, green: g, blue: b, alpha: 1)
-    }
-}
-

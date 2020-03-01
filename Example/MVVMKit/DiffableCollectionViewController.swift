@@ -28,7 +28,6 @@ class DiffableCollectionViewController: MVVMDiffableCollectionViewController<Dif
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
-        viewModel?.loadData()
     }
     
     func bind(viewModel: ViewModel) {
@@ -49,13 +48,17 @@ class DiffableCollectionViewController: MVVMDiffableCollectionViewController<Dif
             forSupplementaryViewOfKind: SupplementaryViewKind.footer.rawValue,
             withReuseIdentifier: HeaderFooterReusableView.identifier)
         
+        collectionView.register(
+            BadgeReusableView.nib,
+            forSupplementaryViewOfKind: SupplementaryViewKind.badge.rawValue,
+            withReuseIdentifier: BadgeReusableView.identifier)
         
-        let layout = UICollectionViewCompositionalLayout { (sectionIndex, _) -> NSCollectionLayoutSection? in
+        let layout = UICollectionViewCompositionalLayout { [weak self] (sectionIndex, _) -> NSCollectionLayoutSection? in
             switch sectionIndex {
             case 0:
-                return self.listSection(columns: 1)
+                return self?.listSection(columns: 1)
             case 1:
-                return self.listSection(columns: 2)
+                return self?.listSection(columns: 2)
             default:
                 return nil
             }
@@ -77,13 +80,23 @@ private extension DiffableCollectionViewController {
             widthDimension: .fractionalWidth(1.0),
             heightDimension: .fractionalHeight(1.0))
         
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        // Item supplementary view
+        let itemSupplementarySize = NSCollectionLayoutSize(widthDimension: .absolute(30), heightDimension: .absolute(30))
+        let itemSupplementaryView = NSCollectionLayoutSupplementaryItem(
+            layoutSize: itemSupplementarySize,
+            elementKind: SupplementaryViewKind.badge.rawValue,
+            containerAnchor: .init(edges: [.top, .trailing], absoluteOffset: .init(x: -4, y: 4)))
         
+        let item = NSCollectionLayoutItem(layoutSize: itemSize, supplementaryItems: [itemSupplementaryView])
+        
+        let insetValue: CGFloat = 3
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
             heightDimension: .absolute(44))
         
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: columns)
+        group.interItemSpacing = .fixed(insetValue)
+        group.contentInsets = .init(top: 0, leading: insetValue, bottom: 0, trailing: insetValue)
         
         let section = NSCollectionLayoutSection(group: group)
         
@@ -101,6 +114,8 @@ private extension DiffableCollectionViewController {
         sectionHeader.pinToVisibleBounds = true
         sectionHeader.zIndex = 2
         section.boundarySupplementaryItems = [sectionHeader, sectionFooter]
+        section.interGroupSpacing = insetValue
+        section.contentInsets = .init(top: insetValue, leading: 0, bottom: insetValue, trailing: 0)
         return section
     }
 }

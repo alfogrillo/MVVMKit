@@ -28,15 +28,15 @@ import Combine
 class DiffableTableViewModel: DiffableTableViewViewModel {
     typealias SectionType = Section
     
-    let snapshotPublisher: PassthroughSubject<SnapshotAdapter, Never> = .init()
-    private var searchText: String = ""
-    private var model = (1...50).map {_ in String.random(length: 10) }
-    
-    func loadData() {
-        updateSnapshot()
+    var snapshotPublisher: AnyPublisher<SnapshotAdapter, Never> {
+        searchText.map(snapshot(searchText:)).eraseToAnyPublisher()
     }
     
-    private func updateSnapshot() {
+    private let snapshotSubject: PassthroughSubject<SnapshotAdapter, Never> = .init()
+    private let searchText: CurrentValueSubject<String, Never> = .init("")
+    private let model = (1...50).map { _ in String.random(length: 10) }
+    
+    private func snapshot(searchText: String) -> SnapshotAdapter {
         var snapshot = Snapshot()
     
         let filteredModels = model
@@ -48,29 +48,22 @@ class DiffableTableViewModel: DiffableTableViewViewModel {
             snapshot.appendItems(filteredModels, toSection: .main)
         }
         
-        snapshotPublisher.send(snapshot.adapted())
+        return snapshot.adapted()
     }
     
     func searchTextDidChange(searchText: String) {
-        self.searchText = searchText
-        updateSnapshot()
+        self.searchText.value = searchText
     }
     
-    enum Section: DiffableTableViewSection {
+    func headerViewModel(for section: Section, at sectionIndex: Int) -> ReusableViewViewModel? {
+        TableHeaderViewModel(text: "Header \(section)")
+    }
+    
+    func footerViewModel(for section: Section, at sectionIndex: Int) -> ReusableViewViewModel? {
+        TableHeaderViewModel(text: "Footer \(section)")
+    }
+    
+    enum Section {
         case main
-        
-        var headerViewModel: ReusableViewViewModel? {
-            switch self {
-            case .main:
-                return TableHeaderViewModel(text: "Header")
-            }
-        }
-        
-        var footerViewModel: ReusableViewViewModel? {
-            switch self {
-            case .main:
-                return TableHeaderViewModel(text: "Footer")
-            }
-        }
     }
 }

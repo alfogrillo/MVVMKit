@@ -32,28 +32,19 @@ import Combine
  */
 @available(iOS 13.0, *)
 public protocol DiffableCollectionViewViewModel: ReferenceViewModel {
-    associatedtype SectionType: DiffableCollectionViewSection
+    associatedtype SectionType: Hashable
     
     typealias Snapshot = NSDiffableDataSourceSnapshot<SectionType, ReusableViewViewModelAdapter>
     typealias SnapshotAdapter = SnapshotUpdate<SectionType, ReusableViewViewModelAdapter>
     
-    var snapshotPublisher: PassthroughSubject<SnapshotAdapter, Never> { get }
-}
-
-// MARK: - Section
-
-/**
- A protocol describing a section suitable with a UICollectionViewDiffableDataSource
- */
-@available(iOS 13.0, *)
-public protocol DiffableCollectionViewSection: Hashable {
-    var supplementaryViewViewModels: [String: ReusableViewViewModel] { get }
+    var snapshotPublisher: AnyPublisher<SnapshotAdapter, Never> { get }
+    func supplementaryViewViewModel(for section: SectionType, forKind kind: String, at indexPath: IndexPath) -> ReusableViewViewModel?
 }
 
 @available(iOS 13.0, *)
-public extension DiffableCollectionViewSection {
-    var supplementaryViewViewModels: [String: ReusableViewViewModel] {
-        [:]
+public extension DiffableCollectionViewViewModel {
+    func supplementaryViewViewModel(for section: SectionType, forKind kind: String, at indexPath: IndexPath) -> ReusableViewViewModel? {
+        nil
     }
 }
 

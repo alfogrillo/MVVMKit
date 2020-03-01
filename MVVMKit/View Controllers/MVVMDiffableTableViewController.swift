@@ -124,9 +124,9 @@ open class MVVMDiffableTableViewController<ViewModelType: DiffableTableViewViewM
     // Section header & footer information
     
     open func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let section = self.dataSource.snapshot().sectionIdentifiers[section]
+        let sectionInstance = self.dataSource.snapshot().sectionIdentifiers[section]
         guard
-            let headerViewModel = section.headerViewModel,
+            let headerViewModel = viewModel?.headerViewModel(for: sectionInstance, at: section),
             let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: headerViewModel.identifier)
             else { return nil }
         
@@ -136,9 +136,9 @@ open class MVVMDiffableTableViewController<ViewModelType: DiffableTableViewViewM
     }
     
     open func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let section = self.dataSource.snapshot().sectionIdentifiers[section]
+        let sectionInstance = self.dataSource.snapshot().sectionIdentifiers[section]
         guard
-            let footerViewModel = section.footerViewModel,
+            let footerViewModel = viewModel?.footerViewModel(for: sectionInstance, at: section),
             let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: footerViewModel.identifier)
             else { return nil }
         
