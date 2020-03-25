@@ -28,7 +28,8 @@ import UIKit
 /**
  The view model for a UITableView
  */
-public protocol TableViewViewModel: DelegatingViewModel where BinderType == AnyTableViewBinder<Self> {
+public protocol TableViewViewModel: DelegatingViewModel {
+    associatedtype BinderType: TableViewBinder = AnyTableViewBinder<Self>
     var sections: [SectionViewModel] { get }
 }
 

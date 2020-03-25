@@ -28,7 +28,8 @@ import UIKit
 /**
  The view model for a UICollectionView
  */
-public protocol CollectionViewViewModel: DelegatingViewModel where BinderType == AnyCollectionViewBinder<Self> {
+public protocol CollectionViewViewModel: DelegatingViewModel {
+    associatedtype BinderType: CollectionViewBinder = AnyCollectionViewBinder<Self>
     var sections: [SectionViewModel] { get }
 }
 
