@@ -48,4 +48,11 @@ public extension DiffableCollectionViewViewModel {
     }
 }
 
+// MARK: Compositional layout utils
+
+@available(iOS 13.0, *)
+public protocol SectionLayoutConvertible {
+    func sectionLayout(with environment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection?
+}
+
 #endif

@@ -101,7 +101,7 @@ class DiffableCollectionViewModel: DiffableCollectionViewViewModel {
         }
     }
     
-    enum Section: Int, CaseIterable {
+    enum Section: Int, CaseIterable, SectionLayoutConvertible {
         case main = 0
         case second = 1
     }

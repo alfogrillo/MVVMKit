@@ -30,9 +30,9 @@ class DiffableCollectionViewController: MVVMDiffableCollectionViewController<Dif
         setupCollectionView()
     }
     
-    func bind(viewModel: ViewModel) {
+    override func bind(viewModel: DiffableCollectionViewModel) {
         super.bind(viewModel: viewModel)
-        setupCollectionView()
+        updateLayout(with: viewModel)
     }
     
     private func setupCollectionView() {
@@ -52,19 +52,6 @@ class DiffableCollectionViewController: MVVMDiffableCollectionViewController<Dif
             BadgeReusableView.nib,
             forSupplementaryViewOfKind: SupplementaryViewKind.badge.rawValue,
             withReuseIdentifier: BadgeReusableView.identifier)
-        
-        let layout = UICollectionViewCompositionalLayout { [weak self] (sectionIndex, _) -> NSCollectionLayoutSection? in
-            switch sectionIndex {
-            case 0:
-                return self?.listSection(columns: 1)
-            case 1:
-                return self?.listSection(columns: 2)
-            default:
-                return nil
-            }
-        }
-        
-        collectionView.setCollectionViewLayout(layout, animated: false)
     }
 }
 
@@ -74,8 +61,8 @@ extension DiffableCollectionViewController: UISearchBarDelegate {
     }
 }
 
-private extension DiffableCollectionViewController {
-    func listSection(columns: Int = 1) -> NSCollectionLayoutSection {
+private extension NSCollectionLayoutSection {
+    static func listSection(columns: Int = 1) -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
             heightDimension: .fractionalHeight(1.0))
@@ -117,5 +104,18 @@ private extension DiffableCollectionViewController {
         section.interGroupSpacing = insetValue
         section.contentInsets = .init(top: insetValue, leading: 0, bottom: insetValue, trailing: 0)
         return section
+    }
+}
+
+// MARK: Layout
+
+extension DiffableCollectionViewModel.Section {
+    func sectionLayout(with environment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? {
+        switch self {
+        case .main:
+            return .listSection(columns: 1)
+        case .second:
+            return .listSection(columns: 2)
+        }
     }
 }
