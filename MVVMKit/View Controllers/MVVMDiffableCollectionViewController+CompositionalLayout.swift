@@ -24,10 +24,17 @@ THE SOFTWARE.
 
 @available(iOS 13.0, *)
 public extension MVVMDiffableCollectionViewController where ViewModelType.SectionType: SectionLayoutConvertible {
-    func updateLayout(with viewModel: ViewModelType, animated: Bool = true) {
+    /**
+     When the `SectionType`s conform to `SectionLayoutConvertible` the class `MVVMDiffableCollectionViewController` provides this method, which
+     fully configures the layout of the collection view with an instance of `UICollectionViewCompositionalLayout`.
+     - Note: It is responsibility of the subclass of `MVVMDiffableCollectionViewController` to configure the layout when it is needed.
+     */
+    @discardableResult
+    func updateLayout(with viewModel: ViewModelType, animated: Bool = true) -> UICollectionViewCompositionalLayout {
         let layout: UICollectionViewCompositionalLayout = .init { [weak self] (index, environment) -> NSCollectionLayoutSection? in
             self?.dataSource.snapshot().sectionIdentifiers[index].sectionLayout(with: environment)
         }
         collectionView.setCollectionViewLayout(layout, animated: animated)
+        return layout
     }
 }
