@@ -11,7 +11,7 @@ Optionally MVVMKit give you the possibility to take out the navigation responsib
 In general using MVVMKit most of your software types should belong to one of the following categories:
 
 ## Model
-The actual data manipulated of your applications. 
+The actual data manipulated by your applications. 
 Model type can be `NSManagedObject` fetched from a Core Data database or `Codable` instances coming from a web server.
 
 **Responsibilities**
@@ -22,14 +22,14 @@ The user interface. On iOS views are typically subclasses of `UIView`.
 
 **Responsibilities**
 - Show the application content.
-- Deliver the user interaction to the a `UIViewController`
+- Deliver the user interaction to a `UIViewController`
 
 ## UIViewController
 A subclass of `UIViewController`
 
 **Responsibilities**
-- Deliver the user interaction to the a View Model
-- Bind the View Model on the view
+- Deliver the user interaction to the View Model
+- Bind the View Model to the view
 
 Note: on iOS we divide the View entity of the MVVM pattern in two entities: `UIView` and `UIViewController`.
 
@@ -38,15 +38,15 @@ The actual "brain" of a scene of your application.
 
 Responsibilities:
 - Manage the model
-- Present the model in way it is immediately suitable for the view
+- Present the model in a way that is immediately suitable for the view
 - Notify the view controller when it should update the view (a.k.a. make a bind)
 
 ## Coordinator
-Is the entity responsible for the application navigation.
+The entity responsible for the application navigation.
 
 **Responsibilities**
 - Decide which is (and how to show) the next view controller 
-- Instantiate view controllers and associated view models doing appropriate dependency injection
+- Instantiate view controllers and associated view models doing appropriate dependency injections
 
 ##
 
@@ -67,6 +67,8 @@ it, simply add the following line to your Podfile:
 ```ruby
 pod 'MVVMKit'
 ```
+
+MVVMKit is also available as a Swift Package.
 
 ## Author
 
