@@ -42,7 +42,7 @@
 		7A0E199464C35FF4743D6A7641A80FD4 /* AnyCollectionViewBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B805D8BAE4F93945036C7B347F9CF90A /* AnyCollectionViewBinder.swift */; };
 		7CCB7D663C9040FEF1241E1FF9D5A802 /* DispatchQueue+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84934B19EBD24287ED6B6BE0434199F3 /* DispatchQueue+.swift */; };
 		81734C85C347AEB948391CD21297A400 /* DiffableCollectionViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD7FD7EAC6309BD551035F7E60DCE6E /* DiffableCollectionViewViewModel.swift */; };
-		87F9BEA1F4ECBD6A0456E37CF34EB4DB /* CoordinatorOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8875E29A43D7E082B6F2408673F05CE9 /* CoordinatorOwner.swift */; };
+		87F9BEA1F4ECBD6A0456E37CF34EB4DB /* CoordinatedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8875E29A43D7E082B6F2408673F05CE9 /* CoordinatedViewModel.swift */; };
 		8A21AA5371DD60964E114B88EF7CC80B /* CollectionViewViewModelOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56904ED86092E98EFD44D998D483652D /* CollectionViewViewModelOwner.swift */; };
 		97CC41DAA1A6AD193926B656CA455BD7 /* UIViewController+MVVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12A850CBFF9B168654069C577BEB027 /* UIViewController+MVVM.swift */; };
 		A01669EA2B7D71338E6F8644A2007FDC /* ReusableViewViewModelAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A07D7974CF316A66A15A666EFC7351 /* ReusableViewViewModelAdapter.swift */; };
@@ -107,7 +107,7 @@
 		7E573BFB4FC811167FAE81F77C1FDA48 /* MVVMCollectionViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MVVMCollectionViewController.swift; sourceTree = "<group>"; };
 		82B485E1C5E7C1B2FD0110920F25BCD4 /* MVVMKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MVVMKit-prefix.pch"; sourceTree = "<group>"; };
 		84934B19EBD24287ED6B6BE0434199F3 /* DispatchQueue+.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+.swift"; sourceTree = "<group>"; };
-		8875E29A43D7E082B6F2408673F05CE9 /* CoordinatorOwner.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CoordinatorOwner.swift; sourceTree = "<group>"; };
+		8875E29A43D7E082B6F2408673F05CE9 /* CoordinatedViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CoordinatedViewModel.swift; sourceTree = "<group>"; };
 		89F85ACF3D78B39506B75103B4694B36 /* SwiftLint.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftLint.xcconfig; sourceTree = "<group>"; };
 		96CD88DFB43459587535525D6B9C3FAE /* TableViewViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TableViewViewModel.swift; sourceTree = "<group>"; };
 		9A0124F2A452B2806AE955FD728A2E56 /* Pods-MVVMKit_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MVVMKit_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
@@ -206,7 +206,6 @@
 			children = (
 				BA6AEBCAF0DEE680479A7E3A1E2D4EFF /* Binder.swift */,
 				BE5F6716DFE614C43523A4CD482AEB88 /* Coordinator.swift */,
-				8875E29A43D7E082B6F2408673F05CE9 /* CoordinatorOwner.swift */,
 				71D33FA2D8C6B2F3780CFDBED05ACF40 /* Delegator.swift */,
 				2910F57EB56EBABD99D7D9385B6F825F /* ViewModelOwner.swift */,
 				BD2A69DAF7982573F2EF229015E18D59 /* View Model */,
@@ -296,6 +295,7 @@
 		BD2A69DAF7982573F2EF229015E18D59 /* View Model */ = {
 			isa = PBXGroup;
 			children = (
+				8875E29A43D7E082B6F2408673F05CE9 /* CoordinatedViewModel.swift */,
 				60D6364AC3271BEB93552CEFBEF972AB /* ViewModel.swift */,
 				B9EB6F5B0582C26CFA12FA731218C32D /* Delegate */,
 				5CC1E77EE876A11E3BE8D6003EC8E2EB /* Diffable Container View Models */,
@@ -497,7 +497,7 @@
 				4B31F760B650FF73A0BA0C0877526F6B /* CollectionViewViewModel.swift in Sources */,
 				8A21AA5371DD60964E114B88EF7CC80B /* CollectionViewViewModelOwner.swift in Sources */,
 				EC0B43ECDBBCDA7E27635392146CD789 /* Coordinator.swift in Sources */,
-				87F9BEA1F4ECBD6A0456E37CF34EB4DB /* CoordinatorOwner.swift in Sources */,
+				87F9BEA1F4ECBD6A0456E37CF34EB4DB /* CoordinatedViewModel.swift in Sources */,
 				634C6B406F3E0B7897C7B60D797F1974 /* DelegatingViewModel.swift in Sources */,
 				2D7409E62455AFA800B4D228 /* MVVMTableViewDiffableDataSource.swift in Sources */,
 				A1318BCB0FE78772E4E1F44244661F2A /* Delegator.swift in Sources */,

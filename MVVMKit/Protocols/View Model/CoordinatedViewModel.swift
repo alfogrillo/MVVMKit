@@ -1,5 +1,5 @@
 /*
- CoordinatorOnwer.swift
+ CoordinatedViewModel.swift
  
  Copyright (c) 2019 Alfonso Grillo
  
@@ -27,7 +27,7 @@ import UIKit
 /**
  A protocols identifying a coordinator owner
  */
-public protocol CoordinatorOwner: class {
+public protocol CoordinatedViewModel: class {
     associatedtype CoordinatorType: Coordinator = DefaultCoordinator
     var coordinator: CoordinatorType { get }
 }

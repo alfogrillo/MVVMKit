@@ -41,7 +41,7 @@ class DiffableTableViewModel: DiffableTableViewViewModel {
     
         let filteredModels = model
             .filter { searchText.isEmpty || $0.containsIgnoringCase(text: searchText) }
-            .map { TextCellViewModel(text: $0).adapted(id: $0) }
+            .map { TextCellViewModel(text: $0).adapted(hashable: $0) }
         
         if !filteredModels.isEmpty {
             snapshot.appendSections([.main])

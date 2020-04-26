@@ -74,7 +74,7 @@ class DiffableCollectionViewModel: DiffableCollectionViewViewModel {
         for section in Section.allCases {
             let items = filteredModel[section.rawValue].map {
                 SimpleCellViewModel(text: $0.text)
-                    .adapted(id: ModelEntryAdapter(entry: $0, searchText: searchText) )
+                    .adapted(hashable: ModelEntryAdapter(entry: $0, searchText: searchText) )
             }
             snapshot.appendSections([section])
             snapshot.appendItems(items, toSection: section)
