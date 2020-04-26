@@ -27,7 +27,7 @@
  */
 public protocol ViewModelOwner: CustomBinder where CustomViewModel: ReferenceViewModel {
     /// The owned view model.
-    var viewModel: CustomViewModel? { get }
+    var viewModel: CustomViewModel! { get }
 }
 
 public extension ViewModelOwner {

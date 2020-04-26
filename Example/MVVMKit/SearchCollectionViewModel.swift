@@ -1,5 +1,5 @@
 /*
- DiffableCollectionViewModel.swift
+ SearchCollectionViewModel.swift
  
  Copyright (c) 2019 Alfonso Grillo
  
@@ -25,7 +25,7 @@
 import MVVMKit
 import Combine
 
-class DiffableCollectionViewModel: DiffableCollectionViewViewModel {
+class SearchCollectionViewModel: DiffableCollectionViewViewModel {
     typealias SectionType = Section
     
     var snapshot: AnyPublisher<SnapshotAdapter, Never> {
@@ -113,8 +113,8 @@ enum SupplementaryViewKind: String {
     case badge
 }
 
-private extension Array where Element == DiffableCollectionViewModel.ModelEntry {
-    func filter(searchKey: String) -> [DiffableCollectionViewModel.ModelEntry] {
+private extension Array where Element == SearchCollectionViewModel.ModelEntry {
+    func filter(searchKey: String) -> [SearchCollectionViewModel.ModelEntry] {
         guard !searchKey.isEmpty else { return self }
         return filter { $0.text.containsIgnoringCase(text: searchKey) }
     }

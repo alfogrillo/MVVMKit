@@ -30,7 +30,7 @@ class GiphyMasterDetailViewController: UIViewController, ViewModelOwner {
     @IBOutlet private weak var activityIndicatorView: UIActivityIndicatorView!
     @IBOutlet private weak var containerView: UIView!
     
-    var viewModel: GiphyMasterDetailViewModel? {
+    var viewModel: GiphyMasterDetailViewModel! {
         didSet { viewModel?.binder = AnyBinder(self) }
     }
     

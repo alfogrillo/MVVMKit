@@ -31,7 +31,7 @@ class BasicViewController: UIViewController, ViewModelOwner {
     
     typealias CustomViewModel = BasicViewModel
     
-    var viewModel: BasicViewModel? {
+    var viewModel: BasicViewModel! {
         didSet { viewModel?.binder = AnyBinder(self) }
     }
     

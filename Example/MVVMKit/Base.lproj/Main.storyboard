@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9Uh-tC-1l8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9Uh-tC-1l8">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -255,10 +255,10 @@
             </objects>
             <point key="canvasLocation" x="1772" y="134"/>
         </scene>
-        <!--Diffable Collection View Controller-->
+        <!--Search Collection View Controller-->
         <scene sceneID="2ho-6X-X6h">
             <objects>
-                <viewController storyboardIdentifier="DiffableCollectionViewController" id="Yhn-F8-r1v" customClass="DiffableCollectionViewController" customModule="MVVMKit_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchCollectionViewController" id="Yhn-F8-r1v" customClass="SearchCollectionViewController" customModule="MVVMKit_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1n7-gR-CZW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -302,10 +302,10 @@
             </objects>
             <point key="canvasLocation" x="2640.8000000000002" y="133.74384236453201"/>
         </scene>
-        <!--Diffable Table View Controller-->
+        <!--Search Table View Controller-->
         <scene sceneID="9i0-gA-VO0">
             <objects>
-                <viewController storyboardIdentifier="DiffableTableViewController" id="Uhm-SO-gTz" customClass="DiffableTableViewController" customModule="MVVMKit_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchTableViewController" id="Uhm-SO-gTz" customClass="SearchTableViewController" customModule="MVVMKit_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d12-H3-G4h">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -463,7 +463,7 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="768"/>
                                 <subviews>
                                     <searchBar contentMode="redraw" placeholder="Type something" translatesAutoresizingMaskIntoConstraints="NO" id="Zzh-uI-WCf">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="224"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <scopeButtonTitles>
                                             <string>Title</string>
@@ -474,7 +474,7 @@
                                         </connections>
                                     </searchBar>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="m7Z-rf-Wbe">
-                                        <rect key="frame" x="0.0" y="56" width="375" height="712"/>
+                                        <rect key="frame" x="0.0" y="224" width="375" height="544"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="a69-Af-6Np">
                                             <size key="itemSize" width="217" height="161"/>
@@ -520,13 +520,13 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No results" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hOR-l2-vWr">
-                                <rect key="frame" x="141.66666666666666" y="445.33333333333331" width="91.666666666666657" height="21.666666666666686"/>
+                                <rect key="frame" x="141.66666666666666" y="529.33333333333337" width="91.666666666666657" height="21.666666666666629"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="uaF-1n-gve">
-                                <rect key="frame" x="177.66666666666666" y="446" width="20" height="20"/>
+                                <rect key="frame" x="177.66666666666666" y="530" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

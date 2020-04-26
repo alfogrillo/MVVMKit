@@ -10,12 +10,12 @@
 		2D0E934D24083764001373AB /* BadgeReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0E934B24083764001373AB /* BadgeReusableView.swift */; };
 		2D0E934E24083764001373AB /* BadgeReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D0E934C24083764001373AB /* BadgeReusableView.xib */; };
 		2D12AFF5240C1DA4009946EE /* Collection+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D12AFF4240C1DA4009946EE /* Collection+.swift */; };
-		2D78AD4923A6504700797910 /* DiffableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D78AD4823A6504700797910 /* DiffableTableViewController.swift */; };
-		2D78AD4B23A6505100797910 /* DiffableTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D78AD4A23A6505100797910 /* DiffableTableViewModel.swift */; };
+		2D78AD4923A6504700797910 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D78AD4823A6504700797910 /* SearchTableViewController.swift */; };
+		2D78AD4B23A6505100797910 /* SearchTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D78AD4A23A6505100797910 /* SearchTableViewModel.swift */; };
 		2D78AD4E23A6534500797910 /* TextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D78AD4D23A6534500797910 /* TextCell.swift */; };
 		2D78AD5023A6547E00797910 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D78AD4F23A6547E00797910 /* String+.swift */; };
-		2D8B6D3823A573F40062194E /* DiffableCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8B6D3723A573F40062194E /* DiffableCollectionViewController.swift */; };
-		2D8B6D3A23A574010062194E /* DiffableCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8B6D3923A574010062194E /* DiffableCollectionViewModel.swift */; };
+		2D8B6D3823A573F40062194E /* SearchCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8B6D3723A573F40062194E /* SearchCollectionViewController.swift */; };
+		2D8B6D3A23A574010062194E /* SearchCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8B6D3923A574010062194E /* SearchCollectionViewModel.swift */; };
 		2D8B6D4023A578560062194E /* SimpleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D8B6D3C23A578550062194E /* SimpleCell.xib */; };
 		2D8B6D4123A578560062194E /* HeaderFooterReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8B6D3D23A578550062194E /* HeaderFooterReusableView.swift */; };
 		2D8B6D4223A578560062194E /* HeaderFooterReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D8B6D3E23A578560062194E /* HeaderFooterReusableView.xib */; };
@@ -58,12 +58,12 @@
 		2D0E934B24083764001373AB /* BadgeReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeReusableView.swift; sourceTree = "<group>"; };
 		2D0E934C24083764001373AB /* BadgeReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BadgeReusableView.xib; sourceTree = "<group>"; };
 		2D12AFF4240C1DA4009946EE /* Collection+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+.swift"; sourceTree = "<group>"; };
-		2D78AD4823A6504700797910 /* DiffableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffableTableViewController.swift; sourceTree = "<group>"; };
-		2D78AD4A23A6505100797910 /* DiffableTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffableTableViewModel.swift; sourceTree = "<group>"; };
+		2D78AD4823A6504700797910 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
+		2D78AD4A23A6505100797910 /* SearchTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewModel.swift; sourceTree = "<group>"; };
 		2D78AD4D23A6534500797910 /* TextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCell.swift; sourceTree = "<group>"; };
 		2D78AD4F23A6547E00797910 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
-		2D8B6D3723A573F40062194E /* DiffableCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffableCollectionViewController.swift; sourceTree = "<group>"; };
-		2D8B6D3923A574010062194E /* DiffableCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffableCollectionViewModel.swift; sourceTree = "<group>"; };
+		2D8B6D3723A573F40062194E /* SearchCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewController.swift; sourceTree = "<group>"; };
+		2D8B6D3923A574010062194E /* SearchCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewModel.swift; sourceTree = "<group>"; };
 		2D8B6D3C23A578550062194E /* SimpleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleCell.xib; sourceTree = "<group>"; };
 		2D8B6D3D23A578550062194E /* HeaderFooterReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderFooterReusableView.swift; sourceTree = "<group>"; };
 		2D8B6D3E23A578560062194E /* HeaderFooterReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderFooterReusableView.xib; sourceTree = "<group>"; };
@@ -129,8 +129,8 @@
 		2D78AD4C23A650A000797910 /* DiffableTableViewController */ = {
 			isa = PBXGroup;
 			children = (
-				2D78AD4823A6504700797910 /* DiffableTableViewController.swift */,
-				2D78AD4A23A6505100797910 /* DiffableTableViewModel.swift */,
+				2D78AD4823A6504700797910 /* SearchTableViewController.swift */,
+				2D78AD4A23A6505100797910 /* SearchTableViewModel.swift */,
 				2DAA5F7823A6889100EFF2BF /* TableHeaderView.swift */,
 				2D78AD4D23A6534500797910 /* TextCell.swift */,
 				2DAA5F7A23A688C700EFF2BF /* TableHeaderView.xib */,
@@ -143,8 +143,8 @@
 			children = (
 				2D0E934B24083764001373AB /* BadgeReusableView.swift */,
 				2D0E934C24083764001373AB /* BadgeReusableView.xib */,
-				2D8B6D3723A573F40062194E /* DiffableCollectionViewController.swift */,
-				2D8B6D3923A574010062194E /* DiffableCollectionViewModel.swift */,
+				2D8B6D3723A573F40062194E /* SearchCollectionViewController.swift */,
+				2D8B6D3923A574010062194E /* SearchCollectionViewModel.swift */,
 				2D8B6D3D23A578550062194E /* HeaderFooterReusableView.swift */,
 				2D8B6D3E23A578560062194E /* HeaderFooterReusableView.xib */,
 				2D8B6D3F23A578560062194E /* SimpleCell.swift */,
@@ -442,7 +442,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D78AD4B23A6505100797910 /* DiffableTableViewModel.swift in Sources */,
+				2D78AD4B23A6505100797910 /* SearchTableViewModel.swift in Sources */,
 				C0EDA5DE223E5D62003D55D8 /* AppCoordinator.swift in Sources */,
 				C070F10D21BF110800AFC8C9 /* GiphyMasterDetailViewModel.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
@@ -466,17 +466,17 @@
 				C075789A223A4C0B0054F59A /* RootCoordinator.swift in Sources */,
 				C0A15A6621BBC25300A499C5 /* UIImage+.swift in Sources */,
 				C0F340DA21B5E7CF00DDE19E /* RootViewController.swift in Sources */,
-				2D78AD4923A6504700797910 /* DiffableTableViewController.swift in Sources */,
+				2D78AD4923A6504700797910 /* SearchTableViewController.swift in Sources */,
 				C0A15A6321BBBED300A499C5 /* GiphyResponses.swift in Sources */,
 				2D12AFF5240C1DA4009946EE /* Collection+.swift in Sources */,
-				2D8B6D3823A573F40062194E /* DiffableCollectionViewController.swift in Sources */,
+				2D8B6D3823A573F40062194E /* SearchCollectionViewController.swift in Sources */,
 				2DAA5F7923A6889100EFF2BF /* TableHeaderView.swift in Sources */,
 				C0F340D521B5E4B500DDE19E /* BasicViewController.swift in Sources */,
 				C012C09F2238FBFB00BD5549 /* RootViewModel.swift in Sources */,
 				C012C0A32238FEA700BD5549 /* UIViewController+.swift in Sources */,
 				2D0E934D24083764001373AB /* BadgeReusableView.swift in Sources */,
 				C06A69EE21BE820C0015D82F /* GiphyMasterDetailViewController.swift in Sources */,
-				2D8B6D3A23A574010062194E /* DiffableCollectionViewModel.swift in Sources */,
+				2D8B6D3A23A574010062194E /* SearchCollectionViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

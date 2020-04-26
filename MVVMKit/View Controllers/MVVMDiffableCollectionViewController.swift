@@ -34,7 +34,7 @@ open class MVVMDiffableCollectionViewController<ViewModelType: DiffableCollectio
     public typealias CustomViewModel = ViewModelType
     
     @IBOutlet public weak var collectionView: UICollectionView!
-    public var viewModel: ViewModelType? {
+    public var viewModel: ViewModelType! {
         didSet { bindIfViewLoaded() }
     }
     public private(set) var dataSource: MVVMCollectionViewDiffableDataSource<ViewModelType.SectionType>!

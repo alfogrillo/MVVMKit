@@ -57,14 +57,14 @@ class RootCoordinator: Coordinator {
     }
     
     func didSelectDiffableCollectionViewController() {
-        let viewController = DiffableCollectionViewController.instantiate(storyboardName: "Main")
-        viewController.viewModel = DiffableCollectionViewModel()
+        let viewController = SearchCollectionViewController.instantiate(storyboardName: "Main")
+        viewController.viewModel = SearchCollectionViewModel()
         sourceViewController?.show(viewController, sender: nil)
     }
     
     func didSelectDiffableTableViewController() {
-        let viewController = DiffableTableViewController.instantiate(storyboardName: "Main")
-        viewController.viewModel = DiffableTableViewModel()
+        let viewController = SearchTableViewController.instantiate(storyboardName: "Main")
+        viewController.viewModel = SearchTableViewModel()
         sourceViewController?.show(viewController, sender: nil)
     }
 }

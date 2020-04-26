@@ -42,9 +42,9 @@ open class MVVMCollectionViewController<ViewModelType: CollectionViewViewModel>:
     }
     
     /**
-     The view controller view model
+     The view controller's view model
      */
-    open var viewModel: ViewModelType? {
+    open var viewModel: ViewModelType! {
         /*
             The cast isn't really needed here, but for some reason the compiler won't build without it.
             This issue doesn't seem to affect subclasses.

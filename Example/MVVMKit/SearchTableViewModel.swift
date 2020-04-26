@@ -1,5 +1,5 @@
 /*
- DiffableTableViewModel.swift
+ SearchTableViewModel.swift
  
  Copyright (c) 2019 Alfonso Grillo
  
@@ -25,7 +25,7 @@
 import MVVMKit
 import Combine
 
-class DiffableTableViewModel: DiffableTableViewViewModel {
+class SearchTableViewModel: DiffableTableViewViewModel {
     typealias SectionType = Section
     
     var snapshot: AnyPublisher<SnapshotAdapter, Never> {

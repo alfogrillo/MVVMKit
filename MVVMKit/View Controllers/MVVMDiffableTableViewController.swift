@@ -36,7 +36,7 @@ open class MVVMDiffableTableViewController<ViewModelType: DiffableTableViewViewM
     @IBOutlet public weak var tableView: UITableView! {
         didSet { tableView.delegate = self }
     }
-    public var viewModel: ViewModelType? {
+    public var viewModel: ViewModelType! {
         didSet { bindIfViewLoaded() }
     }
     public private(set) var dataSource: MVVMTableViewDiffableDataSource<ViewModelType.SectionType>!
