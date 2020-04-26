@@ -39,7 +39,12 @@ open class MVVMDiffableTableViewController<ViewModelType: DiffableTableViewViewM
     public var viewModel: ViewModelType? {
         didSet { bindIfViewLoaded() }
     }
-    public private(set) var dataSource: UITableViewDiffableDataSource<ViewModelType.SectionType, ReusableViewViewModelAdapter>!
+    public private(set) var dataSource: MVVMTableViewDiffableDataSource<ViewModelType.SectionType>!
+    
+    /// The type of the instanciated `MVVMTableViewDiffableDataSource`. A custom data source can be provided overriding this property.
+    open var dataSourceType: MVVMTableViewDiffableDataSource<ViewModelType.SectionType>.Type {
+        MVVMTableViewDiffableDataSource<ViewModelType.SectionType>.self
+    }
     
     private var dataSourceSubscription: AnyCancellable?
     
@@ -58,7 +63,7 @@ open class MVVMDiffableTableViewController<ViewModelType: DiffableTableViewViewM
     }
     
     private func setupDataSource() {
-        dataSource = UITableViewDiffableDataSource(tableView: tableView) { [weak self] (collectionView, indexPath, adapter) -> UITableViewCell? in
+        dataSource = dataSourceType.init(tableView: tableView) { [weak self] (collectionView, indexPath, adapter) -> UITableViewCell? in
             guard let self = self else { return nil }
             let cell = collectionView.dequeueReusableCell(withIdentifier: adapter.reusableViewViewModel.identifier, for: indexPath)
             self.configureDelegate(of: cell)

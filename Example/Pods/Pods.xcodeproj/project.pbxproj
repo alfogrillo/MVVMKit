@@ -25,6 +25,8 @@
 		0DCCC175F3113EA9929716C85F812F04 /* MVVMDiffableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6376A94C1EF4C4822DC1362F0B79D743 /* MVVMDiffableTableViewController.swift */; };
 		192E130C0595C03E4003431A9C664B74 /* DiffableTableViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1BE89C46F8045BD3F8F8E0E280023E /* DiffableTableViewViewModel.swift */; };
 		1D5F68EA92BDA56BFEF861FC4B1703AB /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D6364AC3271BEB93552CEFBEF972AB /* ViewModel.swift */; };
+		2D7409E62455AFA800B4D228 /* MVVMTableViewDiffableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7409E42455AFA800B4D228 /* MVVMTableViewDiffableDataSource.swift */; };
+		2D7409E72455AFA800B4D228 /* MVVMCollectionViewDiffableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7409E52455AFA800B4D228 /* MVVMCollectionViewDiffableDataSource.swift */; };
 		2DA356C22439E1D700DA87F0 /* MVVMDiffableCollectionViewController+CompositionalLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA356C12439E1D700DA87F0 /* MVVMDiffableCollectionViewController+CompositionalLayout.swift */; };
 		36805FC8B1659211B80E2CD5ACDB430B /* WeakReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EACD5AF11419A6EDC8A5D649FD9490 /* WeakReference.swift */; };
 		37C87373EF29B4F2DDA3C2D764794D25 /* Pods-MVVMKit_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C6FD8613AA9C07EA5463DBC72DDD3AD7 /* Pods-MVVMKit_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -81,6 +83,8 @@
 		26A4B447D54C663E2BAC6997B4A9DABF /* DelegatingViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DelegatingViewModel.swift; sourceTree = "<group>"; };
 		27189C6457CC3652BA8F04FA0D59628F /* Pods-MVVMKit_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MVVMKit_Example-frameworks.sh"; sourceTree = "<group>"; };
 		2910F57EB56EBABD99D7D9385B6F825F /* ViewModelOwner.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ViewModelOwner.swift; sourceTree = "<group>"; };
+		2D7409E42455AFA800B4D228 /* MVVMTableViewDiffableDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVVMTableViewDiffableDataSource.swift; sourceTree = "<group>"; };
+		2D7409E52455AFA800B4D228 /* MVVMCollectionViewDiffableDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVVMCollectionViewDiffableDataSource.swift; sourceTree = "<group>"; };
 		2DA356C12439E1D700DA87F0 /* MVVMDiffableCollectionViewController+CompositionalLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MVVMDiffableCollectionViewController+CompositionalLayout.swift"; sourceTree = "<group>"; };
 		31C20A83A2A360810D8AD7B7D9803ED2 /* SnapshotUpdate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SnapshotUpdate.swift; sourceTree = "<group>"; };
 		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -186,6 +190,15 @@
 				A74527150FD97D5359DCA170948BA1FF /* README.md */,
 			);
 			name = Pod;
+			sourceTree = "<group>";
+		};
+		2D7409DF2455AF6C00B4D228 /* Data Sources */ = {
+			isa = PBXGroup;
+			children = (
+				2D7409E52455AFA800B4D228 /* MVVMCollectionViewDiffableDataSource.swift */,
+				2D7409E42455AFA800B4D228 /* MVVMTableViewDiffableDataSource.swift */,
+			);
+			path = "Data Sources";
 			sourceTree = "<group>";
 		};
 		4D11F89ECCD6F2B37D36EDD628CD13BA /* Protocols */ = {
@@ -342,6 +355,7 @@
 		E4AA2990E18296A67103078F7F885297 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				2D7409DF2455AF6C00B4D228 /* Data Sources */,
 				84934B19EBD24287ED6B6BE0434199F3 /* DispatchQueue+.swift */,
 				7E573BFB4FC811167FAE81F77C1FDA48 /* MVVMCollectionViewController.swift */,
 				E02492E4ABE045CE4C51AA9DC25A8C9E /* MVVMDiffableCollectionViewController.swift */,
@@ -485,7 +499,9 @@
 				EC0B43ECDBBCDA7E27635392146CD789 /* Coordinator.swift in Sources */,
 				87F9BEA1F4ECBD6A0456E37CF34EB4DB /* CoordinatorOwner.swift in Sources */,
 				634C6B406F3E0B7897C7B60D797F1974 /* DelegatingViewModel.swift in Sources */,
+				2D7409E62455AFA800B4D228 /* MVVMTableViewDiffableDataSource.swift in Sources */,
 				A1318BCB0FE78772E4E1F44244661F2A /* Delegator.swift in Sources */,
+				2D7409E72455AFA800B4D228 /* MVVMCollectionViewDiffableDataSource.swift in Sources */,
 				81734C85C347AEB948391CD21297A400 /* DiffableCollectionViewViewModel.swift in Sources */,
 				192E130C0595C03E4003431A9C664B74 /* DiffableTableViewViewModel.swift in Sources */,
 				7CCB7D663C9040FEF1241E1FF9D5A802 /* DispatchQueue+.swift in Sources */,

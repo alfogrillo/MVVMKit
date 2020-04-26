@@ -37,7 +37,12 @@ open class MVVMDiffableCollectionViewController<ViewModelType: DiffableCollectio
     public var viewModel: ViewModelType? {
         didSet { bindIfViewLoaded() }
     }
-    public private(set) var dataSource: UICollectionViewDiffableDataSource<ViewModelType.SectionType, ReusableViewViewModelAdapter>!
+    public private(set) var dataSource: MVVMCollectionViewDiffableDataSource<ViewModelType.SectionType>!
+    
+    /// The type of the instanciated `MVVMCollectionViewDiffableDataSource`. A custom data source can be provided overriding this property.
+    open var dataSourceType: MVVMCollectionViewDiffableDataSource<ViewModelType.SectionType>.Type {
+        MVVMCollectionViewDiffableDataSource<ViewModelType.SectionType>.self
+    }
     
     private var dataSourceSubscription: AnyCancellable?
     
@@ -56,7 +61,7 @@ open class MVVMDiffableCollectionViewController<ViewModelType: DiffableCollectio
     }
     
     private func setupDataSource() {
-        dataSource = UICollectionViewDiffableDataSource(collectionView: collectionView) { [weak self] (collectionView, indexPath, adapter) in
+        dataSource = MVVMCollectionViewDiffableDataSource(collectionView: collectionView) { [weak self] (collectionView, indexPath, adapter) in
             guard let self = self else { return nil }
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: adapter.reusableViewViewModel.identifier, for: indexPath)
             self.configureDelegate(of: cell)
