@@ -55,7 +55,7 @@ open class MVVMDiffableTableViewController<ViewModelType: DiffableTableViewViewM
     }
     
     open func bind(viewModel: ViewModelType) {
-        dataSourceSubscription = viewModel.snapshotPublisher
+        dataSourceSubscription = viewModel.snapshot
             .receive(on: DispatchQueue.diffingQueue)
             .sink { [weak self] snapshotAdapter in
                 self?.dataSource.apply(snapshotAdapter.snapshot, animatingDifferences: snapshotAdapter.animated, completion: snapshotAdapter.completion)

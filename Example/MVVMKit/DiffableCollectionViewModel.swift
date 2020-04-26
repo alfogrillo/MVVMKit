@@ -28,7 +28,7 @@ import Combine
 class DiffableCollectionViewModel: DiffableCollectionViewViewModel {
     typealias SectionType = Section
     
-    var snapshotPublisher: AnyPublisher<SnapshotAdapter, Never> {
+    var snapshot: AnyPublisher<SnapshotAdapter, Never> {
         searchText.map(snapshot(searchText:)).eraseToAnyPublisher()
     }
     
