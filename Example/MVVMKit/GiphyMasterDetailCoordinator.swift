@@ -24,16 +24,44 @@
 
 import MVVMKit
 
-class GiphyMasterDetailCoordinator: Coordinator {
-    let weakSourceViewController: WeakReference<UIViewController>
+class GiphyMasterDetailCoordinator: EmbedderCoordinator {
+    typealias ViewController = GiphyMasterDetailViewController
+    typealias ContainerViewKind = ViewKind
     
-    init(sourceViewController viewController: UIViewController) {
+    let containerViewBindings: [GiphyMasterDetailCoordinator.ViewKind : KeyPath<ViewController, UIView>]
+    private var children: [ViewKind: UIViewController] = .init()
+    
+    let weakSourceViewController: WeakReference<GiphyMasterDetailViewController>
+    
+    init(bindings: [GiphyMasterDetailCoordinator.ViewKind : KeyPath<ViewController, UIView>],
+        sourceViewController viewController: GiphyMasterDetailViewController) {
+        containerViewBindings = bindings
         weakSourceViewController = .init(viewController)
     }
     
-    var embeddedViewController: GiphyViewController{
+    enum ViewKind {
+        case main
+    }
+    
+    func showDetailViewController(in view: ViewKind) -> GiphyViewModel {
+        cleanup(in: view)
         let viewController = GiphyViewController.instantiate(storyboardName: "Main")
-        viewController.viewModel = GiphyViewModel()
-        return viewController
+        let viewModel = GiphyViewModel()
+        viewController.viewModel = viewModel
+        embed(child: viewController, in: view)
+        return viewModel
+    }
+    
+    private func cleanup(in view: ViewKind) {
+        children.removeValue(forKey: view)?.removeEmbeddingFromParent()
+    }
+    
+    private func embed(child: UIViewController, in view: ViewKind) {
+        guard let keyPath = containerViewBindings[view], let containerView = sourceViewController?[keyPath: keyPath] else {
+            return
+        }
+        child.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        sourceViewController?.embed(child: child, in: containerView)
+        children[view] = child
     }
 }

@@ -30,7 +30,8 @@ import UIKit
  */
 @available(iOS 13.0, *)
 open class MVVMTableViewDiffableDataSource<SectionIdentifierType: Hashable>: UITableViewDiffableDataSource<SectionIdentifierType, ReusableViewViewModelAdapter> {
-    public required override init(tableView: UITableView, cellProvider: @escaping UITableViewDiffableDataSource<SectionIdentifierType, ReusableViewViewModelAdapter>.CellProvider) {
+    public required override init(tableView: UITableView,
+                                  cellProvider: @escaping UITableViewDiffableDataSource<SectionIdentifierType, ReusableViewViewModelAdapter>.CellProvider) {
         super.init(tableView: tableView, cellProvider: cellProvider)
     }
 }

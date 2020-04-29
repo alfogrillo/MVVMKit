@@ -30,7 +30,8 @@ import UIKit
  */
 @available(iOS 13.0, *)
 open class MVVMCollectionViewDiffableDataSource<SectionIdentifierType: Hashable>: UICollectionViewDiffableDataSource<SectionIdentifierType, ReusableViewViewModelAdapter> {
-    public required override init(collectionView: UICollectionView, cellProvider: @escaping UICollectionViewDiffableDataSource<SectionIdentifierType, ReusableViewViewModelAdapter>.CellProvider) {
+    public required override init(collectionView: UICollectionView,
+                                  cellProvider: @escaping UICollectionViewDiffableDataSource<SectionIdentifierType, ReusableViewViewModelAdapter>.CellProvider) {
         super.init(collectionView: collectionView, cellProvider: cellProvider)
     }
 }

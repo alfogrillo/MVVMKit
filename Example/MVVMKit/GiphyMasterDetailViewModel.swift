@@ -48,10 +48,8 @@ class GiphyMasterDetailViewModel: DelegatingViewModel, CoordinatedViewModel {
         return model.selectedGif?.images.original.url
     }
     
-    var embeddedViewController: UIViewController {
-        let embeddedViewController = coordinator.embeddedViewController
-        embeddedViewController.viewModel?.delegate = self
-        return embeddedViewController
+    func load() {
+        coordinator.showDetailViewController(in: .main).delegate = self
     }
 }
 

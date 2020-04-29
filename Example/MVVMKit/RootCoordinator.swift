@@ -51,7 +51,8 @@ class RootCoordinator: Coordinator {
     
     func didSelectEmbeddedViewController() {
         let viewController = GiphyMasterDetailViewController.instantiate(storyboardName: "Main")
-        let coordinator = GiphyMasterDetailCoordinator(sourceViewController: viewController)
+        let coordinator = GiphyMasterDetailCoordinator(bindings: [.main: \.containerView],
+                                                       sourceViewController: viewController)
         viewController.viewModel = GiphyMasterDetailViewModel(coordinator: coordinator)
         sourceViewController?.show(viewController, sender: nil)
     }
