@@ -24,6 +24,8 @@ THE SOFTWARE.
 
 #if canImport(Combine)
 
+import UIKit
+
 @available(iOS 13.0, *)
 public extension MVVMDiffableCollectionViewController where ViewModelType.SectionType: SectionLayoutConvertible {
     /**
