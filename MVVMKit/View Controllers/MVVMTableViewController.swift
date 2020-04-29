@@ -22,8 +22,6 @@
  THE SOFTWARE.
  */
 
-import UIKit
-
 /**
  A convenience class for a view controller handling a UITableView.
  The class fully implements the UITableViewDataSource.
@@ -223,10 +221,12 @@ open class MVVMTableViewController<ViewModelType: TableViewViewModel>: UIViewCon
     
     // MARK: - Swipe Actions
     
+    @available(iOS 11.0, *)
     open func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         return nil
     }
     
+    @available(iOS 11.0, *)
     open func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         return nil
     }

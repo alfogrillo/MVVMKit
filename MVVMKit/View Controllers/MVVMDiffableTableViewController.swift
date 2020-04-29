@@ -22,7 +22,8 @@
  THE SOFTWARE.
  */
 
-import UIKit
+#if canImport(Combine)
+
 import Combine
 
 /**
@@ -261,3 +262,5 @@ open class MVVMDiffableTableViewController<ViewModelType: DiffableTableViewViewM
         
     }
 }
+
+#endif
