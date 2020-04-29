@@ -22,9 +22,9 @@
  THE SOFTWARE.
  */
 
-import UIKit
-
 #if canImport(Combine)
+
+import UIKit
 import Combine
 
 /**
