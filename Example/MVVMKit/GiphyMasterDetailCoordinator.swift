@@ -31,12 +31,12 @@ class GiphyMasterDetailCoordinator: EmbedderCoordinator {
     let containerViewBindings: [GiphyMasterDetailCoordinator.ViewKind : KeyPath<ViewController, UIView>]
     private var children: [ViewKind: UIViewController] = .init()
     
-    let weakSourceViewController: WeakReference<GiphyMasterDetailViewController>
+    let weakViewController: WeakReference<GiphyMasterDetailViewController>
     
     init(bindings: [GiphyMasterDetailCoordinator.ViewKind : KeyPath<ViewController, UIView>],
         sourceViewController viewController: GiphyMasterDetailViewController) {
         containerViewBindings = bindings
-        weakSourceViewController = .init(viewController)
+        weakViewController = .init(viewController)
     }
     
     enum ViewKind {
@@ -57,11 +57,11 @@ class GiphyMasterDetailCoordinator: EmbedderCoordinator {
     }
     
     private func embed(child: UIViewController, in view: ViewKind) {
-        guard let keyPath = containerViewBindings[view], let containerView = sourceViewController?[keyPath: keyPath] else {
+        guard let keyPath = containerViewBindings[view], let containerView = viewController?[keyPath: keyPath] else {
             return
         }
         child.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        sourceViewController?.embed(child: child, in: containerView)
+        viewController?.embed(child: child, in: containerView)
         children[view] = child
     }
 }

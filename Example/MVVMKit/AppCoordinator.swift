@@ -25,14 +25,14 @@
 import MVVMKit
 
 class AppCoordinator: ApplicationCoordinator {
-    var weakSourceViewController: WeakReference<UIViewController> = .init()
+    var weakViewController: WeakReference<UIViewController> = .init()
     
     func start(in window: UIWindow) {
         let rootViewController = RootViewController.instantiate(storyboardName: "Main")
         let coordinator = RootCoordinator(sourceViewController: rootViewController)
         rootViewController.viewModel = RootViewModel(model: RootModel(), coordinator: coordinator)
-        weakSourceViewController = .init(UINavigationController(rootViewController: rootViewController))
-        window.rootViewController = sourceViewController
+        weakViewController = .init(UINavigationController(rootViewController: rootViewController))
+        window.rootViewController = self.viewController
     }
 }
 

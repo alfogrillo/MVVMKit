@@ -38,9 +38,9 @@ public protocol CoordinatedViewModel: class {
 public class DefaultCoordinator: Coordinator {
     public typealias ViewController = UIViewController
     
-    public let weakSourceViewController: WeakReference<UIViewController>
+    public let weakViewController: WeakReference<UIViewController>
     
     public init(sourceViewController: ViewController) {
-        weakSourceViewController = .init(sourceViewController)
+        weakViewController = .init(sourceViewController)
     }
 }

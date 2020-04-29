@@ -25,28 +25,28 @@
 import MVVMKit
 
 class RootCoordinator: Coordinator {
-    let weakSourceViewController: WeakReference<UIViewController>
+    let weakViewController: WeakReference<UIViewController>
     
     init(sourceViewController viewController: UIViewController) {
-        weakSourceViewController = .init(viewController)
+        weakViewController = .init(viewController)
     }
     
     func didSelectBasicViewController(model: BasicModel) {
         let viewController = BasicViewController.instantiate(storyboardName: "Main")
         viewController.viewModel = BasicViewModel(model: model)
-        sourceViewController?.show(viewController, sender: nil)
+        self.viewController?.show(viewController, sender: nil)
     }
     
     func didSelectTableViewController(model: ColorsModel) {
         let viewController = ColorsViewController.instantiate(storyboardName: "Main")
         viewController.viewModel = ColorsViewModel(model: model)
-        sourceViewController?.show(viewController, sender: nil)
+        self.viewController?.show(viewController, sender: nil)
     }
     
     func didSelectCollectionViewController() {
         let viewController = GiphyViewController.instantiate(storyboardName: "Main")
         viewController.viewModel = GiphyViewModel()
-        sourceViewController?.show(viewController, sender: nil)
+        self.viewController?.show(viewController, sender: nil)
     }
     
     func didSelectEmbeddedViewController() {
@@ -54,18 +54,18 @@ class RootCoordinator: Coordinator {
         let coordinator = GiphyMasterDetailCoordinator(bindings: [.main: \.containerView],
                                                        sourceViewController: viewController)
         viewController.viewModel = GiphyMasterDetailViewModel(coordinator: coordinator)
-        sourceViewController?.show(viewController, sender: nil)
+        self.viewController?.show(viewController, sender: nil)
     }
     
     func didSelectDiffableCollectionViewController() {
         let viewController = SearchCollectionViewController.instantiate(storyboardName: "Main")
         viewController.viewModel = SearchCollectionViewModel()
-        sourceViewController?.show(viewController, sender: nil)
+        self.viewController?.show(viewController, sender: nil)
     }
     
     func didSelectDiffableTableViewController() {
         let viewController = SearchTableViewController.instantiate(storyboardName: "Main")
         viewController.viewModel = SearchTableViewModel()
-        sourceViewController?.show(viewController, sender: nil)
+        self.viewController?.show(viewController, sender: nil)
     }
 }
