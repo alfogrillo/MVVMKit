@@ -22,6 +22,8 @@
  THE SOFTWARE.
  */
 
+#if canImport(Combine)
+
 import UIKit
 import Combine
 
@@ -83,3 +85,5 @@ open class MVVMDiffableCollectionViewController<ViewModelType: DiffableCollectio
         }
     }
 }
+
+#endif

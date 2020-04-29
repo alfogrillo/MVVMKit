@@ -22,6 +22,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
+#if canImport(Combine)
+
+import UIKit
+
 @available(iOS 13.0, *)
 public extension MVVMDiffableCollectionViewController where ViewModelType.SectionType: SectionLayoutConvertible {
     /**
@@ -38,3 +42,5 @@ public extension MVVMDiffableCollectionViewController where ViewModelType.Sectio
         return layout
     }
 }
+
+#endif

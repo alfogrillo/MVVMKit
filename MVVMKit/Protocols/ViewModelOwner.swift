@@ -22,6 +22,8 @@
  THE SOFTWARE.
  */
 
+import UIKit
+
 /**
  A view model owner is also the `Binder` for the view model that it owns.
  */
