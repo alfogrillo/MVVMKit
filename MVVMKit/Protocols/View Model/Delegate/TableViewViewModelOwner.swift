@@ -22,8 +22,6 @@
  THE SOFTWARE.
  */
 
-import UIKit
-
 /**
  A protocol describing the requirements of the owner of a table view.
  Tipically the `TableViewViewModelOwner` is a `UIViewController`
