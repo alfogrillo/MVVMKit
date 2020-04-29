@@ -22,6 +22,8 @@
  THE SOFTWARE.
  */
 
+import UIKit
+
 /**
  A convenience class for a view controller handling a UITableView.
  The class fully implements the UITableViewDataSource.

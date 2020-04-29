@@ -22,6 +22,8 @@
  THE SOFTWARE.
  */
 
+import UIKit
+
 /**
  A convenience base protocol for coordinators
  */

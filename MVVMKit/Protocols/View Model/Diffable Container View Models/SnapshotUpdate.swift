@@ -22,6 +22,8 @@
  THE SOFTWARE.
  */
 
+import UIKit
+
 /**
  A container for a NSDiffableDataSourceSnapshot.
  This container describe if the diffing of a snapshot should be animated and provides a diffing completion.

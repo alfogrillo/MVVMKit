@@ -24,6 +24,7 @@ THE SOFTWARE.
 
 #if canImport(Combine)
 
+import UIKit
 import Combine
 
 /**

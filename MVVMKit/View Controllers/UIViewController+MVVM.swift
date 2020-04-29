@@ -22,6 +22,8 @@
  THE SOFTWARE.
  */
 
+import UIKit
+
 internal extension UIViewController {
     func configure(view: UIView, with viewModel: ViewModel) {
         guard let view = view as? Binder else { return }

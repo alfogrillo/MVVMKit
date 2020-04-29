@@ -22,6 +22,8 @@
  THE SOFTWARE.
 */
 
+import UIKit
+
 /**
  A protocols identifying a coordinator owner
  */
