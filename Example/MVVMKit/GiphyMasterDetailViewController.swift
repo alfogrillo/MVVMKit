@@ -24,11 +24,11 @@
 
 import MVVMKit
 
-class GiphyMasterDetailViewController: UIViewController, ViewModelOwner {
+class GiphyMasterDetailViewController: UIViewController, ViewModelOwner, ContainerViewProvider {
     typealias CustomViewModel = GiphyMasterDetailViewModel
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var activityIndicatorView: UIActivityIndicatorView!
-    @IBOutlet weak var containerView: UIView!
+    @IBOutlet private weak var containerView: UIView!
     
     var viewModel: GiphyMasterDetailViewModel! {
         didSet { viewModel?.binder = AnyBinder(self) }
@@ -46,5 +46,16 @@ class GiphyMasterDetailViewController: UIViewController, ViewModelOwner {
         imageView.setGifImage(withUrl: url) { [weak self] _ in
             self?.activityIndicatorView.stopAnimating()
         }
+    }
+    
+    func view(for kind: ViewKind) -> UIView? {
+        switch kind {
+        case .main:
+            return containerView
+        }
+    }
+    
+    enum ViewKind {
+        case main
     }
 }

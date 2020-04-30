@@ -25,9 +25,11 @@
 import UIKit
 
 /// A protocol to coordinate embedding in custom container view controllers
-public protocol EmbedderCoordinator: Coordinator {
-    /// A type identifying a container view for the embedding
+public protocol EmbedderCoordinator: Coordinator where ViewController: ContainerViewProvider { }
+
+/// A protocol for a type providing container views by kind
+public protocol ContainerViewProvider: UIViewController {
     associatedtype ContainerViewKind: Hashable
     
-    var containerViewBindings: [ContainerViewKind: KeyPath<ViewController, UIView>] { get }
+    func view(for kind: ContainerViewKind) -> UIView?
 }

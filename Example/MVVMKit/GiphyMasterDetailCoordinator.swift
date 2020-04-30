@@ -26,16 +26,13 @@ import MVVMKit
 
 class GiphyMasterDetailCoordinator: EmbedderCoordinator {
     typealias ViewController = GiphyMasterDetailViewController
-    typealias ContainerViewKind = ViewKind
+    typealias ContainerViewKind = ViewController.ViewKind
     
-    let containerViewBindings: [GiphyMasterDetailCoordinator.ViewKind : KeyPath<ViewController, UIView>]
-    private var children: [ViewKind: UIViewController] = .init()
+    private var children: [ContainerViewKind: UIViewController] = .init()
     
     let weakViewController: WeakReference<GiphyMasterDetailViewController>
     
-    init(bindings: [GiphyMasterDetailCoordinator.ViewKind : KeyPath<ViewController, UIView>],
-        sourceViewController viewController: GiphyMasterDetailViewController) {
-        containerViewBindings = bindings
+    init(sourceViewController viewController: GiphyMasterDetailViewController) {
         weakViewController = .init(viewController)
     }
     
@@ -43,7 +40,7 @@ class GiphyMasterDetailCoordinator: EmbedderCoordinator {
         case main
     }
     
-    func showDetailViewController(in view: ViewKind) -> GiphyViewModel {
+    func showDetailViewController(in view: ContainerViewKind) -> GiphyViewModel {
         cleanup(in: view)
         let viewController = GiphyViewController.instantiate(storyboardName: "Main")
         let viewModel = GiphyViewModel()
@@ -52,12 +49,12 @@ class GiphyMasterDetailCoordinator: EmbedderCoordinator {
         return viewModel
     }
     
-    private func cleanup(in view: ViewKind) {
+    private func cleanup(in view: ContainerViewKind) {
         children.removeValue(forKey: view)?.removeEmbeddingFromParent()
     }
     
-    private func embed(child: UIViewController, in view: ViewKind) {
-        guard let keyPath = containerViewBindings[view], let containerView = viewController?[keyPath: keyPath] else {
+    private func embed(child: UIViewController, in view: ContainerViewKind) {
+        guard let containerView = viewController?.view(for: view) else {
             return
         }
         child.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]

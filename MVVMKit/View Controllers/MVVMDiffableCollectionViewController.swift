@@ -42,7 +42,7 @@ open class MVVMDiffableCollectionViewController<ViewModelType: DiffableCollectio
     public private(set) var dataSource: MVVMCollectionViewDiffableDataSource<ViewModelType.SectionType>!
     
     /// The type of the instanciated `MVVMCollectionViewDiffableDataSource`. A custom data source can be provided overriding this property.
-    open var dataSourceType: MVVMCollectionViewDiffableDataSource<ViewModelType.SectionType>.Type {
+    open class var dataSourceType: MVVMCollectionViewDiffableDataSource<ViewModelType.SectionType>.Type {
         MVVMCollectionViewDiffableDataSource<ViewModelType.SectionType>.self
     }
     
@@ -63,7 +63,7 @@ open class MVVMDiffableCollectionViewController<ViewModelType: DiffableCollectio
     }
     
     private func setupDataSource() {
-        dataSource = MVVMCollectionViewDiffableDataSource(collectionView: collectionView) { [weak self] (collectionView, indexPath, adapter) in
+        dataSource = Self.dataSourceType.init(collectionView: collectionView) { [weak self] (collectionView, indexPath, adapter) in
             guard let self = self else { return nil }
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: adapter.reusableViewViewModel.identifier, for: indexPath)
             self.configureDelegate(of: cell)
