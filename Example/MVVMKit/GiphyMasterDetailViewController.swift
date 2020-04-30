@@ -28,7 +28,8 @@ class GiphyMasterDetailViewController: UIViewController, ViewModelOwner, Contain
     typealias CustomViewModel = GiphyMasterDetailViewModel
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var activityIndicatorView: UIActivityIndicatorView!
-    @IBOutlet private weak var containerView: UIView!
+    @IBOutlet private weak var masterContainerView: UIView!
+    @IBOutlet private weak var detailContainerView: UIView!
     
     var viewModel: GiphyMasterDetailViewModel! {
         didSet { viewModel?.binder = AnyBinder(self) }
@@ -39,23 +40,19 @@ class GiphyMasterDetailViewController: UIViewController, ViewModelOwner, Contain
         viewModel.load()
     }
     
-    func bind(viewModel: GiphyMasterDetailViewModel) {
-        guard let stringUrl = viewModel.imageViewUrl, let url = URL(string: stringUrl) else { return }
-        imageView.setGifImage(withUrl: url)
-        activityIndicatorView.startAnimating()
-        imageView.setGifImage(withUrl: url) { [weak self] _ in
-            self?.activityIndicatorView.stopAnimating()
-        }
-    }
+    func bind(viewModel: GiphyMasterDetailViewModel) { }
     
     func view(for kind: ViewKind) -> UIView? {
         switch kind {
-        case .main:
-            return containerView
+        case .master:
+            return masterContainerView
+        case .detail:
+            return detailContainerView
         }
     }
     
     enum ViewKind {
-        case main
+        case master
+        case detail
     }
 }

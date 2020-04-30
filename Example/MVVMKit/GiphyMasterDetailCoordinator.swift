@@ -40,13 +40,21 @@ class GiphyMasterDetailCoordinator: EmbedderCoordinator {
         case main
     }
     
-    func showDetailViewController(in view: ContainerViewKind) -> GiphyViewModel {
+    func showMasterViewController(in view: ContainerViewKind) -> GiphyViewModel {
         cleanup(in: view)
         let viewController = GiphyViewController.instantiate(storyboardName: "Main")
         let viewModel = GiphyViewModel()
         viewController.viewModel = viewModel
         embed(child: viewController, in: view)
         return viewModel
+    }
+    
+    func showDetailViewController(in view: ContainerViewKind, with result: GiphyResult) {
+        cleanup(in: view)
+        let viewController = GiphyDetailViewController.instantiate(storyboardName: "Main")
+        let viewModel = GiphyDetailViewModel(model: result)
+        viewController.viewModel = viewModel
+        embed(child: viewController, in: view)
     }
     
     private func cleanup(in view: ContainerViewKind) {

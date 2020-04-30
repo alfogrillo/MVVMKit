@@ -1,7 +1,7 @@
 /*
- GiphyMasterDetailViewModel.swift
+ GiphyDetailViewModel.swift
  
- Copyright (c) 2019 Alfonso Grillo
+ Copyright (c) 2020 Alfonso Grillo
  
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -23,23 +23,16 @@
  */
 
 import MVVMKit
+import Foundation
 
-class GiphyMasterDetailViewModel: DelegatingViewModel, CoordinatedViewModel {
-    typealias CoordinatorType = GiphyMasterDetailCoordinator
-    var binder: AnyBinder<GiphyMasterDetailViewModel>?
-    var coordinator: GiphyMasterDetailCoordinator
+class GiphyDetailViewModel: ReferenceViewModel {
+    private let model: GiphyResult
     
-    init(coordinator: GiphyMasterDetailCoordinator) {
-        self.coordinator = coordinator
+    init(model: GiphyResult) {
+        self.model = model
     }
     
-    func load() {
-        coordinator.showMasterViewController(in: .master).delegate = self
-    }
-}
-
-extension GiphyMasterDetailViewModel: GiphyViewModelDelegate {
-    func giphyViewModel(_ giphyViewModel: GiphyViewModel, didSelectGif gif: GiphyResult) {
-        coordinator.showDetailViewController(in: .detail, with: gif)
+    var imageViewUrl: URL? {
+        URL(string: model.images.original.url)
     }
 }
