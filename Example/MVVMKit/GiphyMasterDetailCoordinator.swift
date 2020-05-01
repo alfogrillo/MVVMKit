@@ -36,10 +36,6 @@ class GiphyMasterDetailCoordinator: EmbedderCoordinator {
         weakViewController = .init(viewController)
     }
     
-    enum ViewKind {
-        case main
-    }
-    
     func showMasterViewController(in view: ContainerViewKind) -> GiphyViewModel {
         cleanup(in: view)
         let viewController = GiphyViewController.instantiate(storyboardName: "Main")
@@ -65,7 +61,6 @@ class GiphyMasterDetailCoordinator: EmbedderCoordinator {
         guard let containerView = viewController?.view(for: view) else {
             return
         }
-        child.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         viewController?.embed(child: child, in: containerView)
         children[view] = child
     }
