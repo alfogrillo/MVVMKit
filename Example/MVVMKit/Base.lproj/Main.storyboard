@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9Uh-tC-1l8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9Uh-tC-1l8">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -150,7 +150,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EDY-z1-tMd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2641" y="938"/>
+            <point key="canvasLocation" x="3454" y="918"/>
         </scene>
         <!--Colors View Controller-->
         <scene sceneID="ykf-wK-WQJ">
@@ -255,10 +255,10 @@
             </objects>
             <point key="canvasLocation" x="1772" y="134"/>
         </scene>
-        <!--Diffable Collection View Controller-->
+        <!--Search Collection View Controller-->
         <scene sceneID="2ho-6X-X6h">
             <objects>
-                <viewController storyboardIdentifier="DiffableCollectionViewController" id="Yhn-F8-r1v" customClass="DiffableCollectionViewController" customModule="MVVMKit_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchCollectionViewController" id="Yhn-F8-r1v" customClass="SearchCollectionViewController" customModule="MVVMKit_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1n7-gR-CZW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -302,10 +302,10 @@
             </objects>
             <point key="canvasLocation" x="2640.8000000000002" y="133.74384236453201"/>
         </scene>
-        <!--Diffable Table View Controller-->
+        <!--Search Table View Controller-->
         <scene sceneID="9i0-gA-VO0">
             <objects>
-                <viewController storyboardIdentifier="DiffableTableViewController" id="Uhm-SO-gTz" customClass="DiffableTableViewController" customModule="MVVMKit_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchTableViewController" id="Uhm-SO-gTz" customClass="SearchTableViewController" customModule="MVVMKit_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d12-H3-G4h">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -408,27 +408,12 @@
                                             <constraint firstAttribute="height" constant="1" id="8bl-rL-ar9"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pRf-K9-x3z" userLabel="Detail View">
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ruG-q7-0Yg">
                                         <rect key="frame" x="0.0" y="434" width="375" height="300"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NlF-0M-l4k">
-                                                <rect key="frame" x="10" y="10" width="355" height="280"/>
-                                            </imageView>
-                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="8v8-F7-TdO">
-                                                <rect key="frame" x="177.66666666666666" y="140" width="20" height="20"/>
-                                            </activityIndicatorView>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="NlF-0M-l4k" secondAttribute="trailing" constant="10" id="CO7-PO-Qei"/>
-                                            <constraint firstItem="8v8-F7-TdO" firstAttribute="centerY" secondItem="NlF-0M-l4k" secondAttribute="centerY" id="E4i-Rk-BUV"/>
-                                            <constraint firstItem="8v8-F7-TdO" firstAttribute="centerX" secondItem="NlF-0M-l4k" secondAttribute="centerX" id="IhL-Mq-A3g"/>
-                                            <constraint firstAttribute="bottom" secondItem="NlF-0M-l4k" secondAttribute="bottom" constant="10" id="KNF-dX-TuN"/>
-                                            <constraint firstItem="NlF-0M-l4k" firstAttribute="leading" secondItem="pRf-K9-x3z" secondAttribute="leading" constant="10" id="XLQ-Op-N9H"/>
-                                            <constraint firstItem="NlF-0M-l4k" firstAttribute="top" secondItem="pRf-K9-x3z" secondAttribute="top" constant="10" id="rVZ-FH-sX9"/>
-                                            <constraint firstAttribute="height" constant="300" id="tZg-MR-rbb"/>
+                                            <constraint firstAttribute="height" constant="300" id="Okp-x7-jfe"/>
                                         </constraints>
-                                    </view>
+                                    </containerView>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -443,13 +428,14 @@
                     </view>
                     <connections>
                         <outlet property="activityIndicatorView" destination="8v8-F7-TdO" id="zCE-W4-ogQ"/>
-                        <outlet property="containerView" destination="DY7-Au-xbB" id="Y5k-Qo-bNV"/>
+                        <outlet property="detailContainerView" destination="ruG-q7-0Yg" id="EaA-9R-PRb"/>
                         <outlet property="imageView" destination="NlF-0M-l4k" id="GBb-U4-9am"/>
+                        <outlet property="masterContainerView" destination="DY7-Au-xbB" id="Y5k-Qo-bNV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vsh-hS-yGl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="894" y="938"/>
+            <point key="canvasLocation" x="894" y="918"/>
         </scene>
         <!--Giphy View Controller-->
         <scene sceneID="kJu-vM-omC">
@@ -463,7 +449,7 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="768"/>
                                 <subviews>
                                     <searchBar contentMode="redraw" placeholder="Type something" translatesAutoresizingMaskIntoConstraints="NO" id="Zzh-uI-WCf">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="224"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <scopeButtonTitles>
                                             <string>Title</string>
@@ -474,7 +460,7 @@
                                         </connections>
                                     </searchBar>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="m7Z-rf-Wbe">
-                                        <rect key="frame" x="0.0" y="56" width="375" height="712"/>
+                                        <rect key="frame" x="0.0" y="224" width="375" height="544"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="a69-Af-6Np">
                                             <size key="itemSize" width="217" height="161"/>
@@ -520,13 +506,13 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No results" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hOR-l2-vWr">
-                                <rect key="frame" x="141.66666666666666" y="445.33333333333331" width="91.666666666666657" height="21.666666666666686"/>
+                                <rect key="frame" x="141.66666666666666" y="529.33333333333337" width="91.666666666666657" height="21.666666666666629"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="uaF-1n-gve">
-                                <rect key="frame" x="177.66666666666666" y="446" width="20" height="20"/>
+                                <rect key="frame" x="177.66666666666666" y="530" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -550,7 +536,42 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1h9-hw-a8c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1772" y="938"/>
+            <point key="canvasLocation" x="1772" y="918"/>
+        </scene>
+        <!--Giphy Detail View Controller-->
+        <scene sceneID="vvT-WP-VrT">
+            <objects>
+                <viewController storyboardIdentifier="GiphyDetailViewController" id="Nda-Tu-T2V" customClass="GiphyDetailViewController" customModule="MVVMKit_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dc2-L9-H6e">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NlF-0M-l4k">
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                            </imageView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="8v8-F7-TdO">
+                                <rect key="frame" x="177.66666666666666" y="401" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="eih-os-DiF" firstAttribute="bottom" secondItem="NlF-0M-l4k" secondAttribute="bottom" id="9M2-cV-XqC"/>
+                            <constraint firstItem="8v8-F7-TdO" firstAttribute="centerX" secondItem="eih-os-DiF" secondAttribute="centerX" id="Hca-ga-hhJ"/>
+                            <constraint firstItem="8v8-F7-TdO" firstAttribute="centerY" secondItem="eih-os-DiF" secondAttribute="centerY" id="UON-j6-Rfr"/>
+                            <constraint firstItem="NlF-0M-l4k" firstAttribute="leading" secondItem="eih-os-DiF" secondAttribute="leading" id="VjY-br-XjB"/>
+                            <constraint firstItem="eih-os-DiF" firstAttribute="trailing" secondItem="NlF-0M-l4k" secondAttribute="trailing" id="ZhV-IV-5fn"/>
+                            <constraint firstItem="NlF-0M-l4k" firstAttribute="top" secondItem="eih-os-DiF" secondAttribute="top" id="cP7-WY-4FP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="eih-os-DiF"/>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="8v8-F7-TdO" id="whY-T1-CbD"/>
+                        <outlet property="imageView" destination="NlF-0M-l4k" id="Te4-7Q-6fW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KS1-Tg-mVj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2641" y="918"/>
         </scene>
     </scenes>
 </document>

@@ -29,12 +29,12 @@ import UIKit
  */
 public protocol Coordinator {
     associatedtype ViewController: UIViewController
-    var weakSourceViewController: WeakReference<ViewController> { get }
+    var weakViewController: WeakReference<ViewController> { get }
 }
 
 public extension Coordinator {
     /// A convenience property to get the source view controller
-    var sourceViewController: ViewController? {
-        weakSourceViewController.object
+    var viewController: ViewController? {
+        weakViewController.object
     }
 }

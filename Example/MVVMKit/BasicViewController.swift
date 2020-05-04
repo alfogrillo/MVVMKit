@@ -29,9 +29,9 @@ class BasicViewController: UIViewController, ViewModelOwner {
     @IBOutlet private weak var slider: UISlider!
     @IBOutlet private weak var uiswitch: UISwitch!
     
-    typealias CustomViewModel = BasicViewModel
+    typealias ViewModelType = BasicViewModel
     
-    var viewModel: BasicViewModel? {
+    var viewModel: BasicViewModel! {
         didSet { viewModel?.binder = AnyBinder(self) }
     }
     

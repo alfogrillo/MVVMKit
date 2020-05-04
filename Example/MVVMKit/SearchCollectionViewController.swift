@@ -1,5 +1,5 @@
 /*
- DiffableCollectionViewController.swift
+ SearchCollectionViewController.swift
  
  Copyright (c) 2019 Alfonso Grillo
  
@@ -24,15 +24,11 @@
 
 import MVVMKit
 
-class DiffableCollectionViewController: MVVMDiffableCollectionViewController<DiffableCollectionViewModel> {
+class SearchCollectionViewController: MVVMDiffableCollectionViewController<SearchCollectionViewModel> {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
-    }
-    
-    override func bind(viewModel: DiffableCollectionViewModel) {
-        super.bind(viewModel: viewModel)
-        updateLayout(with: viewModel)
+        updateLayout()
     }
     
     private func setupCollectionView() {
@@ -55,7 +51,7 @@ class DiffableCollectionViewController: MVVMDiffableCollectionViewController<Dif
     }
 }
 
-extension DiffableCollectionViewController: UISearchBarDelegate {
+extension SearchCollectionViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         viewModel?.searchTextDidChange(searchText: searchText)
     }
@@ -109,7 +105,7 @@ private extension NSCollectionLayoutSection {
 
 // MARK: Layout
 
-extension DiffableCollectionViewModel.Section {
+extension SearchCollectionViewModel.Section {
     func sectionLayout(with environment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? {
         switch self {
         case .main:

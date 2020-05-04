@@ -1,5 +1,5 @@
 /*
- DiffableTableViewModel.swift
+ SearchTableViewModel.swift
  
  Copyright (c) 2019 Alfonso Grillo
  
@@ -25,10 +25,10 @@
 import MVVMKit
 import Combine
 
-class DiffableTableViewModel: DiffableTableViewViewModel {
+class SearchTableViewModel: DiffableTableViewViewModel {
     typealias SectionType = Section
     
-    var snapshotPublisher: AnyPublisher<SnapshotAdapter, Never> {
+    var snapshot: AnyPublisher<SnapshotAdapter, Never> {
         searchText.map(snapshot(searchText:)).eraseToAnyPublisher()
     }
     
@@ -41,7 +41,7 @@ class DiffableTableViewModel: DiffableTableViewViewModel {
     
         let filteredModels = model
             .filter { searchText.isEmpty || $0.containsIgnoringCase(text: searchText) }
-            .map { TextCellViewModel(text: $0).adapted(id: $0) }
+            .map { TextCellViewModel(text: $0).adapted(hashable: $0) }
         
         if !filteredModels.isEmpty {
             snapshot.appendSections([.main])

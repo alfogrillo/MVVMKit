@@ -36,7 +36,7 @@ protocol ColorCellDelegate: class {
 }
 
 class ColorCell: UITableViewCell, CustomBinder, CustomDelegator {
-    typealias CustomViewModel = ColorCellViewModel
+    typealias ViewModelType = ColorCellViewModel
     typealias Delegate = ColorCellDelegate
     
     @IBOutlet private weak var titleLabel: UILabel!

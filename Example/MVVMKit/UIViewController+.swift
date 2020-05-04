@@ -44,3 +44,20 @@ extension StoryboardLoadable {
         return String(describing: self)
     }
 }
+
+internal extension UIViewController {
+    func embed(child: UIViewController, in view: UIView) {
+        child.willMove(toParent: self)
+        view.addSubview(child.view)
+        addChild(child)
+        child.view.frame = view.bounds
+        child.didMove(toParent: self)
+    }
+    
+    func removeEmbeddingFromParent() {
+        willMove(toParent: nil)
+        view.removeFromSuperview()
+        removeFromParent()
+        didMove(toParent: nil)
+    }
+}

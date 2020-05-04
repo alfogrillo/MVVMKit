@@ -34,7 +34,7 @@ public extension MVVMDiffableCollectionViewController where ViewModelType.Sectio
      - Note: It is responsibility of the subclass of `MVVMDiffableCollectionViewController` to configure the layout when it is needed.
      */
     @discardableResult
-    func updateLayout(with viewModel: ViewModelType, animated: Bool = true) -> UICollectionViewCompositionalLayout {
+    func updateLayout(animated: Bool = true) -> UICollectionViewCompositionalLayout {
         let layout: UICollectionViewCompositionalLayout = .init { [weak self] (index, environment) -> NSCollectionLayoutSection? in
             self?.dataSource.snapshot().sectionIdentifiers[index].sectionLayout(with: environment)
         }

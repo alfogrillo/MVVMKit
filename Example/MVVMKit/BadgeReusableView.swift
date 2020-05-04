@@ -31,7 +31,7 @@ struct BadgeReusableViewViewModel: ReusableViewViewModel {
 }
 
 class BadgeReusableView: UICollectionReusableView, CustomBinder {
-    typealias CustomViewModel = BadgeReusableViewViewModel
+    typealias ViewModelType = BadgeReusableViewViewModel
     @IBOutlet private weak var label: UILabel!
     
     func bind(viewModel: BadgeReusableViewViewModel) {

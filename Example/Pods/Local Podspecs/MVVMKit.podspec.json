@@ -1,21 +1,21 @@
 {
   "name": "MVVMKit",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "summary": "The MVVM pattern protocol oriented",
-  "homepage": "https://github.com/drakon-ag/MVVMKit",
+  "homepage": "https://github.com/alfogrillo/MVVMKit",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
   },
   "authors": {
-    "drakon-ag": "alfogrillo@gmail.com"
+    "alfogrillo": "alfogrillo@gmail.com"
   },
   "source": {
-    "git": "https://github.com/drakon-ag/MVVMKit.git",
-    "tag": "2.2.0"
+    "git": "https://github.com/alfogrillo/MVVMKit",
+    "tag": "2.2.1"
   },
   "platforms": {
-    "ios": "11.0"
+    "ios": "8.0"
   },
   "swift_versions": "5.0",
   "source_files": "MVVMKit/**/*",

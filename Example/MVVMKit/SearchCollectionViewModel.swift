@@ -1,5 +1,5 @@
 /*
- DiffableCollectionViewModel.swift
+ SearchCollectionViewModel.swift
  
  Copyright (c) 2019 Alfonso Grillo
  
@@ -25,10 +25,10 @@
 import MVVMKit
 import Combine
 
-class DiffableCollectionViewModel: DiffableCollectionViewViewModel {
+class SearchCollectionViewModel: DiffableCollectionViewViewModel {
     typealias SectionType = Section
     
-    var snapshotPublisher: AnyPublisher<SnapshotAdapter, Never> {
+    var snapshot: AnyPublisher<SnapshotAdapter, Never> {
         searchText.map(snapshot(searchText:)).eraseToAnyPublisher()
     }
     
@@ -74,7 +74,7 @@ class DiffableCollectionViewModel: DiffableCollectionViewViewModel {
         for section in Section.allCases {
             let items = filteredModel[section.rawValue].map {
                 SimpleCellViewModel(text: $0.text)
-                    .adapted(id: ModelEntryAdapter(entry: $0, searchText: searchText) )
+                    .adapted(hashable: ModelEntryAdapter(entry: $0, searchText: searchText) )
             }
             snapshot.appendSections([section])
             snapshot.appendItems(items, toSection: section)
@@ -113,8 +113,8 @@ enum SupplementaryViewKind: String {
     case badge
 }
 
-private extension Array where Element == DiffableCollectionViewModel.ModelEntry {
-    func filter(searchKey: String) -> [DiffableCollectionViewModel.ModelEntry] {
+private extension Array where Element == SearchCollectionViewModel.ModelEntry {
+    func filter(searchKey: String) -> [SearchCollectionViewModel.ModelEntry] {
         guard !searchKey.isEmpty else { return self }
         return filter { $0.text.containsIgnoringCase(text: searchKey) }
     }

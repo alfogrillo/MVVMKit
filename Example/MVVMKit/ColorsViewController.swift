@@ -25,7 +25,6 @@
 import MVVMKit
 
 class ColorsViewController: MVVMTableViewController<ColorsViewModel>, ColorCellDelegate {
-    typealias CustomViewModel = ColorsViewModel
     @IBOutlet private weak var selectColorLabel: UILabel!
     
     override func viewDidLoad() {

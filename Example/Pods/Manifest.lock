@@ -1,13 +1,13 @@
 PODS:
-  - MVVMKit (2.2.0)
-  - SwiftLint (0.31.0)
+  - MVVMKit (2.2.1)
+  - SwiftLint (0.39.2)
 
 DEPENDENCIES:
   - MVVMKit (from `../`)
   - SwiftLint
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  trunk:
     - SwiftLint
 
 EXTERNAL SOURCES:
@@ -15,9 +15,9 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  MVVMKit: bea29933e9cb0abd7460a7228ab75e201912ca76
-  SwiftLint: 7a0227733d786395817373b2d0ca799fd0093ff3
+  MVVMKit: cf6b356ee703ec61ec60ad1745208b05db6845c9
+  SwiftLint: 22ccbbe3b8008684be5955693bab135e0ed6a447
 
 PODFILE CHECKSUM: 4a1f650f1d64873fa162fbf1caab549287bb6679
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.9.1

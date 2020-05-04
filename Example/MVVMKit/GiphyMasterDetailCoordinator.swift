@@ -24,16 +24,44 @@
 
 import MVVMKit
 
-class GiphyMasterDetailCoordinator: Coordinator {
-    let weakSourceViewController: WeakReference<UIViewController>
+class GiphyMasterDetailCoordinator: EmbedderCoordinator {
+    typealias ViewController = GiphyMasterDetailViewController
+    typealias ContainerViewKind = ViewController.ViewKind
     
-    init(sourceViewController viewController: UIViewController) {
-        weakSourceViewController = .init(viewController)
+    private var children: [ContainerViewKind: UIViewController] = .init()
+    
+    let weakViewController: WeakReference<GiphyMasterDetailViewController>
+    
+    init(sourceViewController viewController: GiphyMasterDetailViewController) {
+        weakViewController = .init(viewController)
     }
     
-    var embeddedViewController: GiphyViewController{
+    func showMasterViewController(in view: ContainerViewKind) -> GiphyViewModel {
+        cleanup(in: view)
         let viewController = GiphyViewController.instantiate(storyboardName: "Main")
-        viewController.viewModel = GiphyViewModel()
-        return viewController
+        let viewModel = GiphyViewModel()
+        viewController.viewModel = viewModel
+        embed(child: viewController, in: view)
+        return viewModel
+    }
+    
+    func showDetailViewController(in view: ContainerViewKind, with result: GiphyResult) {
+        cleanup(in: view)
+        let viewController = GiphyDetailViewController.instantiate(storyboardName: "Main")
+        let viewModel = GiphyDetailViewModel(model: result)
+        viewController.viewModel = viewModel
+        embed(child: viewController, in: view)
+    }
+    
+    private func cleanup(in view: ContainerViewKind) {
+        children.removeValue(forKey: view)?.removeEmbeddingFromParent()
+    }
+    
+    private func embed(child: UIViewController, in view: ContainerViewKind) {
+        guard let containerView = viewController?.view(for: view) else {
+            return
+        }
+        viewController?.embed(child: child, in: containerView)
+        children[view] = child
     }
 }

@@ -23,31 +23,39 @@ THE SOFTWARE.
 */
 
 /**
- A protocol embedding a `ReusableViewViewModel`.
- The `id` of the adapter should be provided by the model and is used by diffable data sources to compute the diffing.
+ The `ReusableViewViewModelAdapter` is intended to be used as `ItemIdentifierType` of diffable data sources.
+ In this way we can deal with heterogeneous collection of `ReusableViewViewModel` in our data sources.
+ The `hashable` instance of the adapter should be part of your model (your source of truth) and is used by the diffable data sources to compute the diffing.
  */
 @available(iOS 13.0, *)
 public struct ReusableViewViewModelAdapter: Hashable {
-    private let id: AnyHashable
+    private let hashable: AnyHashable
     public let reusableViewViewModel: ReusableViewViewModel
-    
-    public init<H: Hashable>(id: H, reusableViewViewModel: ReusableViewViewModel) {
-        self.id = AnyHashable(id)
+
+    public init<H: Hashable>(hashable: H, reusableViewViewModel: ReusableViewViewModel) {
+        self.hashable = AnyHashable(hashable)
         self.reusableViewViewModel = reusableViewViewModel
     }
     
     public static func == (lhs: Self, rhs: Self) -> Bool {
-        lhs.id == rhs.id
+        lhs.hashable == rhs.hashable
     }
     
     public func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
+        hasher.combine(hashable)
     }
 }
 
 @available(iOS 13.0, *)
 public extension ReusableViewViewModel {
-    func adapted<H: Hashable>(id: H) -> ReusableViewViewModelAdapter {
-        .init(id: id, reusableViewViewModel: self)
+    func adapted<H: Hashable>(hashable: H) -> ReusableViewViewModelAdapter {
+        .init(hashable: hashable, reusableViewViewModel: self)
+    }
+}
+
+@available(iOS 13.0, *)
+public extension ReusableViewViewModel where Self: Hashable {
+    func adapted() -> ReusableViewViewModelAdapter {
+        .init(hashable: self, reusableViewViewModel: self)
     }
 }

@@ -1,7 +1,7 @@
 /*
- CoordinatorOnwer.swift
+ ApplicationCoordinator.swift
  
- Copyright (c) 2019 Alfonso Grillo
+ Copyright (c) 2020 Alfonso Grillo
  
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -20,27 +20,11 @@
  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
-*/
+ */
 
 import UIKit
 
-/**
- A protocols identifying a coordinator owner
- */
-public protocol CoordinatorOwner: class {
-    associatedtype CoordinatorType: Coordinator = DefaultCoordinator
-    var coordinator: CoordinatorType { get }
-}
-
-/**
- A convenience default coordinator
- */
-public class DefaultCoordinator: Coordinator {
-    public typealias ViewController = UIViewController
-    
-    public let weakSourceViewController: WeakReference<UIViewController>
-    
-    public init(sourceViewController: ViewController) {
-        weakSourceViewController = .init(sourceViewController)
-    }
+/// A special `Coordinator` in charge to boot the app defining `UIWindow.rootViewController`
+public protocol ApplicationCoordinator: Coordinator {
+    func start(in window: UIWindow)
 }

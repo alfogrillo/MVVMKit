@@ -24,39 +24,22 @@
 
 import MVVMKit
 
-class GiphyMasterDetailViewModel: DelegatingViewModel, CoordinatorOwner {
+class GiphyMasterDetailViewModel: DelegatingViewModel, CoordinatedViewModel {
     typealias CoordinatorType = GiphyMasterDetailCoordinator
     var binder: AnyBinder<GiphyMasterDetailViewModel>?
     var coordinator: GiphyMasterDetailCoordinator
-    
-    struct Model {
-        var selectedGif: GiphyResult? = nil
-        init(selectedGif: GiphyResult? = nil) {
-            self.selectedGif = selectedGif
-        }
-    }
     
     init(coordinator: GiphyMasterDetailCoordinator) {
         self.coordinator = coordinator
     }
     
-    var model: Model = Model() {
-        didSet { binder?.bind(viewModel: self) }
-    }
-    
-    var imageViewUrl: String? {
-        return model.selectedGif?.images.original.url
-    }
-    
-    var embeddedViewController: UIViewController {
-        let embeddedViewController = coordinator.embeddedViewController
-        embeddedViewController.viewModel?.delegate = self
-        return embeddedViewController
+    func load() {
+        coordinator.showMasterViewController(in: .master).delegate = self
     }
 }
 
 extension GiphyMasterDetailViewModel: GiphyViewModelDelegate {
     func giphyViewModel(_ giphyViewModel: GiphyViewModel, didSelectGif gif: GiphyResult) {
-        model.selectedGif = gif
+        coordinator.showDetailViewController(in: .detail, with: gif)
     }
 }
