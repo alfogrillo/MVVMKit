@@ -33,7 +33,7 @@ import Combine
  */
 @available(iOS 13.0, *)
 open class MVVMDiffableTableViewController<ViewModelType: DiffableTableViewViewModel>: UIViewController, ViewModelOwner, UITableViewDelegate {
-    public typealias CustomViewModel = ViewModelType
+    public typealias ViewModelType = ViewModelType
     
     @IBOutlet public weak var tableView: UITableView! {
         didSet { tableView.delegate = self }

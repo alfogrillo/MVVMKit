@@ -26,14 +26,14 @@ private class AnyBinderBase<V: ViewModel>: CustomBinder {
     func bind(viewModel: V) { }
 }
 
-private final class AnyBinderBox<B: CustomBinder>: AnyBinderBase<B.CustomViewModel> {
+private final class AnyBinderBox<B: CustomBinder>: AnyBinderBase<B.ViewModelType> {
     weak var base: B?
     
     init(_ base: B) {
         self.base = base
     }
     
-    override func bind(viewModel: B.CustomViewModel) {
+    override func bind(viewModel: B.ViewModelType) {
         base?.bind(viewModel: viewModel)
     }
 }
@@ -45,7 +45,7 @@ private final class AnyBinderBox<B: CustomBinder>: AnyBinderBase<B.CustomViewMod
 public final class AnyBinder<V: ViewModel>: CustomBinder {
     private let box: AnyBinderBase<V>
     
-    public init<B: CustomBinder>(_ binder: B) where B.CustomViewModel == V {
+    public init<B: CustomBinder>(_ binder: B) where B.ViewModelType == V {
         box = AnyBinderBox(binder)
     }
     

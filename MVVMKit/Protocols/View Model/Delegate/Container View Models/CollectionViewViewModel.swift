@@ -36,8 +36,8 @@ public protocol CollectionViewViewModel: DelegatingViewModel {
 /**
  A `CollectionViewBinder` is responsible to bind the view models of reusable view (cells, headers, footers).
  */
-public protocol CollectionViewBinder: CustomBinder where CustomViewModel: CollectionViewViewModel {
-    func bind(viewModel: CustomViewModel, update: CollectionViewUpdate)
+public protocol CollectionViewBinder: CustomBinder where ViewModelType: CollectionViewViewModel {
+    func bind(viewModel: ViewModelType, update: CollectionViewUpdate)
 }
 
 /// An enum describing what should be updated inside a collection view
@@ -55,7 +55,7 @@ public enum CollectionViewUpdate {
 }
 
 public extension CollectionViewBinder where Self: CollectionViewViewModelOwner {
-    func bind(viewModel: CustomViewModel, update: CollectionViewUpdate) {
+    func bind(viewModel: ViewModelType, update: CollectionViewUpdate) {
         handle(update: update, with: collectionView)
         bind(viewModel: viewModel)
     }

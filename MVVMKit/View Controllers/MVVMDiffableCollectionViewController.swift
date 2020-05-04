@@ -33,7 +33,7 @@ import Combine
  */
 @available(iOS 13.0, *)
 open class MVVMDiffableCollectionViewController<ViewModelType: DiffableCollectionViewViewModel>: UIViewController, ViewModelOwner {
-    public typealias CustomViewModel = ViewModelType
+    public typealias ViewModelType = ViewModelType
     
     @IBOutlet public weak var collectionView: UICollectionView!
     public var viewModel: ViewModelType! {

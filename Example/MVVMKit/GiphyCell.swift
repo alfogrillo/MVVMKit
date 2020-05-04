@@ -30,7 +30,7 @@ struct GiphyCellViewModel: ReusableViewViewModel {
 }
 
 class GiphyCell: UICollectionViewCell, CustomBinder {
-    typealias CustomViewModel = GiphyCellViewModel
+    typealias ViewModelType = GiphyCellViewModel
     
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var activityIndicatorView: UIActivityIndicatorView!

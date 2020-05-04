@@ -27,7 +27,7 @@ import UIKit
 /**
  A protocols identifying a coordinator owner
  */
-public protocol CoordinatedViewModel: class {
+public protocol CoordinatedViewModel: ViewModel {
     associatedtype CoordinatorType: Coordinator = DefaultCoordinator
     var coordinator: CoordinatorType { get }
 }

@@ -34,8 +34,6 @@ open class MVVMCollectionViewController<ViewModelType: CollectionViewViewModel>:
         didSet { collectionView.dataSource = self }
     }
     
-    public typealias CustomViewModel = ViewModelType
-    
     /// Override this method to bind your view model to the view
     open func bind(viewModel: ViewModelType) {
         

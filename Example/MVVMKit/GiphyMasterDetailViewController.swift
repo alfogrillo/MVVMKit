@@ -25,7 +25,7 @@
 import MVVMKit
 
 class GiphyMasterDetailViewController: UIViewController, ViewModelOwner, ContainerViewProvider {
-    typealias CustomViewModel = GiphyMasterDetailViewModel
+    typealias ViewModelType = GiphyMasterDetailViewModel
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var activityIndicatorView: UIActivityIndicatorView!
     @IBOutlet private weak var masterContainerView: UIView!

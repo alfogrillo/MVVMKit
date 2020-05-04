@@ -37,10 +37,6 @@ open class MVVMTableViewController<ViewModelType: TableViewViewModel>: UIViewCon
         }
     }
     
-    // MARK: - CustomViewModelConfigurable
-    
-    public typealias CustomViewModel = ViewModelType
-    
     /// Override this method to bind your view model to the view
     open func bind(viewModel: ViewModelType) {
         

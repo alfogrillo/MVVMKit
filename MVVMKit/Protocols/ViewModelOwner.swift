@@ -27,9 +27,9 @@ import UIKit
 /**
  A view model owner is also the `Binder` for the view model that it owns.
  */
-public protocol ViewModelOwner: CustomBinder where CustomViewModel: ReferenceViewModel {
+public protocol ViewModelOwner: CustomBinder where ViewModelType: ReferenceViewModel {
     /// The owned view model.
-    var viewModel: CustomViewModel! { get }
+    var viewModel: ViewModelType! { get }
 }
 
 public extension ViewModelOwner {

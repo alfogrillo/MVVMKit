@@ -25,7 +25,7 @@
 import MVVMKit
 
 class RootViewController: UIViewController, ViewModelOwner {
-    typealias CustomViewModel = RootViewModel
+    typealias ViewModelType = RootViewModel
     var viewModel: RootViewModel!
     
     func bind(viewModel: RootViewModel) {
