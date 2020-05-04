@@ -28,11 +28,7 @@ class SearchCollectionViewController: MVVMDiffableCollectionViewController<Searc
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
-    }
-    
-    override func bind(viewModel: SearchCollectionViewModel) {
-        super.bind(viewModel: viewModel)
-        updateLayout(with: viewModel)
+        updateLayout()
     }
     
     private func setupCollectionView() {

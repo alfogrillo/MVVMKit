@@ -52,7 +52,7 @@ The entity responsible for the application navigation.
 
 **Grapical representation**
 
-![MVVM](images/MVVM.png)
+![MVVM](Images/MVVM.png)
 
 ## Example
 
@@ -77,3 +77,11 @@ MVVMKit is also available as a Swift Package.
 ## License
 
 MVVMKit is available under the MIT license. See the LICENSE file for more info.
+
+## Templates
+
+Copy the `Templates/MVVMKit` folder into `~/Library/Developer/Xcode/Templates`.
+
+The result should be the following:
+
+![MVVM](Images/Templates.png)

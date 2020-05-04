@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>DefaultCompletionName</key>
+	<string>MVVM Reusable View</string>
+	<key>Description</key>
+	<string>MVVM Reusable View</string>
+	<key>Kind</key>
+	<string>Xcode.IDEKit.TextSubstitutionFileTemplateKind</string>
+	<key>AllowedTypes</key>
+	<array>
+		<string>public.swift-source</string>
+	</array>
+	<key>Platforms</key>
+	<array>
+		<string>com.apple.platform.iphoneos</string>
+	</array>
+	<key>Options</key>
+	<array>
+		<dict>
+			<key>Description</key>
+			<string>The name of the view you want to create</string>
+			<key>Identifier</key>
+			<string>reusableViewName</string>
+			<key>Name</key>
+			<string>Reusable View:</string>
+			<key>Required</key>
+			<true/>
+			<key>Type</key>
+			<string>text</string>
+			<key>NotPersisted</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>Default</key>
+			<string>___VARIABLE_reusableViewName:identifier___</string>
+			<key>Identifier</key>
+			<string>productName</string>
+			<key>Type</key>
+			<string>static</string>
+			<key>NotPersisted</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>Identifier</key>
+			<string>viewSuperclass</string>
+			<key>Required</key>
+			<true/>
+			<key>Name</key>
+			<string>View type:</string>
+			<key>Description</key>
+			<string>The type of view to use</string>
+			<key>Type</key>
+			<string>popup</string>
+			<key>Default</key>
+			<string>UICollectionViewCell</string>
+			<key>Values</key>
+			<array>
+				<string>UITableViewCell</string>
+				<string>UICollectionViewCell</string>
+				<string>UICollectionReusableView</string>
+			</array>
+		</dict>
+		<dict>
+			<key>Default</key>
+			<string>___VARIABLE_reusableViewName:identifier___</string>
+			<key>Description</key>
+			<string>The reusable view name</string>
+			<key>Identifier</key>
+			<string>viewClass</string>
+			<key>Name</key>
+			<string>View:</string>
+			<key>Required</key>
+			<true/>
+			<key>Type</key>
+			<string>static</string>
+			<key>NotPersisted</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>Default</key>
+			<string>___VARIABLE_reusableViewName:identifier___ViewModel</string>
+			<key>Description</key>
+			<string>The reusable view view model name</string>
+			<key>Identifier</key>
+			<string>viewModelName</string>
+			<key>Name</key>
+			<string>View Model:</string>
+			<key>Required</key>
+			<true/>
+			<key>Type</key>
+			<string>static</string>
+			<key>NotPersisted</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>Description</key>
+			<string>Check if you want a XIB</string>
+			<key>Identifier</key>
+			<string>XIB</string>
+			<key>Name</key>
+			<string>Also create a XIB</string>
+			<key>Type</key>
+			<string>checkbox</string>
+			<key>Required</key>
+			<false/>
+			<key>NotPersisted</key>
+			<false/>
+		</dict>
+	</array>
+	<key>SortOrder</key>
+	<string>6</string>
+	<key>Summary</key>
+	<string>MVVM Reusable View</string>
+</dict>
+</plist>
