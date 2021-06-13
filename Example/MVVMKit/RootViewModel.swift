@@ -24,11 +24,10 @@
 
 import MVVMKit
 
-class RootViewModel: DelegatingViewModel, CoordinatedViewModel {
+class RootViewModel: ViewModel, CoordinatedViewModel {
     typealias CoordinatorType = RootCoordinator
-    var binder: AnyBinder<RootViewModel>?
-    var coordinator: RootCoordinator
     
+    let coordinator: RootCoordinator
     private let model: RootModel
     
     init(model: RootModel, coordinator: RootCoordinator) {
@@ -38,18 +37,6 @@ class RootViewModel: DelegatingViewModel, CoordinatedViewModel {
     
     func didSelectBasicViewController() {
         coordinator.didSelectBasicViewController(model: model.basicModel)
-    }
-    
-    func didSelectTableViewController() {
-        coordinator.didSelectTableViewController(model: model.colorsModel)
-    }
-    
-    func didSelectCollectionViewController() {
-        coordinator.didSelectCollectionViewController()
-    }
-    
-    func didSelectEmbeddedViewController() {
-        coordinator.didSelectEmbeddedViewController()
     }
     
     func didSelectDiffableCollectionViewController() {

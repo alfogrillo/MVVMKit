@@ -1,7 +1,7 @@
 /*
  BasicViewModel.swift
  
- Copyright (c) 2019 Alfonso Grillo
+ Copyright (c) 2021 Alfonso Grillo
  
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -23,84 +23,100 @@
  */
 
 import MVVMKit
+import UIKit
+import Combine
 
 struct BasicModel {
     var value: Float
     var state: State
-    
+
     enum State {
         case on
         case off
     }
 }
 
-class BasicViewModel: BaseDelegatingViewModel {
-    var binder: AnyBinder<BasicViewModel>?
-    
+class BasicViewModel: ViewModel {
+    private let updateSubject: PassthroughSubject<Void, Never> = .init()
+
     init(model: BasicModel) {
-        self.model = model
+        self.model = .init(model)
     }
-    
+
     // MARK: Model
-    private var model: BasicModel {
-        didSet { binder?.bind(viewModel: self) }
+    private let model: CurrentValueSubject<BasicModel, Never>
+
+    var isDarkModeOn: AnyPublisher<Bool, Never> {
+        model.map { model in
+            switch model.state {
+            case .on:
+                return true
+            case .off:
+                return false
+            }
+        }.eraseToAnyPublisher()
     }
-    
-    var isDarkModeOn: Bool {
-        switch model.state {
-        case .on:
-            return true
-        case .off:
-            return false
+
+    var backgroundColor: AnyPublisher<UIColor, Never> {
+        model.map { model in
+            switch model.state {
+            case .on:
+                let component: CGFloat = CGFloat(model.value) / CGFloat(Constants.maximumValue)
+                return UIColor(red: component, green: component, blue: component, alpha: 1)
+            case .off:
+                return .white
+            }
+        }.eraseToAnyPublisher()
+    }
+
+    var textColor: AnyPublisher<UIColor, Never> {
+        model.map { model in
+            switch model.state {
+            case .on:
+                let component: CGFloat = 1 - CGFloat(model.value) / CGFloat(Constants.maximumValue)
+                return UIColor(red: component, green: component, blue: component, alpha: 1)
+            case .off:
+                return .black
+            }
+        }.eraseToAnyPublisher()
+    }
+
+    var sliderTintColor: AnyPublisher<UIColor, Never> {
+        model.map { model in
+            switch model.state {
+            case .on:
+                return .orange
+            case .off:
+                return .cyan
+            }
+        }.eraseToAnyPublisher()
+    }
+
+    var isSliderEnabled: AnyPublisher<Bool, Never> {
+        model.map { $0.state == .on }.eraseToAnyPublisher()
+    }
+
+    var value: AnyPublisher<Float, Never> {
+        model.map { $0.value }.eraseToAnyPublisher()
+    }
+
+    func sliderValueDidChange(value: Float) {
+        model.value.value = value
+    }
+
+    func switchStateDidChange(isOn: Bool) {
+        model.value.state = isOn ? .on : .off
+    }
+
+    var labelText: AnyPublisher<String, Never> {
+        model.map { model in
+            "Value \(Int(model.value))"
         }
+        .eraseToAnyPublisher()
     }
-    
-    var backgroundColor: UIColor {
-        switch model.state {
-        case .on:
-            let component: CGFloat = CGFloat(model.value) / CGFloat(maximumValue)
-            return UIColor(red: component, green: component, blue: component, alpha: 1)
-        case .off:
-            return .white
-        }
-    }
-    
-    var textColor: UIColor {
-        switch model.state {
-        case .on:
-            let component: CGFloat = 1 - CGFloat(model.value) / CGFloat(maximumValue)
-            return UIColor(red: component, green: component, blue: component, alpha: 1)
-        case .off:
-            return .black
-        }
-    }
-    
-    var sliderTintColor: UIColor {
-        switch model.state {
-        case .on:
-            return .orange
-        case .off:
-            return .cyan
-        }
-    }
-    
-    var maximumValue: Float {
-        return 20
-    }
-    
-    var value: Float {
-        return model.value
-    }
-    
-    func set(value: Float) {
-        model.value = value
-    }
-    
-    func set(state: BasicModel.State) {
-        model.state = state
-    }
-    
-    var labelText: String {
-        return "Value \(Int(model.value))"
+
+    enum Constants {
+        static let maximumValue: CGFloat = 20
     }
 }
+

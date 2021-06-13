@@ -37,25 +37,6 @@ class RootCoordinator: Coordinator {
         self.viewController?.show(viewController, sender: nil)
     }
     
-    func didSelectTableViewController(model: ColorsModel) {
-        let viewController = ColorsViewController.instantiate(storyboardName: "Main")
-        viewController.viewModel = ColorsViewModel(model: model)
-        self.viewController?.show(viewController, sender: nil)
-    }
-    
-    func didSelectCollectionViewController() {
-        let viewController = GiphyViewController.instantiate(storyboardName: "Main")
-        viewController.viewModel = GiphyViewModel()
-        self.viewController?.show(viewController, sender: nil)
-    }
-    
-    func didSelectEmbeddedViewController() {
-        let viewController = GiphyMasterDetailViewController.instantiate(storyboardName: "Main")
-        let coordinator = GiphyMasterDetailCoordinator(sourceViewController: viewController)
-        viewController.viewModel = GiphyMasterDetailViewModel(coordinator: coordinator)
-        self.viewController?.show(viewController, sender: nil)
-    }
-    
     func didSelectDiffableCollectionViewController() {
         let viewController = SearchCollectionViewController.instantiate(storyboardName: "Main")
         viewController.viewModel = SearchCollectionViewModel()

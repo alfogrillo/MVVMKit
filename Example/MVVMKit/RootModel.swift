@@ -25,15 +25,4 @@
 /// A stub for the application state
 struct RootModel {
     var basicModel = BasicModel(value: 5, state: .on)
-    var colorsModel = ColorsModel(colors: Color.colors, selectedColor: nil)
 }
-
-private extension Color {
-    static let colors: [Color] = [
-        Color(name: "Red", values: (r: 1, g: 0, b: 0)),
-        Color(name: "Green", values: (r: 0, g: 1, b: 0)),
-        Color(name: "Blue", values: (r: 0, g: 0, b: 1)),
-        Color(name: "Purple", values: (r: 1, g: 0, b: 1))
-    ]
-}
-
