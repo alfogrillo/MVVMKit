@@ -45,4 +45,8 @@ class RootViewController: UIViewController, ViewModelOwner {
     @IBAction func didiTapEmbedding(_ sender: UIButton) {
         viewModel.didSelectEmbedding()
     }
+
+    @IBAction func didTapCustomCellInteraction(_ sender: UIButton) {
+        viewModel.didTapCustomCellInteraction()
+    }
 }

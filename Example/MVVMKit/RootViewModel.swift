@@ -50,4 +50,8 @@ class RootViewModel: ViewModel, CoordinatedViewModel {
     func didSelectEmbedding() {
         coordinator.showEmbeddingViewController()
     }
+
+    func didTapCustomCellInteraction() {
+        coordinator.showCustomCellInteractionViewController(model: model.colorsModel)
+    }
 }

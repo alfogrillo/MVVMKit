@@ -14,6 +14,9 @@
 		2D2043132675FC0400CE42C1 /* ContainerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2043102675FC0400CE42C1 /* ContainerCoordinator.swift */; };
 		2D2043142675FC0400CE42C1 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2043112675FC0400CE42C1 /* ContainerViewController.swift */; };
 		2D2043152675FC0400CE42C1 /* ContainerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2043122675FC0400CE42C1 /* ContainerViewModel.swift */; };
+		2D204323267603CA00CE42C1 /* ColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D204320267603CA00CE42C1 /* ColorCell.swift */; };
+		2D204324267603CA00CE42C1 /* ColorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D204321267603CA00CE42C1 /* ColorsViewController.swift */; };
+		2D204325267603CA00CE42C1 /* ColorsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D204322267603CA00CE42C1 /* ColorsViewModel.swift */; };
 		2D78AD4923A6504700797910 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D78AD4823A6504700797910 /* SearchTableViewController.swift */; };
 		2D78AD4B23A6505100797910 /* SearchTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D78AD4A23A6505100797910 /* SearchTableViewModel.swift */; };
 		2D78AD4E23A6534500797910 /* TextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D78AD4D23A6534500797910 /* TextCell.swift */; };
@@ -57,6 +60,9 @@
 		2D2043102675FC0400CE42C1 /* ContainerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerCoordinator.swift; sourceTree = "<group>"; };
 		2D2043112675FC0400CE42C1 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		2D2043122675FC0400CE42C1 /* ContainerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewModel.swift; sourceTree = "<group>"; };
+		2D204320267603CA00CE42C1 /* ColorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorCell.swift; sourceTree = "<group>"; };
+		2D204321267603CA00CE42C1 /* ColorsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorsViewController.swift; sourceTree = "<group>"; };
+		2D204322267603CA00CE42C1 /* ColorsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorsViewModel.swift; sourceTree = "<group>"; };
 		2D78AD4823A6504700797910 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		2D78AD4A23A6505100797910 /* SearchTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewModel.swift; sourceTree = "<group>"; };
 		2D78AD4D23A6534500797910 /* TextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCell.swift; sourceTree = "<group>"; };
@@ -124,6 +130,26 @@
 				2D2043122675FC0400CE42C1 /* ContainerViewModel.swift */,
 			);
 			name = Embedding;
+			sourceTree = "<group>";
+		};
+		2D204327267603DC00CE42C1 /* Custom cell interaction */ = {
+			isa = PBXGroup;
+			children = (
+				2D204320267603CA00CE42C1 /* ColorCell.swift */,
+				2D204321267603CA00CE42C1 /* ColorsViewController.swift */,
+				2D204322267603CA00CE42C1 /* ColorsViewModel.swift */,
+			);
+			name = "Custom cell interaction";
+			sourceTree = "<group>";
+		};
+		2D204328267603F100CE42C1 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				C0757899223A4C0B0054F59A /* RootCoordinator.swift */,
+				C0F340D921B5E7CF00DDE19E /* RootViewController.swift */,
+				C012C09E2238FBFB00BD5549 /* RootViewModel.swift */,
+			);
+			name = Root;
 			sourceTree = "<group>";
 		};
 		2D78AD4C23A650A000797910 /* DiffableTableViewController */ = {
@@ -221,13 +247,12 @@
 		C0A15A6C21BBC59B00A499C5 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				C0757899223A4C0B0054F59A /* RootCoordinator.swift */,
-				C0F340D921B5E7CF00DDE19E /* RootViewController.swift */,
-				C012C09E2238FBFB00BD5549 /* RootViewModel.swift */,
 				C0F340D821B5E4E600DDE19E /* BasicViewController */,
+				2D204327267603DC00CE42C1 /* Custom cell interaction */,
 				2D8B6D3B23A574070062194E /* DiffableCollectionViewController */,
 				2D78AD4C23A650A000797910 /* DiffableTableViewController */,
 				2D20430F2675FBF600CE42C1 /* Embedding */,
+				2D204328267603F100CE42C1 /* Root */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -417,6 +442,7 @@
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				C0A15A5F21BBB7E300A499C5 /* URLSession+.swift in Sources */,
 				C0F340D721B5E4E100DDE19E /* BasicViewModel.swift in Sources */,
+				2D204324267603CA00CE42C1 /* ColorsViewController.swift in Sources */,
 				2D78AD5023A6547E00797910 /* String+.swift in Sources */,
 				C0A15A6121BBBABD00A499C5 /* GiphyApi.swift in Sources */,
 				2D2043152675FC0400CE42C1 /* ContainerViewModel.swift in Sources */,
@@ -427,6 +453,7 @@
 				2D8B6D4523A579340062194E /* UIView+.swift in Sources */,
 				C0EDA5E0223E6252003D55D8 /* RootModel.swift in Sources */,
 				C075789A223A4C0B0054F59A /* RootCoordinator.swift in Sources */,
+				2D204325267603CA00CE42C1 /* ColorsViewModel.swift in Sources */,
 				C0A15A6621BBC25300A499C5 /* UIImage+.swift in Sources */,
 				2D2043132675FC0400CE42C1 /* ContainerCoordinator.swift in Sources */,
 				C0F340DA21B5E7CF00DDE19E /* RootViewController.swift in Sources */,
@@ -437,6 +464,7 @@
 				2D2043142675FC0400CE42C1 /* ContainerViewController.swift in Sources */,
 				2DAA5F7923A6889100EFF2BF /* TableHeaderView.swift in Sources */,
 				C0F340D521B5E4B500DDE19E /* BasicViewController.swift in Sources */,
+				2D204323267603CA00CE42C1 /* ColorCell.swift in Sources */,
 				C012C09F2238FBFB00BD5549 /* RootViewModel.swift in Sources */,
 				C012C0A32238FEA700BD5549 /* UIViewController+.swift in Sources */,
 				2D0E934D24083764001373AB /* BadgeReusableView.swift in Sources */,

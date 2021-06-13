@@ -54,4 +54,10 @@ class RootCoordinator: Coordinator {
         viewController.viewModel = ContainerViewModel(coordinator: .init(viewController: viewController))
         self.viewController?.show(viewController, sender: nil)
     }
+
+    func showCustomCellInteractionViewController(model: ColorsModel) {
+        let viewController = ColorsViewController.instantiate(storyboardName: "Main")
+        viewController.viewModel = ColorsViewModel(model: model)
+        self.viewController?.show(viewController, sender: nil)
+    }
 }
