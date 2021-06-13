@@ -46,4 +46,8 @@ class RootViewModel: ViewModel, CoordinatedViewModel {
     func didSelectDiffableTableViewController() {
         coordinator.didSelectDiffableTableViewController()
     }
+
+    func didSelectEmbedding() {
+        coordinator.showEmbeddingViewController()
+    }
 }

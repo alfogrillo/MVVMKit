@@ -1,18 +1,18 @@
 /*
- RootViewController.swift
- 
- Copyright (c) 2019 Alfonso Grillo
- 
+ ContainerViewController.swift
+
+ Copyright (c) 2021 Alfonso Grillo
+
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
  in the Software without restriction, including without limitation the rights
  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  copies of the Software, and to permit persons to whom the Software is
  furnished to do so, subject to the following conditions:
- 
+
  The above copyright notice and this permission notice shall be included in
  all copies or substantial portions of the Software.
- 
+
  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -23,26 +23,39 @@
  */
 
 import MVVMKit
+import UIKit
 
-class RootViewController: UIViewController, ViewModelOwner {
-    typealias ViewModelType = RootViewModel
-    var viewModel: RootViewModel!
+class ContainerViewController: UIViewController, ViewModelOwner, ContainerViewProvider {
+    typealias ViewModelType = ContainerViewModel
     
-    func bind(viewModel: RootViewModel) { }
+    @IBOutlet weak private var containerView: UIView!
     
-    @IBAction func didTapBasicViewController(_ sender: UIButton) {
-        viewModel?.didSelectBasicViewController()
+    enum ContainerViewKind {
+        case main
     }
     
-    @IBAction func didTapDiffableCollectionViewController(_ sender: UIButton) {
-        viewModel?.didSelectDiffableCollectionViewController()
+    var viewModel: ContainerViewModel!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationItem.title = String(describing: type(of: self))
+        viewModel.start()
+        bind()
     }
     
-    @IBAction func didTapDiffableTableViewController(_ sender: UIButton) {
-        viewModel?.didSelectDiffableTableViewController()
+    func bind(viewModel: ContainerViewModel) {
+        
     }
-
-    @IBAction func didiTapEmbedding(_ sender: UIButton) {
-        viewModel.didSelectEmbedding()
+    
+    @IBAction func segmentDidChange(_ sender: UISegmentedControl) {
+        viewModel.didSelectSegment(at: sender.selectedSegmentIndex)
+    }
+    
+    
+    func view(for kind: ContainerViewKind) -> UIView? {
+        switch kind {
+        case .main:
+            return containerView
+        }
     }
 }

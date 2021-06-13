@@ -1,18 +1,18 @@
 /*
- RootViewController.swift
- 
- Copyright (c) 2019 Alfonso Grillo
- 
+ ContainerViewModel.swift
+
+ Copyright (c) 2021 Alfonso Grillo
+
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
  in the Software without restriction, including without limitation the rights
  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  copies of the Software, and to permit persons to whom the Software is
  furnished to do so, subject to the following conditions:
- 
+
  The above copyright notice and this permission notice shall be included in
  all copies or substantial portions of the Software.
- 
+
  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -24,25 +24,31 @@
 
 import MVVMKit
 
-class RootViewController: UIViewController, ViewModelOwner {
-    typealias ViewModelType = RootViewModel
-    var viewModel: RootViewModel!
+final class ContainerViewModel: CoordinatedViewModel {
+    typealias Coordinator = ContainerCoordinator
     
-    func bind(viewModel: RootViewModel) { }
+    let coordinator: ContainerCoordinator
     
-    @IBAction func didTapBasicViewController(_ sender: UIButton) {
-        viewModel?.didSelectBasicViewController()
+    init(coordinator: ContainerCoordinator) {
+        self.coordinator = coordinator
     }
     
-    @IBAction func didTapDiffableCollectionViewController(_ sender: UIButton) {
-        viewModel?.didSelectDiffableCollectionViewController()
+    func start() {
+        coordinator.showTableViewController(in: .main)
     }
     
-    @IBAction func didTapDiffableTableViewController(_ sender: UIButton) {
-        viewModel?.didSelectDiffableTableViewController()
+    func didSelectSegment(at index: Int) {
+        guard let scene = Scene(rawValue: index) else { return }
+        switch scene {
+        case .tableView:
+            coordinator.showTableViewController(in: .main)
+        case .collectionView:
+            coordinator.showCollectionViewController(in: .main)
+        }
     }
-
-    @IBAction func didiTapEmbedding(_ sender: UIButton) {
-        viewModel.didSelectEmbedding()
+    
+    enum Scene: Int {
+        case tableView
+        case collectionView
     }
 }

@@ -48,4 +48,10 @@ class RootCoordinator: Coordinator {
         viewController.viewModel = SearchTableViewModel()
         self.viewController?.show(viewController, sender: nil)
     }
+
+    func showEmbeddingViewController() {
+        let viewController = ContainerViewController.instantiate(storyboardName: "Main")
+        viewController.viewModel = ContainerViewModel(coordinator: .init(viewController: viewController))
+        self.viewController?.show(viewController, sender: nil)
+    }
 }
