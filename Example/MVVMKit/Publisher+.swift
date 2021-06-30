@@ -1,18 +1,18 @@
 /*
- AnyBinder.swift
- 
+Publisher+.swift
+
  Copyright (c) 2019 Alfonso Grillo
- 
+
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
  in the Software without restriction, including without limitation the rights
  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  copies of the Software, and to permit persons to whom the Software is
  furnished to do so, subject to the following conditions:
- 
+
  The above copyright notice and this permission notice shall be included in
  all copies or substantial portions of the Software.
- 
+
  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -22,34 +22,19 @@
  THE SOFTWARE.
  */
 
-private class AnyBinderBase<V: ViewModel>: CustomBinder {
-    func bind(viewModel: V) { }
-}
+import Foundation
+import Combine
 
-private final class AnyBinderBox<B: CustomBinder>: AnyBinderBase<B.ViewModelType> {
-    weak var base: B?
-    
-    init(_ base: B) {
-        self.base = base
+extension Publisher where Failure == Never {
+    func assignWeakly<T: AnyObject>(to keyPath: ReferenceWritableKeyPath<T, Output?>, on object: T) -> AnyCancellable {
+        sink { [weak object] in
+            object?[keyPath: keyPath] = $0
+        }
     }
-    
-    override func bind(viewModel: B.ViewModelType) {
-        base?.bind(viewModel: viewModel)
-    }
-}
 
-/**
- The type erasure of `CustomBinder`.
- - Attention: To avoid memory leak `AnyBinder` has a weak reference to the embedded `CustomBinder`
- */
-public final class AnyBinder<V: ViewModel>: CustomBinder {
-    private let box: AnyBinderBase<V>
-    
-    public init<B: CustomBinder>(_ binder: B) where B.ViewModelType == V {
-        box = AnyBinderBox(binder)
-    }
-    
-    public func bind(viewModel: V) {
-        box.bind(viewModel: viewModel)
+    func assignWeakly<T: AnyObject>(to keyPath: ReferenceWritableKeyPath<T, Output>, on object: T) -> AnyCancellable {
+        sink { [weak object] in
+            object?[keyPath: keyPath] = $0
+        }
     }
 }

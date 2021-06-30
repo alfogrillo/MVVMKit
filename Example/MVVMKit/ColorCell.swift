@@ -1,18 +1,18 @@
 /*
  ColorCell.swift
- 
+
  Copyright (c) 2019 Alfonso Grillo
- 
+
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
  in the Software without restriction, including without limitation the rights
  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  copies of the Software, and to permit persons to whom the Software is
  furnished to do so, subject to the following conditions:
- 
+
  The above copyright notice and this permission notice shall be included in
  all copies or substantial portions of the Software.
- 
+
  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -23,12 +23,22 @@
  */
 
 import MVVMKit
+import UIKit
+import Foundation
 
-struct ColorCellViewModel: ReusableViewViewModel {
-    var identifier: String = ColorCell.identifier
+struct ColorCellViewModel: ReusableViewViewModel, Hashable {
+    let identifier: String = ColorCell.identifier
     let title: String
     let color: UIColor
     let isEditable: Bool
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(title)
+    }
+    
+    static func == (lhs: ColorCellViewModel, rhs: ColorCellViewModel) -> Bool {
+        lhs.title == rhs.title && lhs.isEditable == rhs.isEditable && lhs.color == rhs.color
+    }
 }
 
 protocol ColorCellDelegate: class {
@@ -36,7 +46,7 @@ protocol ColorCellDelegate: class {
 }
 
 class ColorCell: UITableViewCell, CustomBinder, CustomDelegator {
-    typealias ViewModelType = ColorCellViewModel
+    typealias CustomViewModel = ColorCellViewModel
     typealias Delegate = ColorCellDelegate
     
     @IBOutlet private weak var titleLabel: UILabel!
@@ -56,6 +66,12 @@ class ColorCell: UITableViewCell, CustomBinder, CustomDelegator {
         colorView.backgroundColor = viewModel.color
         editButton.isHidden = !viewModel.isEditable
         self.viewModel = viewModel
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        colorView.layer.borderWidth = 1
+        colorView.layer.borderColor = UIColor.black.cgColor
     }
     
     @IBAction func invertDidTap(_ sender: UIButton) {

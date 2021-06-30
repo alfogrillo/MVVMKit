@@ -28,24 +28,10 @@ class RootViewController: UIViewController, ViewModelOwner {
     typealias ViewModelType = RootViewModel
     var viewModel: RootViewModel!
     
-    func bind(viewModel: RootViewModel) {
-        
-    }
+    func bind(viewModel: RootViewModel) { }
     
     @IBAction func didTapBasicViewController(_ sender: UIButton) {
         viewModel?.didSelectBasicViewController()
-    }
-    
-    @IBAction func didTapTableViewController(_ sender: UIButton) {
-        viewModel?.didSelectTableViewController()
-    }
-    
-    @IBAction func didTapCollectionViewController(_ sender: UIButton) {
-        viewModel?.didSelectCollectionViewController()
-    }
-    
-    @IBAction func didTapEmbeddedViewController(_ sender: UIButton) {
-        viewModel?.didSelectEmbeddedViewController()
     }
     
     @IBAction func didTapDiffableCollectionViewController(_ sender: UIButton) {
@@ -54,5 +40,13 @@ class RootViewController: UIViewController, ViewModelOwner {
     
     @IBAction func didTapDiffableTableViewController(_ sender: UIButton) {
         viewModel?.didSelectDiffableTableViewController()
+    }
+
+    @IBAction func didiTapEmbedding(_ sender: UIButton) {
+        viewModel.didSelectEmbedding()
+    }
+
+    @IBAction func didTapCustomCellInteraction(_ sender: UIButton) {
+        viewModel.didTapCustomCellInteraction()
     }
 }

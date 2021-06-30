@@ -28,7 +28,6 @@ class SearchCollectionViewController: MVVMDiffableCollectionViewController<Searc
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
-        updateLayout()
     }
     
     private func setupCollectionView() {
@@ -48,6 +47,8 @@ class SearchCollectionViewController: MVVMDiffableCollectionViewController<Searc
             BadgeReusableView.nib,
             forSupplementaryViewOfKind: SupplementaryViewKind.badge.rawValue,
             withReuseIdentifier: BadgeReusableView.identifier)
+
+        updateLayout()
     }
 }
 
@@ -58,7 +59,9 @@ extension SearchCollectionViewController: UISearchBarDelegate {
 }
 
 private extension NSCollectionLayoutSection {
-    static func listSection(columns: Int = 1) -> NSCollectionLayoutSection {
+    static func searchSection(groupSize: NSCollectionLayoutSize,
+                              columns: Int = 1,
+                              scroll: UICollectionLayoutSectionOrthogonalScrollingBehavior = .none) -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
             heightDimension: .fractionalHeight(1.0))
@@ -73,10 +76,6 @@ private extension NSCollectionLayoutSection {
         let item = NSCollectionLayoutItem(layoutSize: itemSize, supplementaryItems: [itemSupplementaryView])
         
         let insetValue: CGFloat = 3
-        let groupSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1.0),
-            heightDimension: .absolute(44))
-        
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: columns)
         group.interItemSpacing = .fixed(insetValue)
         group.contentInsets = .init(top: 0, leading: insetValue, bottom: 0, trailing: insetValue)
@@ -99,6 +98,7 @@ private extension NSCollectionLayoutSection {
         section.boundarySupplementaryItems = [sectionHeader, sectionFooter]
         section.interGroupSpacing = insetValue
         section.contentInsets = .init(top: insetValue, leading: 0, bottom: insetValue, trailing: 0)
+        section.orthogonalScrollingBehavior = scroll
         return section
     }
 }
@@ -109,9 +109,13 @@ extension SearchCollectionViewModel.Section {
     func sectionLayout(with environment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? {
         switch self {
         case .main:
-            return .listSection(columns: 1)
+            return .searchSection(groupSize: .init(widthDimension: .fractionalWidth(1),
+                                                   heightDimension: .fractionalWidth(0.5)),
+                                  columns: 2)
         case .second:
-            return .listSection(columns: 2)
+            return .searchSection(groupSize: .init(widthDimension: .fractionalWidth(1),
+                                                   heightDimension: .absolute(44)),
+                                  columns: 2)
         }
     }
 }

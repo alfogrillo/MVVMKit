@@ -1,18 +1,18 @@
 /*
- GiphyMasterDetailViewModel.swift
- 
- Copyright (c) 2019 Alfonso Grillo
- 
+ ContainerViewModel.swift
+
+ Copyright (c) 2021 Alfonso Grillo
+
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
  in the Software without restriction, including without limitation the rights
  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  copies of the Software, and to permit persons to whom the Software is
  furnished to do so, subject to the following conditions:
- 
+
  The above copyright notice and this permission notice shall be included in
  all copies or substantial portions of the Software.
- 
+
  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -24,22 +24,31 @@
 
 import MVVMKit
 
-class GiphyMasterDetailViewModel: DelegatingViewModel, CoordinatedViewModel {
-    typealias CoordinatorType = GiphyMasterDetailCoordinator
-    var binder: AnyBinder<GiphyMasterDetailViewModel>?
-    var coordinator: GiphyMasterDetailCoordinator
+final class ContainerViewModel: CoordinatedViewModel {
+    typealias Coordinator = ContainerCoordinator
     
-    init(coordinator: GiphyMasterDetailCoordinator) {
+    let coordinator: ContainerCoordinator
+    
+    init(coordinator: ContainerCoordinator) {
         self.coordinator = coordinator
     }
     
-    func load() {
-        coordinator.showMasterViewController(in: .master).delegate = self
+    func start() {
+        coordinator.showTableViewController(in: .main)
     }
-}
-
-extension GiphyMasterDetailViewModel: GiphyViewModelDelegate {
-    func giphyViewModel(_ giphyViewModel: GiphyViewModel, didSelectGif gif: GiphyResult) {
-        coordinator.showDetailViewController(in: .detail, with: gif)
+    
+    func didSelectSegment(at index: Int) {
+        guard let scene = Scene(rawValue: index) else { return }
+        switch scene {
+        case .tableView:
+            coordinator.showTableViewController(in: .main)
+        case .collectionView:
+            coordinator.showCollectionViewController(in: .main)
+        }
+    }
+    
+    enum Scene: Int {
+        case tableView
+        case collectionView
     }
 }

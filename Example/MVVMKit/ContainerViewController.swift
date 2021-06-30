@@ -1,18 +1,18 @@
 /*
- GiphyMasterDetailViewController.swift
- 
- Copyright (c) 2019 Alfonso Grillo
- 
+ ContainerViewController.swift
+
+ Copyright (c) 2021 Alfonso Grillo
+
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
  in the Software without restriction, including without limitation the rights
  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  copies of the Software, and to permit persons to whom the Software is
  furnished to do so, subject to the following conditions:
- 
+
  The above copyright notice and this permission notice shall be included in
  all copies or substantial portions of the Software.
- 
+
  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -23,36 +23,39 @@
  */
 
 import MVVMKit
+import UIKit
 
-class GiphyMasterDetailViewController: UIViewController, ViewModelOwner, ContainerViewProvider {
-    typealias ViewModelType = GiphyMasterDetailViewModel
-    @IBOutlet private weak var imageView: UIImageView!
-    @IBOutlet private weak var activityIndicatorView: UIActivityIndicatorView!
-    @IBOutlet private weak var masterContainerView: UIView!
-    @IBOutlet private weak var detailContainerView: UIView!
+class ContainerViewController: UIViewController, ViewModelOwner, ContainerViewProvider {
+    typealias ViewModelType = ContainerViewModel
     
-    var viewModel: GiphyMasterDetailViewModel! {
-        didSet { viewModel?.binder = AnyBinder(self) }
+    @IBOutlet weak private var containerView: UIView!
+    
+    enum ContainerViewKind {
+        case main
     }
+    
+    var viewModel: ContainerViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.load()
+        navigationItem.title = String(describing: type(of: self))
+        viewModel.start()
+        bind()
     }
     
-    func bind(viewModel: GiphyMasterDetailViewModel) { }
+    func bind(viewModel: ContainerViewModel) {
+        
+    }
     
-    func view(for kind: ViewKind) -> UIView? {
+    @IBAction func segmentDidChange(_ sender: UISegmentedControl) {
+        viewModel.didSelectSegment(at: sender.selectedSegmentIndex)
+    }
+    
+    
+    func view(for kind: ContainerViewKind) -> UIView? {
         switch kind {
-        case .master:
-            return masterContainerView
-        case .detail:
-            return detailContainerView
+        case .main:
+            return containerView
         }
-    }
-    
-    enum ViewKind {
-        case master
-        case detail
     }
 }
