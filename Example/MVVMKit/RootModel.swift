@@ -24,8 +24,8 @@
 
 /// A stub for the application state
 struct RootModel {
-    var basicModel = BasicModel(value: 5, state: .on)
-    var colorsModel = ColorsModel(colors: Color.colors, selectedColor: nil, state: .normal)
+    let basicModel = BasicModel(value: 5, state: .on)
+    let colorsModel = ColorsModel(colors: Color.colors, selectedColor: nil, state: .normal)
 }
 
 private extension Color {

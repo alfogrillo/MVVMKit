@@ -109,9 +109,9 @@ extension SearchCollectionViewModel.Section {
     func sectionLayout(with environment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? {
         switch self {
         case .main:
-            return .searchSection(groupSize: .init(widthDimension: .fractionalWidth(0.4),
-                                                   heightDimension: .fractionalWidth(0.4)),
-                                  scroll: .continuous)
+            return .searchSection(groupSize: .init(widthDimension: .fractionalWidth(1),
+                                                   heightDimension: .fractionalWidth(0.5)),
+                                  columns: 2)
         case .second:
             return .searchSection(groupSize: .init(widthDimension: .fractionalWidth(1),
                                                    heightDimension: .absolute(44)),

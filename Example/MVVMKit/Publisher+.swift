@@ -37,13 +37,4 @@ extension Publisher where Failure == Never {
             object?[keyPath: keyPath] = $0
         }
     }
-
-    func enumerated() -> AnyPublisher<(Int, Output), Failure> {
-        scan(nil) { (tuple, output) -> (Int, Output)? in
-            let nextIndex = tuple.map { $0.0 + 1 } ?? 0
-            return (nextIndex, output)
-        }
-        .compactMap { $0 }
-        .eraseToAnyPublisher()
-    }
 }
