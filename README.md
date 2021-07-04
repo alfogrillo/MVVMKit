@@ -76,7 +76,7 @@ Coordinator’s Responsibilities
 
 #### Graphical representation
 
-![MVVM](Images/mvvm.png)
+![MVVM](Images/MVVM.png)
 
 ## Features
 
@@ -311,7 +311,7 @@ Copy the `Templates/MVVMKit` folder into `~/Library/Developer/Xcode/Templates`.
 
 The result should be the following:
 
-![MVVM](Images/templates.png)
+![MVVM](Images/Templates.png)
 
 
 ## Installation
