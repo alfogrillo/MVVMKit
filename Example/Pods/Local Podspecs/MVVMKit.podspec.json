@@ -1,6 +1,6 @@
 {
   "name": "MVVMKit",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "summary": "The MVVM pattern protocol oriented",
   "homepage": "https://github.com/alfogrillo/MVVMKit",
   "license": {
@@ -11,8 +11,8 @@
     "alfogrillo": "alfogrillo@gmail.com"
   },
   "source": {
-    "git": "https://github.com/alfogrillo/MVVMKit",
-    "tag": "3.0.0"
+    "git": "https://github.com/alfogrillo/MVVMKit.git",
+    "tag": "3.1.0"
   },
   "platforms": {
     "ios": "10.0"
