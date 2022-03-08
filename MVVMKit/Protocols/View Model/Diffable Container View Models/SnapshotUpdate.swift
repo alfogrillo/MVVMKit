@@ -31,23 +31,31 @@ import UIKit
 @available(iOS 13.0, *)
 public struct SnapshotUpdate<SectionType: Hashable, ItemType: Hashable> {
     public let snapshot: NSDiffableDataSourceSnapshot<SectionType, ItemType>
-    public let animated: Bool
+    public let applyStrategy: ApplyStrategy
     public let completion: (() -> Void)?
     
     public init(
         snapshot: NSDiffableDataSourceSnapshot<SectionType, ItemType> = .init(),
-        animated: Bool = true,
+        applyStrategy: ApplyStrategy = .diffing(animated: true),
         completion: (() -> Void)? = nil) {
         
         self.snapshot = snapshot
-        self.animated = animated
+        self.applyStrategy = applyStrategy
         self.completion = completion
+    }
+
+    public enum ApplyStrategy {
+        case diffing(animated: Bool)
+
+        @available(iOS 15, *)
+        case reloadData
     }
 }
 
 @available(iOS 13.0, *)
 public extension NSDiffableDataSourceSnapshot {
-    func adapted(animated: Bool = true, completion: (() -> Void)? = nil) -> SnapshotUpdate<SectionIdentifierType, ItemIdentifierType> {
-        .init(snapshot: self, animated: animated, completion: completion)
+    func adapted(applyStrategy: SnapshotUpdate<SectionIdentifierType, ItemIdentifierType>.ApplyStrategy = .diffing(animated: true),
+                 completion: (() -> Void)? = nil) -> SnapshotUpdate<SectionIdentifierType, ItemIdentifierType> {
+        .init(snapshot: self, applyStrategy: applyStrategy, completion: completion)
     }
 }

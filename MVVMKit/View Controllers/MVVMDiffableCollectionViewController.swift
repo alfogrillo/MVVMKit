@@ -58,7 +58,7 @@ open class MVVMDiffableCollectionViewController<ViewModelType: DiffableCollectio
         dataSourceSubscription = viewModel.snapshot
             .receive(on: DispatchQueue.diffingQueue)
             .sink { [weak self] snapshotAdapter in
-                self?.dataSource.apply(snapshotAdapter.snapshot, animatingDifferences: snapshotAdapter.animated, completion: snapshotAdapter.completion)
+                self?.dataSource.apply(snapshotUpdate: snapshotAdapter)
             }
     }
     

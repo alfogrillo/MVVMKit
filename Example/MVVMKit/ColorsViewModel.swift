@@ -67,7 +67,7 @@ class ColorsViewModel: DiffableTableViewViewModel {
             return viewModel.adapted()
         }
         snapshot.appendItems(items, toSection: .main)
-        return SnapshotAdapter(snapshot: snapshot, animated: true, completion: nil)
+        return SnapshotAdapter(snapshot: snapshot, applyStrategy: .diffing(animated: true), completion: nil)
     }
     
     func didSelectColor(at index: Int) {
