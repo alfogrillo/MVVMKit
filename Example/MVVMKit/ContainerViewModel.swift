@@ -24,12 +24,10 @@
 
 import MVVMKit
 
-final class ContainerViewModel: CoordinatedViewModel {
-    typealias Coordinator = ContainerCoordinator
+final class ContainerViewModel: ViewModel {
+    private let coordinator: any ContainerCoordinatorProtocol
     
-    let coordinator: ContainerCoordinator
-    
-    init(coordinator: ContainerCoordinator) {
+    init(coordinator: any ContainerCoordinatorProtocol) {
         self.coordinator = coordinator
     }
     

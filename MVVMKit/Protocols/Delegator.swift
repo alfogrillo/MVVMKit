@@ -25,7 +25,7 @@
 import Foundation
 
 /// A protocol describing a generic delegator object.
-public protocol Delegator: class { }
+public protocol Delegator: AnyObject { }
 
 public extension Delegator {
     var rawDelegate: Any? {

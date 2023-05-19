@@ -24,13 +24,11 @@
 
 import MVVMKit
 
-class RootViewModel: ViewModel, CoordinatedViewModel {
-    typealias CoordinatorType = RootCoordinator
-    
-    let coordinator: RootCoordinator
+class RootViewModel: ViewModel {
+    private let coordinator: any RootCoordinatorProtocol
     private let model: RootModel
     
-    init(model: RootModel, coordinator: RootCoordinator) {
+    init(model: RootModel, coordinator: any RootCoordinatorProtocol) {
         self.coordinator = coordinator
         self.model = model
     }

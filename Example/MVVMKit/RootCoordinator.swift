@@ -24,7 +24,15 @@
 
 import MVVMKit
 
-class RootCoordinator: Coordinator {
+protocol RootCoordinatorProtocol: Coordinator {
+    func didSelectBasicViewController(model: BasicModel)
+    func didSelectDiffableCollectionViewController()
+    func didSelectDiffableTableViewController()
+    func showEmbeddingViewController()
+    func showCustomCellInteractionViewController(model: ColorsModel)
+}
+
+class RootCoordinator: RootCoordinatorProtocol {
     let weakViewController: WeakReference<UIViewController>
     
     init(sourceViewController viewController: UIViewController) {
@@ -51,7 +59,7 @@ class RootCoordinator: Coordinator {
 
     func showEmbeddingViewController() {
         let viewController = ContainerViewController.instantiate(storyboardName: "Main")
-        viewController.viewModel = ContainerViewModel(coordinator: .init(viewController: viewController))
+        viewController.viewModel = ContainerViewModel(coordinator: ContainerCoordinator(viewController: viewController))
         self.viewController?.show(viewController, sender: nil)
     }
 

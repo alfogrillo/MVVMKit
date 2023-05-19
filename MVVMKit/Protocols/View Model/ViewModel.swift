@@ -30,7 +30,7 @@ public protocol ViewModel { }
 /**
 A convenience base protocol for reference type view models
 */
-public protocol ReferenceViewModel: class, ViewModel { }
+public protocol ReferenceViewModel: AnyObject, ViewModel { }
 
 /**
  A view model for reusable views (cells, headers, footers)

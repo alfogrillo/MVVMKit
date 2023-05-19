@@ -41,7 +41,7 @@ struct ColorCellViewModel: ReusableViewViewModel, Hashable {
     }
 }
 
-protocol ColorCellDelegate: class {
+protocol ColorCellDelegate: AnyObject {
     func didTapInvertButton(sender colorCell: ColorCell)
 }
 

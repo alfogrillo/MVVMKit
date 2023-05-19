@@ -25,7 +25,7 @@
 /**
  A `Binder` is responsible to bind a view model on a view.
  */
-public protocol Binder: class {
+public protocol Binder: AnyObject {
     func bind(viewModel: ViewModel)
 }
 

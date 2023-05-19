@@ -25,14 +25,17 @@
 import MVVMKit
 import UIKit
 
-final class ContainerCoordinator: EmbedderCoordinator {
-    typealias ViewController = ContainerViewController
-    typealias ContainerViewKind = ViewController.ContainerViewKind
+protocol ContainerCoordinatorProtocol: EmbedderCoordinator where ViewController == ContainerViewController {
+    typealias ContainerViewKind = ContainerViewController.ContainerViewKind
     
+    func showTableViewController(in view: ContainerViewKind)
+    func showCollectionViewController(in view: ContainerViewKind)
+}
+
+final class ContainerCoordinator: ContainerCoordinatorProtocol {
     let weakViewController: WeakReference<ContainerViewController>
     private var children: [ContainerViewKind: UIViewController] = .init()
     
-
     init(viewController: ContainerViewController) {
         weakViewController = .init(viewController)
     }
