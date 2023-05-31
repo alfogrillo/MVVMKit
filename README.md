@@ -112,15 +112,15 @@ class RootViewController: UIViewController, ViewModelOwner {
 
 The view model starts the navigation using the coordinator.
 ```swift
-class RootViewModel: CoordinatedViewModel {
-    typealias CoordinatorType = RootCoordinator
-    let coordinator: RootCoordinator
+class RootViewModel: ViewModel {
+    private let coordinator: any RootCoordinatorProtocol
     
-    init(coordinator: RootCoordinator) { … }
+    init(coordinator: any RootCoordinatorProtocol) { … }
     
     func didTapButton() {
         coordinator.showDestinationViewController()
     }
+}
 ```
 <br/>
 
@@ -137,6 +137,7 @@ class RootCoordinator: Coordinator {
         viewController.viewModel = SomeViewModel()
         self.viewController?.show(viewController, sender: nil)
     }
+}
 
 ```
 
@@ -225,7 +226,13 @@ Conform the coordinator to `EmbedderCoordinator`.
 ```swift
 final class ContainerCoordinator: EmbedderCoordinator {
     typealias ViewController = ContainerViewController
-    typealias ContainerViewKind = ViewController.ContainerViewKind
+    typealias ContainerViewKind = ContainerViewController.ContainerViewKind
+
+    let weakViewController: WeakReference<ContainerViewController>
+
+    init(viewController: ContainerViewController) {
+        weakViewController = .init(viewController)
+    }
     
     func embedChildViewController(in view: ContainerViewKind) {
         let childViewController = ChildViewController()
@@ -234,15 +241,16 @@ final class ContainerCoordinator: EmbedderCoordinator {
         }
         // embed here ‘childViewController’ into the ‘containerView’
     }
+}
 ```
 <br/>
 Start the embedding process in the view model specifying the desired view identifier.
 
 ```swift
-final class ContainerViewModel: CoordinatedViewModel {
-    typealias Coordinator = ContainerCoordinator
+final class ContainerViewModel: ViewModel {
+    private let coordinator: any ContainerCoordinatorProtocol
     
-    let coordinator: ContainerCoordinator
+    init(coordinator: any ContainerCoordinatorProtocol) { … }
 
     func didTapSomething() {
         coordinator.embedChildViewController(in: .main)
