@@ -4,11 +4,6 @@
 
 <p align="center"><strong>A Protocol Oriented MVVM implementation</strong></p>
 
-[![Version](https://img.shields.io/cocoapods/v/MVVMKit.svg?style=flat)](https://cocoapods.org/pods/MVVMKit)
-[![License](https://img.shields.io/cocoapods/l/MVVMKit.svg?style=flat)](https://cocoapods.org/pods/MVVMKit)
-[![Platform](https://img.shields.io/cocoapods/p/MVVMKit.svg?style=flat)](https://cocoapods.org/pods/MVVMKit)
-
-
 **MVVMKit** is a protocol oriented library that defines a clear way to adopt the [MVVM software architecture](https://en.wikipedia.org/wiki/Model–view–viewmodel) in your iOS applications.<br/>
 Aside the classical MVVM implementation, **MVVMKit** also provides the tools for putting the navigation logics inside instances conforming to the `Coordinator` protocol.
 
@@ -316,19 +311,11 @@ The result should be the following:
 
 ## Installation
 
-**MVVMKit** is available through [CocoaPods](https://cocoapods.org). To install
-it, simply add the following line to your Podfile:
-
-```ruby
-pod 'MVVMKit'
-```
-
-**MVVMKit** is also available as a **Swift Package**.
-
+**MVVMKit** is available as a **Swift Package**.
 
 ### Example project
 
-To run the example project, clone the repo, and run `pod install` inside the `Example` directory first.
+Open the project file inside the folder `Example-UIKit`
 
 ## Author
 
