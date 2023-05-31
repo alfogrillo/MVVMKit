@@ -263,8 +263,8 @@ Conform the cell’s view model to `ReusableViewViewModel`.
 
 ```swift
 struct SampleCellViewModel: ReusableViewViewModel {
-	let identifier: String = SampleCell.identifier
-	let text: String?
+    let identifier: String = SampleCell.identifier
+    let text: String?
 }
 ```
 <br/>
